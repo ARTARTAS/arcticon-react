@@ -1,5 +1,5 @@
 import React from "react";
-import arrowBlack from "./../../assets/svg/home.svg#arrow_black";
+import arrowBlack from "./../../assets/svg/arrowBlack.svg";
 import img1 from "./../../assets/img/MainPage/BlockTwo/01.jpg";
 import img2 from "./../../assets/img/MainPage/BlockTwo/02.png";
 import img3 from "./../../assets/img/MainPage/BlockTwo/03.png";
