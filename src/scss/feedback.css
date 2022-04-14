@@ -1,0 +1,20 @@
+.container {
+  position: relative;
+  margin: 0px 50px;
+  max-width: 1200px;
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 767.98px) {
+  .container {
+    margin: 0px 30px;
+  }
+}
+
+@media (max-width: 479.98px) {
+  .container {
+    margin: 0px 20px;
+  }
+}
+/*# sourceMappingURL=feedback.css.map */
