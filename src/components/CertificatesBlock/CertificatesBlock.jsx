@@ -3,9 +3,6 @@ import arrowBlack from "./../../assets/svg/arrowBlack.svg";
 import arrowBlackLeft from "./../../assets/svg/arrowBlackLeft.svg";
 import img1 from "./../../assets/img/MainPage/BlockTen/01.jpg";
 import img2 from "./../../assets/img/MainPage/BlockTen/02.jpg";
-import img3 from "./../../assets/img/MainPage/BlockTen/03.jpg";
-import img4 from "./../../assets/img/MainPage/BlockTen/04.jpg";
-import img5 from "./../../assets/img/MainPage/BlockTen/05.jpg";
 
 export default function CertificatesBlock() {
   return (
