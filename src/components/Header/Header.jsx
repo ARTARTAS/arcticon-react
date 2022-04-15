@@ -1,4 +1,10 @@
 import React from "react";
+import img1 from "./../../assets/img/logo.png";
+import img2 from "./../../assets/svg/home/location.svg";
+import img3 from "./../../assets/svg/home/mail.svg";
+import img4 from "./../../assets/svg/home/facebook.svg";
+import img5 from "./../../assets/svg/home/loup.svg";
+import img6 from "./../../assets/svg/home/menu.svg";
 
 export default function Header() {
   return (
@@ -7,7 +13,7 @@ export default function Header() {
         <div className="header__menu">
           <menu className="menu__main">
             <a className="logo" href="/">
-              <img src="./img/logo.png" alt="" />
+              <img src={img1} alt="" />
             </a>
             <div className="menu">
               <div className="contacts">
@@ -19,19 +25,13 @@ export default function Header() {
                 </div>
                 <div className="icons">
                   <a href="">
-                    <svg className="icon" style="width: 13px; height: 18px;">
-                      <use xlinkHref="./svg/home.svg#location"></use>
-                    </svg>
+                    <img src={img2} alt="" />
                   </a>
                   <a href="">
-                    <svg className="icon" style="width: 13px; height: 11px;">
-                      <use xlinkHref=".>/svg/home.svg#mail"></use>
-                    </svg>
+                    <img src={img3} alt="" />
                   </a>
                   <a href="">
-                    <svg className="icon" style="width: 14px; height: 14px;">
-                      <use xlinkHref="./svg/home.svg#facebook"></use>
-                    </svg>
+                    <img src={img4} alt="" />
                   </a>
                 </div>
               </div>
@@ -63,12 +63,14 @@ export default function Header() {
           </menu>
           <menu className="menu__sub">
             <a href="#">
+              <img src={img5} alt="" />
               <svg className="search">
                 <use xlinkHref="./svg/home.svg#loup"></use>
               </svg>
             </a>
             <div className="line"></div>
             <a href="#" id="burger" className="open-main-nav">
+              <img src={img6} alt="" />
               <svg className="dots">
                 <use xlinkHref="./svg/home.svg#menu"></use>
               </svg>
