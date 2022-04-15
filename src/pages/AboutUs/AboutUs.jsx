@@ -11,16 +11,16 @@ import img6 from "./../../assets/img/MainPage/BlockFive/01.jpg";
 export default function AboutUs() {
   return (
     <>
-      <section class="one">
-        <div class="background">
+      <section className="one">
+        <div className="background">
           <img src={img1} alt="background" />
         </div>
-        <div class="container">
-          <div class="block">
-            <div class="block__logo">
+        <div className="container">
+          <div className="block">
+            <div className="block__logo">
               <img src={img2} alt="logo" />
             </div>
-            <div class="block__info_right">
+            <div className="block__info_right">
               <p>
                 ОО «Арктик Энергострой» является поставщиком услуг для
                 энергетической отрасли с разнообразным портфелем клиентов,
@@ -32,8 +32,8 @@ export default function AboutUs() {
                 решать сложные технологические задачи.
               </p>
             </div>
-            <div class="block__info_bottom">
-              <p class="bottom-mobile">
+            <div className="block__info_bottom">
+              <p className="bottom-mobile">
                 Многолетний опыт лежит в основе всего, что мы делаем. Наша
                 команда состоит и высококвалифицированных специалистов способных
                 решать сложные технологические задачи.
@@ -54,29 +54,29 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <section class="two">
-        <div class="back"></div>
-        <div class="container">
-          <div class="block">
-            <div class="block__expirience square">
+      <section className="two">
+        <div className="back"></div>
+        <div className="container">
+          <div className="block">
+            <div className="block__expirience square">
               <h1>11 лет</h1>
               <h3>Опыта</h3>
             </div>
-            <div class="block__logo square">
+            <div className="block__logo square">
               <img src={img4} alt="" />
             </div>
-            <div class="block__contracts square">
+            <div className="block__contracts square">
               <h1>800+</h1>
               <h3>Успешно реализованных контрактов</h3>
             </div>
-            <div class="block__turnover square">
+            <div className="block__turnover square">
               <h1>4 000 000 000 ₽</h1>
               <h3>Оборот компании</h3>
             </div>
-            <div class="block__video">
+            <div className="block__video">
               <img src={img5} alt="" />
             </div>
-            <div class="block__title">
+            <div className="block__title">
               <h1>О нас</h1>
               <p>
                 Многолетний опыт лежит в основе всего, что мы делаем. Наша
@@ -84,7 +84,7 @@ export default function AboutUs() {
                 решать сложные технологические задачи.
               </p>
             </div>
-            <div class="block__text">
+            <div className="block__text">
               <p>
                 ОО «Арктик Энергострой» является поставщиком услуг для
                 энергетической отрасли с разнообразным портфелем клиентов,
@@ -106,8 +106,8 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <section class="three">
-        <div class="fixed_bottom_one">
+      <section className="three">
+        <div className="fixed_bottom_one">
           Заказчики Услуги и сервис Партнеры Контакты Продукция Заказчики О
           нас&nbsp; Заказчики Услуги и сервис Партнеры Контакты Продукция
           Заказчики О нас&nbsp; Заказчики Услуги и сервис Партнеры Контакты
@@ -115,7 +115,7 @@ export default function AboutUs() {
           Контакты Продукция Заказчики О нас&nbsp; Заказчики Услуги и сервис
           Партнеры Контакты Продукция Заказчики О нас&nbsp;
         </div>
-        <div class="fixed_bottom_two">
+        <div className="fixed_bottom_two">
           Заказчики Услуги и сервис Партнеры Контакты Продукция Заказчики О
           нас&nbsp; Заказчики Услуги и сервис Партнеры Контакты Продукция
           Заказчики О нас&nbsp; Заказчики Услуги и сервис Партнеры Контакты
@@ -123,7 +123,7 @@ export default function AboutUs() {
           Контакты Продукция Заказчики О нас&nbsp; Заказчики Услуги и сервис
           Партнеры Контакты Продукция Заказчики О нас&nbsp;
         </div>
-        <div class="fixed_bottom_three">
+        <div className="fixed_bottom_three">
           Заказчики Услуги и сервис Партнеры Контакты Продукция Заказчики О
           нас&nbsp; Заказчики Услуги и сервис Партнеры Контакты Продукция
           Заказчики О нас&nbsp; Заказчики Услуги и сервис Партнеры Контакты
@@ -133,13 +133,13 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <section class="four">
-        <div class="image">
+      <section className="four">
+        <div className="image">
           <img src={img6} alt="" />
         </div>
-        <div class="container">
-          <div class="block">
-            <div class="block__info">
+        <div className="container">
+          <div className="block">
+            <div className="block__info">
               <h1>Карьера в Arctic Energostroy</h1>
               <p>
                 Мы всегда рады принять в нашу команду талантливых и трудолюбивых

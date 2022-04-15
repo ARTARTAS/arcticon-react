@@ -5,14 +5,14 @@ import img2 from "./../../assets/img/MainPage/Footer/Ellipse.png";
 export default function Footer() {
   return (
     <footer>
-      <div class="top">
-        <div class="container">
-          <div class="block">
-            <div class="logo">
+      <div className="top">
+        <div className="container">
+          <div className="block">
+            <div className="logo">
               <img src={img1} alt="" />
             </div>
-            <div class="menu">
-              <div class="company">
+            <div className="menu">
+              <div className="company">
                 <h2>Компания</h2>
                 <ul>
                   <li>
@@ -35,7 +35,7 @@ export default function Footer() {
                   </li>
                 </ul>
               </div>
-              <div class="solutions">
+              <div className="solutions">
                 <h2>Решения</h2>
                 <ul>
                   <li>
@@ -70,7 +70,7 @@ export default function Footer() {
                   </li>
                 </ul>
               </div>
-              <div class="services">
+              <div className="services">
                 <h2>Услуги</h2>
                 <ul>
                   <li>
@@ -99,7 +99,7 @@ export default function Footer() {
                   </li>
                 </ul>
               </div>
-              <div class="contacts">
+              <div className="contacts">
                 <h2>Контакты</h2>
                 <ul>
                   <li>
@@ -109,7 +109,7 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div class="follow__mobile">
+          <div className="follow__mobile">
             <h4>Follow us: </h4>
             <a href="">
               {" "}
@@ -130,11 +130,11 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div class="line"></div>
-      <div class="bottom">
-        <div class="container">
-          <div class="block">
-            <div class="info">
+      <div className="line"></div>
+      <div className="bottom">
+        <div className="container">
+          <div className="block">
+            <div className="info">
               <p>
                 © 2010—2021 «Арктик Энергострой». Все права защищены.
                 <br />
@@ -142,7 +142,7 @@ export default function Footer() {
                 владельцев сайта.
               </p>
             </div>
-            <div class="follow">
+            <div className="follow">
               <h4>Follow us: </h4>
               <a href="">
                 {" "}
