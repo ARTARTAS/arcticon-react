@@ -7,6 +7,7 @@ import img4 from "./../../assets/img/Contacts/email.png";
 import img5 from "./../../assets/svg/contacts/viber.svg";
 import img6 from "./../../assets/svg/contacts/telegram.svg";
 import img7 from "./../../assets/svg/contacts/phone.svg";
+import "../../styles/contacts.css"
 
 export default function Contacts() {
   return (
