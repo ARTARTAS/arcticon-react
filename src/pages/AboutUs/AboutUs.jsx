@@ -8,6 +8,8 @@ import img5 from "./../../assets/img/MainPage/BlockThree/01.png";
 
 import img6 from "./../../assets/img/MainPage/BlockFive/01.jpg";
 
+import "../../styles/about.css"
+
 export default function AboutUs() {
   return (
     <>
