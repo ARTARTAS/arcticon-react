@@ -21,7 +21,7 @@ export default function CertificatesBlock() {
               <div className="image">
                 <img src={img2} alt="" />
               </div>
-              <div className="image">
+              {/* <div className="image">
                 <img src={img3} alt="" />
               </div>
               <div className="image">
@@ -29,7 +29,7 @@ export default function CertificatesBlock() {
               </div>
               <div className="image">
                 <img src={img5} alt="" />
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="ten__block_buttons">
