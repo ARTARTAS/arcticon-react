@@ -21,7 +21,7 @@ export default function EquipmentBlock() {
                   <h3>Трансформаторы</h3>
                   <a href="#">
                     Подробнее
-                    <img src={arrowOrange} alt="" />
+                    <img class="icon" src={arrowOrange} alt="" />
                   </a>
                 </div>
               </div>
@@ -35,7 +35,7 @@ export default function EquipmentBlock() {
                   <h3>Трансформаторы</h3>
                   <a href="#">
                     Подробнее
-                    <img src={arrowOrange} alt="" />
+                    <img class="icon" src={arrowOrange} alt="" />
                   </a>
                 </div>
               </div>
@@ -49,7 +49,7 @@ export default function EquipmentBlock() {
                   <h3>Трансформаторы</h3>
                   <a href="#">
                     Подробнее
-                    <img src={arrowOrange} alt="" />
+                    <img class="icon" src={arrowOrange} alt="" />
                   </a>
                 </div>
               </div>
@@ -63,7 +63,7 @@ export default function EquipmentBlock() {
                   <h3>Трансформаторы</h3>
                   <a href="#">
                     Подробнее
-                    <img src={arrowOrange} alt="" />
+                    <img class="icon" src={arrowOrange} alt="" />
                   </a>
                 </div>
               </div>
@@ -77,7 +77,7 @@ export default function EquipmentBlock() {
                   <h3>Трансформаторы</h3>
                   <a href="#">
                     Подробнее
-                    <img src={arrowOrange} alt="" />
+                    <img class="icon" src={arrowOrange} alt="" />
                   </a>
                 </div>
               </div>
@@ -86,7 +86,7 @@ export default function EquipmentBlock() {
           <div className="eight__block_button">
             <a href="#">
               Ещё
-              <img src={arrowBlack} alt="" />
+              <img class="icon" src={arrowBlack} alt="" />
             </a>
           </div>
         </div>

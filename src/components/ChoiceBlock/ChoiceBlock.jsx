@@ -1,5 +1,5 @@
 import React from "react";
-import arrowBlack from "./../../assets/svg/arrowBlack.svg";
+import arrowBlack from "./../../assets/svg/home/arrow_black.svg";
 import img1 from "./../../assets/img/Customers/01.jpg";
 import img2 from "./../../assets/img/Customers/02.jpg";
 import img3 from "./../../assets/img/Customers/03.jpg";
@@ -17,7 +17,7 @@ export default function ChoiceBlock() {
   return (
     <section className="six">
       <button className="next-button">
-        <img src={arrowBlack} alt="" />
+        <img class="icon" src={arrowBlack} alt="" />
       </button>
       <div className="container">
         <div className="six__block">
