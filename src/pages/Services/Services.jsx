@@ -1,5 +1,6 @@
 import React from "react";
 import img1 from "./../../assets/svg/home/details_black.svg";
+import "../../styles/services.css"
 
 export default function Services() {
   return (
