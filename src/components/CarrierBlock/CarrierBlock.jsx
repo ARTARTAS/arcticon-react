@@ -4,13 +4,13 @@ import img1 from "./../../assets/img/MainPage/BlockFive/01.jpg";
 
 export default function CarrierBlock() {
   return (
-    <section class="four">
-      <div class="image">
+    <section className="four">
+      <div className="image">
         <img src={img1} alt="" />
       </div>
-      <div class="container">
-        <div class="block">
-          <div class="block__info">
+      <div className="container">
+        <div className="block">
+          <div className="block__info">
             <h1>Карьера в Arctic Energostroy</h1>
             <p>
               Мы всегда рады принять в нашу команду талантливых и трудолюбивых

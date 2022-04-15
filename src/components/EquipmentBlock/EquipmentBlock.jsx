@@ -5,19 +5,19 @@ import img1 from "./../../assets/img/Products/Equipment/01.png";
 
 export default function EquipmentBlock() {
   return (
-    <section class="eight">
-      <div class="container">
-        <div class="eight__block">
-          <div class="eight__block_title">
+    <section className="eight">
+      <div className="container">
+        <div className="eight__block">
+          <div className="eight__block_title">
             <h1>Оборудование</h1>
           </div>
-          <div class="eight__block_list">
-            <div class="card">
-              <div class="card__info">
-                <a href="#" class="card__info_img">
+          <div className="eight__block_list">
+            <div className="card">
+              <div className="card__info">
+                <a href="#" className="card__info_img">
                   <img src={img1} alt="" />
                 </a>
-                <div class="card__info_bottom">
+                <div className="card__info_bottom">
                   <h3>Трансформаторы</h3>
                   <a href="#">
                     Подробнее
@@ -27,7 +27,7 @@ export default function EquipmentBlock() {
               </div>
             </div>
           </div>
-          <div class="eight__block_button">
+          <div className="eight__block_button">
             <a href="#">
               Ещё
               <img src={arrowBlack} alt="" />
