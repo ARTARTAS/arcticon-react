@@ -1,5 +1,5 @@
 import React from "react";
-import arrowBlack from "./../../assets/svg/arrowBlack.svg";
+import arrowBlack from "./../../assets/svg/home/arrow_black.svg";
 import img1 from "./../../assets/img/MainPage/BlockFive/01.jpg";
 
 export default function CarrierBlock() {
@@ -19,7 +19,7 @@ export default function CarrierBlock() {
             </p>
             <a href="#">
               Подробнее
-              <img src={arrowBlack} alt="" />
+              <img class="icon" src={arrowBlack} alt="" />
             </a>
           </div>
         </div>

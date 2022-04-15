@@ -1,6 +1,5 @@
 import React from "react";
-import arrowBlack from "./../../assets/svg/arrowBlack.svg";
-import arrowBlackLeft from "./../../assets/svg/arrowBlackLeft.svg";
+import arrowBlack from "./../../assets/svg/home/arrow_black.svg";
 import img1 from "./../../assets/img/MainPage/BlockTen/01.jpg";
 import img2 from "./../../assets/img/MainPage/BlockTen/02.jpg";
 
@@ -28,14 +27,6 @@ export default function CertificatesBlock() {
                 <img src={img5} alt="" />
               </div> */}
             </div>
-          </div>
-          <div className="ten__block_buttons">
-            <a href="#" className="left_arrow">
-              <img src={arrowBlackLeft} alt="" />
-            </a>
-            <a href="#" className="right_arrow">
-              <img src={arrowBlack} alt="" />
-            </a>
           </div>
         </div>
       </div>

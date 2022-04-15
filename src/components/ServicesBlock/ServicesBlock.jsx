@@ -1,5 +1,5 @@
 import React from "react";
-import arrowBlack from "./../../assets/svg/arrowBlack.svg";
+import arrowBlack from "./../../assets/svg/home/arrow_black.svg";
 import img1 from "./../../assets/img/MainPage/BlockNine/01.jpg";
 
 export default function ServicesBlock() {
@@ -19,7 +19,7 @@ export default function ServicesBlock() {
               </p>
               <a href="#" className="more">
                 Ещё
-                <img src={arrowBlack} alt="" />
+                <img class="icon" src={arrowBlack} alt="" />
               </a>
             </div>
             <div className="block">
@@ -33,7 +33,7 @@ export default function ServicesBlock() {
               </p>
               <a href="#" className="more">
                 Ещё
-                <img src={arrowBlack} alt="" />
+                <img class="icon" src={arrowBlack} alt="" />
               </a>
             </div>
             <div className="block">
@@ -46,7 +46,7 @@ export default function ServicesBlock() {
               </p>
               <a href="#" className="more">
                 Ещё
-                <img src={arrowBlack} alt="" />
+                <img class="icon" src={arrowBlack} alt="" />
               </a>
             </div>
             <div className="block">
@@ -59,7 +59,7 @@ export default function ServicesBlock() {
               </p>
               <a href="#" className="more">
                 Ещё
-                <img src={arrowBlack} alt="" />
+                <img class="icon" src={arrowBlack} alt="" />
               </a>
             </div>
             <div className="block">
@@ -72,7 +72,7 @@ export default function ServicesBlock() {
               </p>
               <a href="#" className="more">
                 Ещё
-                <img src={arrowBlack} alt="" />
+                <img class="icon" src={arrowBlack} alt="" />
               </a>
             </div>
             <div className="block">
@@ -85,7 +85,7 @@ export default function ServicesBlock() {
               </p>
               <a href="#" className="more">
                 Ещё
-                <img src={arrowBlack} alt="" />
+                <img class="icon" src={arrowBlack} alt="" />
               </a>
             </div>
           </div>

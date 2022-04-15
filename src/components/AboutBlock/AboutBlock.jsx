@@ -1,5 +1,5 @@
 import React from "react";
-import arrowBlack from "./../../assets/svg/arrowBlack.svg";
+import arrowBlack from "./../../assets/svg/home/arrow_black.svg";
 import img1 from "./../../assets/img/MainPage/BlockThree/logo_img.png";
 import img2 from "./../../assets/img/MainPage/BlockThree/01.png";
 
@@ -51,7 +51,7 @@ export default function AboutBlock() {
           </div>
           <a href="#">
             Далее
-            <img src={arrowBlack} alt="" />
+            <img class="icon" src={arrowBlack} alt="" />
           </a>
         </div>
       </div>
