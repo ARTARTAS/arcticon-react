@@ -51,7 +51,7 @@ export default function AboutBlock() {
           </div>
           <a href="#">
             Далее
-            <img class="icon" src={arrowBlack} alt="" />
+            <img className="icon" src={arrowBlack} alt="" />
           </a>
         </div>
       </div>
