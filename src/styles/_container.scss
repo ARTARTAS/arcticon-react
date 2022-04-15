@@ -1,0 +1,16 @@
+@import "_globals";
+
+.container {
+    position: relative;
+    margin: 0px 50px;
+    max-width: 1200px;
+    height: 100%;
+    width: 100%;
+
+    @media (max-width: $md3 + px) {
+        margin: 0px 30px;
+    }
+    @media (max-width: $md4 + px) {
+        margin: 0px 20px;
+    }
+}

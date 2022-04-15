@@ -5,29 +5,29 @@ import img2 from "./../../assets/img/MainPage/BlockThree/01.png";
 
 export default function AboutBlock() {
   return (
-    <section class="three">
-      <div class="back"></div>
-      <div class="container">
-        <div class="block">
-          <div class="block__expirience square">
+    <section className="three">
+      <div className="back"></div>
+      <div className="container">
+        <div className="block">
+          <div className="block__expirience square">
             <h1>11 лет</h1>
             <h3>Опыта</h3>
           </div>
-          <div class="block__logo square">
+          <div className="block__logo square">
             <img src={img1} alt="" />
           </div>
-          <div class="block__contracts square">
+          <div className="block__contracts square">
             <h1>800+</h1>
             <h3>Успешно реализованных контрактов</h3>
           </div>
-          <div class="block__turnover square">
+          <div className="block__turnover square">
             <h1>4 000 000 000 ₽</h1>
             <h3>Оборот компании</h3>
           </div>
-          <div class="block__video">
+          <div className="block__video">
             <img src={img2} alt="" />
           </div>
-          <div class="block__title">
+          <div className="block__title">
             <h1>О нас</h1>
             <p>
               Многолетний опыт лежит в основе всего, что мы делаем. Наша команда
@@ -35,7 +35,7 @@ export default function AboutBlock() {
               сложные технологические задачи.
             </p>
           </div>
-          <div class="block__text">
+          <div className="block__text">
             <p>
               ОО «Арктик Энергострой» является поставщиком услуг для
               энергетической отрасли с разнообразным портфелем клиентов, включая

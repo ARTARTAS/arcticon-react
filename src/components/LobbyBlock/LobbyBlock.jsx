@@ -10,10 +10,10 @@ import img6 from "./../../assets/img/MainPage/BlockOne/ThreeSection/front.png";
 export default function LobbyBlock() {
   return (
     <>
-      <section class="one__one">
-        <div class="container">
-          <div class="one__one_block">
-            <div class="info">
+      <section className="one__one">
+        <div className="container">
+          <div className="one__one_block">
+            <div className="info">
               <h1>
                 передовые <br /> технологии
               </h1>
@@ -28,16 +28,16 @@ export default function LobbyBlock() {
             </div>
           </div>
         </div>
-        <div class="images">
-          <img class="back" src={img1} alt="" />
-          <img class="front" src={img2} alt="" />
+        <div className="images">
+          <img className="back" src={img1} alt="" />
+          <img className="front" src={img2} alt="" />
         </div>
       </section>
 
-      <section class="one__two">
-        <div class="container">
-          <div class="one__two_block">
-            <div class="info">
+      <section className="one__two">
+        <div className="container">
+          <div className="one__two_block">
+            <div className="info">
               <h2>
                 Мы проектируем,
                 <br />
@@ -58,16 +58,16 @@ export default function LobbyBlock() {
             </div>
           </div>
         </div>
-        <div class="images">
-          <img class="back" src={img3} alt="" />
-          <img class="front" src={img4} alt="" />
+        <div className="images">
+          <img className="back" src={img3} alt="" />
+          <img className="front" src={img4} alt="" />
         </div>
       </section>
 
-      <section class="one__three">
-        <div class="container">
-          <div class="one__three_block">
-            <div class="info">
+      <section className="one__three">
+        <div className="container">
+          <div className="one__three_block">
+            <div className="info">
               <h1>Решения</h1>
               <h2>для топливно-энергетического комплекса</h2>
               <a href="#">
@@ -77,35 +77,35 @@ export default function LobbyBlock() {
             </div>
           </div>
         </div>
-        <div class="images">
-          <img class="back" src={img5} alt="" />
-          <img class="front" src={img6} alt="" />
+        <div className="images">
+          <img className="back" src={img5} alt="" />
+          <img className="front" src={img6} alt="" />
         </div>
       </section>
 
-      <section class="modal__one">
-        <div class="modal_close-button"></div>
-        <div class="line"></div>
-        <div class="container">
-          <div class="block">
-            <div class="block__image">
+      <section className="modal__one">
+        <div className="modal_close-button"></div>
+        <div className="line"></div>
+        <div className="container">
+          <div className="block">
+            <div className="block__image">
               <img
-                class="modal__one_front"
+                className="modal__one_front"
                 src="<?php echo get_template_directory_uri(); ?>/img/MainPage/ModalOne/front.png"
                 alt="front image"
               />
               <img
-                class="modal__one_background"
+                className="modal__one_background"
                 src="<?php echo get_template_directory_uri(); ?>/img/MainPage/ModalOne/background.png"
                 alt="background iamge"
               />
               <img src="" alt="svg" />
             </div>
-            <div class="block__info">
-              <div class="block__info_title">
+            <div className="block__info">
+              <div className="block__info_title">
                 <h1>ООО «Артик Энергострой» </h1>
               </div>
-              <div class="block__info_text">
+              <div className="block__info_text">
                 <p>
                   Предоставляет полный комплекс услуг по проектированию, сборке,
                   поставке, внедрению и сопровождению автоматизированных систем
@@ -132,7 +132,7 @@ export default function LobbyBlock() {
                   сайта (идет активная ссылка на разделы):
                 </p>
               </div>
-              <div class="buttons">
+              <div className="buttons">
                 <a href="">ПРОДУКЦИЯ</a>
                 <a href="">УСЛУГИ И СЕРВИС</a>
                 <a href="">Проекты</a>
@@ -142,12 +142,12 @@ export default function LobbyBlock() {
         </div>
       </section>
 
-      <section class="modal__two">
-        <div class="modal_close-button"></div>
-        <div class="line"></div>
-        <div class="container">
-          <div class="block">
-            <div class="block__info_text">
+      <section className="modal__two">
+        <div className="modal_close-button"></div>
+        <div className="line"></div>
+        <div className="container">
+          <div className="block">
+            <div className="block__info_text">
               <p>
                 ООО «Арктик Энергострой» начала свою деятельность в 2010 году с
                 проекта строительства воздушной линии электропередачи 35 кВ
@@ -177,7 +177,7 @@ export default function LobbyBlock() {
                 электроэнергии" (ГТУ Solar TITAN 130)» и пр.
               </p>
             </div>
-            <div class="block__info_text-bottom">
+            <div className="block__info_text-bottom">
               <p>
                 Помимо нефтегазовых компаний, ООО «Арктик Энергострой» имеет
                 хороший опыт реализации контрактов в энергоснабжении гражданских
@@ -193,14 +193,14 @@ export default function LobbyBlock() {
                 (идет активная ссылка на разделы):
               </p>
             </div>
-            <div class="buttons">
+            <div className="buttons">
               <a href="">ПРОДУКЦИЯ</a>
               <a href="">УСЛУГИ И СЕРВИС</a>
               <a href="">Проекты</a>
             </div>
-            <div class="block__image">
+            <div className="block__image">
               <img
-                class="modal__one_front"
+                className="modal__one_front"
                 src="<?php echo get_template_directory_uri(); ?>/img/MainPage/ModalTwo/front.png"
                 alt="front image"
               />
@@ -210,21 +210,21 @@ export default function LobbyBlock() {
         </div>
       </section>
 
-      <section class="modal__three">
-        <div class="modal_close-button"></div>
-        <div class="line"></div>
-        <div class="container">
-          <div class="block">
-            <div class="block__image">
+      <section className="modal__three">
+        <div className="modal_close-button"></div>
+        <div className="line"></div>
+        <div className="container">
+          <div className="block">
+            <div className="block__image">
               <img
-                class="modal__one_front"
+                className="modal__one_front"
                 src="<?php echo get_template_directory_uri(); ?>/img/MainPage/ModalThree/front.png"
                 alt="front image"
               />
               <img src="" alt="svg" />
             </div>
-            <div class="block__info">
-              <div class="block__info_text">
+            <div className="block__info">
+              <div className="block__info_text">
                 <p>
                   Существенную часть портфеля заказов ООО « Арктик Энергострой»
                   формируют крупнейшие компании топливно-энергетического
@@ -267,7 +267,7 @@ export default function LobbyBlock() {
                   сайта (идет активная ссылка на разделы):
                 </p>
               </div>
-              <div class="buttons">
+              <div className="buttons">
                 <a href="">ПРОДУКЦИЯ</a>
                 <a href="">УСЛУГИ И СЕРВИС</a>
                 <a href="">Проекты</a>
