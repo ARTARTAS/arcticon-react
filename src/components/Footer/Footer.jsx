@@ -1,6 +1,7 @@
 import React from "react";
 import img1 from "./../../assets/img/logo.png";
 import img2 from "./../../assets/img/MainPage/Footer/Ellipse.png";
+import "../../styles/footer.css"
 
 export default function Footer() {
   return (
