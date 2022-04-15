@@ -921,6 +921,24 @@ const AboutUsStyles = styled.div`
   .about_three {
     width: 100%;
     margin-bottom: 60px;
+    overflow: hidden;
+    .fixed_bottom_one {
+      animation: horizontalScroll 20s alternate infinite ease-in-out;
+    }
+    .fixed_bottom_two {
+      animation: horizontalScroll 15s alternate infinite ease-in-out;
+    }
+    .fixed_bottom_three {
+      animation: horizontalScroll 25s alternate infinite ease-in-out;
+    }
+  }
+  @keyframes horizontalScroll {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
   }
 
   .about_three div {
