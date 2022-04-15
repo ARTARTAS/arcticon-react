@@ -1,10 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Contacts from "./pages/Contacts/Contacts";
 import Customers from "./pages/Customers/Customers";
-import Footer from "./pages/Footer/Footer";
-import Header from "./pages/Header/Header";
+
 import Home from "./pages/Home/Home";
 import Partners from "./pages/Partners/Partners";
 import Services from "./pages/Services/Services";
