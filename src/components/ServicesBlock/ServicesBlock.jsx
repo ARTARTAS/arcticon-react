@@ -19,7 +19,7 @@ export default function ServicesBlock() {
               </p>
               <a href="#" className="more">
                 Ещё
-                <img class="icon" src={arrowBlack} alt="" />
+                <img className="icon" src={arrowBlack} alt="" />
               </a>
             </div>
             <div className="block">
@@ -33,7 +33,7 @@ export default function ServicesBlock() {
               </p>
               <a href="#" className="more">
                 Ещё
-                <img class="icon" src={arrowBlack} alt="" />
+                <img className="icon" src={arrowBlack} alt="" />
               </a>
             </div>
             <div className="block">
@@ -46,7 +46,7 @@ export default function ServicesBlock() {
               </p>
               <a href="#" className="more">
                 Ещё
-                <img class="icon" src={arrowBlack} alt="" />
+                <img className="icon" src={arrowBlack} alt="" />
               </a>
             </div>
             <div className="block">
@@ -59,7 +59,7 @@ export default function ServicesBlock() {
               </p>
               <a href="#" className="more">
                 Ещё
-                <img class="icon" src={arrowBlack} alt="" />
+                <img className="icon" src={arrowBlack} alt="" />
               </a>
             </div>
             <div className="block">
@@ -72,7 +72,7 @@ export default function ServicesBlock() {
               </p>
               <a href="#" className="more">
                 Ещё
-                <img class="icon" src={arrowBlack} alt="" />
+                <img className="icon" src={arrowBlack} alt="" />
               </a>
             </div>
             <div className="block">
@@ -85,7 +85,7 @@ export default function ServicesBlock() {
               </p>
               <a href="#" className="more">
                 Ещё
-                <img class="icon" src={arrowBlack} alt="" />
+                <img className="icon" src={arrowBlack} alt="" />
               </a>
             </div>
           </div>

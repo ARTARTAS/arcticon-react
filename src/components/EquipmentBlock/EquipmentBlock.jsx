@@ -1,5 +1,5 @@
 import React from "react";
-import arrowBlack from "./../../assets/svg/arrowBlack.svg";
+import arrowBlack from "./../../assets/svg/home/arrow_black.svg";
 import arrowOrange from "./../../assets/svg/arrowOrange.svg";
 import img1 from "./../../assets/img/Products/Equipment/01.png";
 
@@ -21,7 +21,7 @@ export default function EquipmentBlock() {
                   <h3>Трансформаторы</h3>
                   <a href="#">
                     Подробнее
-                    <img class="icon" src={arrowOrange} alt="" />
+                    <img className="icon" src={arrowOrange} alt="" />
                   </a>
                 </div>
               </div>
@@ -35,7 +35,7 @@ export default function EquipmentBlock() {
                   <h3>Трансформаторы</h3>
                   <a href="#">
                     Подробнее
-                    <img class="icon" src={arrowOrange} alt="" />
+                    <img className="icon" src={arrowOrange} alt="" />
                   </a>
                 </div>
               </div>
@@ -49,7 +49,7 @@ export default function EquipmentBlock() {
                   <h3>Трансформаторы</h3>
                   <a href="#">
                     Подробнее
-                    <img class="icon" src={arrowOrange} alt="" />
+                    <img className="icon" src={arrowOrange} alt="" />
                   </a>
                 </div>
               </div>
@@ -63,7 +63,7 @@ export default function EquipmentBlock() {
                   <h3>Трансформаторы</h3>
                   <a href="#">
                     Подробнее
-                    <img class="icon" src={arrowOrange} alt="" />
+                    <img className="icon" src={arrowOrange} alt="" />
                   </a>
                 </div>
               </div>
@@ -77,7 +77,7 @@ export default function EquipmentBlock() {
                   <h3>Трансформаторы</h3>
                   <a href="#">
                     Подробнее
-                    <img class="icon" src={arrowOrange} alt="" />
+                    <img className="icon" src={arrowOrange} alt="" />
                   </a>
                 </div>
               </div>
@@ -86,7 +86,7 @@ export default function EquipmentBlock() {
           <div className="eight__block_button">
             <a href="#">
               Ещё
-              <img class="icon" src={arrowBlack} alt="" />
+              <img className="icon" src={arrowBlack} alt="" />
             </a>
           </div>
         </div>

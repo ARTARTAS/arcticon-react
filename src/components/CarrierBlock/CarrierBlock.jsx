@@ -19,7 +19,7 @@ export default function CarrierBlock() {
             </p>
             <a href="#">
               Подробнее
-              <img class="icon" src={arrowBlack} alt="" />
+              <img className="icon" src={arrowBlack} alt="" />
             </a>
           </div>
         </div>
