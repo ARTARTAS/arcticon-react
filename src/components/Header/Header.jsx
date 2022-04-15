@@ -5,6 +5,7 @@ import img3 from "./../../assets/svg/home/mail.svg";
 import img4 from "./../../assets/svg/home/facebook.svg";
 import img5 from "./../../assets/svg/home/loup.svg";
 import img6 from "./../../assets/svg/home/menu.svg";
+import '../../styles/header.css'
 
 export default function Header() {
   return (
@@ -63,17 +64,11 @@ export default function Header() {
           </menu>
           <menu className="menu__sub">
             <a href="#">
-              <img src={img5} alt="" />
-              <svg className="search">
-                <use xlinkHref="./svg/home.svg#loup"></use>
-              </svg>
+              <img className="search" src={img5} alt="" />
             </a>
             <div className="line"></div>
             <a href="#" id="burger" className="open-main-nav">
-              <img src={img6} alt="" />
-              <svg className="dots">
-                <use xlinkHref="./svg/home.svg#menu"></use>
-              </svg>
+              <img className="dots" src={img6} alt="" />
             </a>
           </menu>
         </div>
