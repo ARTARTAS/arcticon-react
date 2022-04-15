@@ -1,41 +1,42 @@
 import React from "react";
 import img1 from "./../../assets/svg/home/details_black.svg";
+import "../../styles/services.css"
 
 export default function Services() {
   return (
     <section>
-      <div class="container">
-        <div class="title">
+      <div className="container">
+        <div className="title">
           <h1>Услуги и сервис</h1>
         </div>
-        <div class="pallet">
-          <div class="pallet__grid">
-            <div class="pallet__grid_section">
-              <div class="block">
-                <div class="block__title">
+        <div className="pallet">
+          <div className="pallet__grid">
+            <div className="pallet__grid_section">
+              <div className="block">
+                <div className="block__title">
                   <h1>ШМР и ПНР</h1>
                   <a href="/service-page/">
                     <img className="icon" src={img1} alt="" />
                   </a>
-                  <div class="block__title_line"></div>
+                  <div className="block__title_line"></div>
                 </div>
-                <div class="block__info">
+                <div className="block__info">
                   <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                   </p>
                 </div>
               </div>
             </div>
-            <div class="pallet__grid_section">
-              <div class="block">
-                <div class="block__title">
+            <div className="pallet__grid_section">
+              <div className="block">
+                <div className="block__title">
                   <h1>Проектирование</h1>
                   <a href="/service-page/">
                     <img className="icon" src={img1} alt="" />
                   </a>
-                  <div class="block__title_line"></div>
+                  <div className="block__title_line"></div>
                 </div>
-                <div class="block__info">
+                <div className="block__info">
                   <p>
                     ООО «Арктик Энергострой» выступает в качестве генерального
                     подрядчика
@@ -43,16 +44,16 @@ export default function Services() {
                 </div>
               </div>
             </div>
-            <div class="pallet__grid_section">
-              <div class="block">
-                <div class="block__title">
+            <div className="pallet__grid_section">
+              <div className="block">
+                <div className="block__title">
                   <h1>EPCM</h1>
                   <a href="/service-page/">
                     <img className="icon" src={img1} alt="" />
                   </a>
-                  <div class="block__title_line"></div>
+                  <div className="block__title_line"></div>
                 </div>
-                <div class="block__info">
+                <div className="block__info">
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Nemo, est!
@@ -60,16 +61,16 @@ export default function Services() {
                 </div>
               </div>
             </div>
-            <div class="pallet__grid_section">
-              <div class="block">
-                <div class="block__title">
+            <div className="pallet__grid_section">
+              <div className="block">
+                <div className="block__title">
                   <h1>Строительно-монтажные работы</h1>
                   <a href="/service-page/">
                     <img className="icon" src={img1} alt="" />
                   </a>
-                  <div class="block__title_line"></div>
+                  <div className="block__title_line"></div>
                 </div>
-                <div class="block__info">
+                <div className="block__info">
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Dolor repudiandae vitae provident.
@@ -77,16 +78,16 @@ export default function Services() {
                 </div>
               </div>
             </div>
-            <div class="pallet__grid_section">
-              <div class="block">
-                <div class="block__title">
+            <div className="pallet__grid_section">
+              <div className="block">
+                <div className="block__title">
                   <h1>Гарантийное обслуживание</h1>
                   <a href="/service-page/">
                     <img className="icon" src={img1} alt="" />
                   </a>
-                  <div class="block__title_line"></div>
+                  <div className="block__title_line"></div>
                 </div>
-                <div class="block__info">
+                <div className="block__info">
                   <p>
                     ООО «Арктик Энергострой» выступает в качестве генерального
                     подрядчика, результатом работы которого является
@@ -95,16 +96,16 @@ export default function Services() {
                 </div>
               </div>
             </div>
-            <div class="pallet__grid_section">
-              <div class="block">
-                <div class="block__title">
+            <div className="pallet__grid_section">
+              <div className="block">
+                <div className="block__title">
                   <h1>Сервис</h1>
                   <a href="/service-page/">
                     <img className="icon" src={img1} alt="" />
                   </a>
-                  <div class="block__title_line"></div>
+                  <div className="block__title_line"></div>
                 </div>
-                <div class="block__info">
+                <div className="block__info">
                   <p>
                     ООО «Арктик Энергострой» выступает в качестве генерального
                     подрядчика, результатом работы которого является
@@ -113,16 +114,16 @@ export default function Services() {
                 </div>
               </div>
             </div>
-            <div class="pallet__grid_section">
-              <div class="block">
-                <div class="block__title">
+            <div className="pallet__grid_section">
+              <div className="block">
+                <div className="block__title">
                   <h1>EPCM</h1>
                   <a href="/service-page/">
                     <img className="icon" src={img1} alt="" />
                   </a>
-                  <div class="block__title_line"></div>
+                  <div className="block__title_line"></div>
                 </div>
-                <div class="block__info">
+                <div className="block__info">
                   <p>
                     ООО «Арктик Энергострой» выступает в качестве генерального
                     подрядчика, результатом работы которого является
@@ -131,16 +132,16 @@ export default function Services() {
                 </div>
               </div>
             </div>
-            <div class="pallet__grid_section">
-              <div class="block">
-                <div class="block__title">
+            <div className="pallet__grid_section">
+              <div className="block">
+                <div className="block__title">
                   <h1>Комплексные поставки</h1>
                   <a href="/service-page/">
                     <img className="icon" src={img1} alt="" />
                   </a>
-                  <div class="block__title_line"></div>
+                  <div className="block__title_line"></div>
                 </div>
-                <div class="block__info">
+                <div className="block__info">
                   <p>
                     ООО «Арктик Энергострой» выступает в качестве генерального
                     подрядчика, результатом работы которого является
@@ -151,13 +152,13 @@ export default function Services() {
             </div>
           </div>
         </div>
-        <menu class="menu">
-          <nav class="nav">
-            <div class="nav__column">
-              <div class="nav__column_title">
+        <menu className="menu">
+          <nav className="nav">
+            <div className="nav__column">
+              <div className="nav__column_title">
                 <a href="#">Структура организации</a>
               </div>
-              <ul class="nav__column_list">
+              <ul className="nav__column_list">
                 <li>
                   <a href="#">Руководство</a>
                 </li>
@@ -175,11 +176,11 @@ export default function Services() {
                 </li>
               </ul>
             </div>
-            <div class="nav__column">
-              <div class="nav__column_title">
+            <div className="nav__column">
+              <div className="nav__column_title">
                 <a href="#">Оборудование</a>
               </div>
-              <ul class="nav__column_list">
+              <ul className="nav__column_list">
                 <li>
                   <a href="#">Трансформаторы</a>
                 </li>
@@ -240,11 +241,11 @@ export default function Services() {
                 </li>
               </ul>
             </div>
-            <div class="nav__column">
-              <div class="nav__column_title">
+            <div className="nav__column">
+              <div className="nav__column_title">
                 <a href="#">Услуги и сервис</a>
               </div>
-              <ul class="nav__column_list">
+              <ul className="nav__column_list">
                 <li>
                   <a href="#">ЕРСМ</a>
                 </li>
@@ -271,11 +272,11 @@ export default function Services() {
                 </li>
               </ul>
             </div>
-            <div class="nav__column">
-              <div class="nav__column_title">
+            <div className="nav__column">
+              <div className="nav__column_title">
                 <a href="#">О нас</a>
               </div>
-              <ul class="nav__column_list">
+              <ul className="nav__column_list">
                 <li>
                   <a href="#">Ключевые проекты</a>
                 </li>
@@ -293,11 +294,11 @@ export default function Services() {
                 </li>
               </ul>
             </div>
-            <div class="nav__column">
-              <div class="nav__column_title">
+            <div className="nav__column">
+              <div className="nav__column_title">
                 <a href="#">Контакты</a>
               </div>
-              <ul class="nav__column_list">
+              <ul className="nav__column_list">
                 <li>
                   <a href="#">Пресс-центр</a>
                 </li>

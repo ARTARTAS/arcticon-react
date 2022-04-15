@@ -1,15 +1,16 @@
 import React from "react";
 import img1 from "./../../assets/svg/services/arrow.svg";
+import "../../styles/service-page.css"
 
 export default function ServicesPage() {
   return (
     <section>
-      <div class="container">
-        <div class="block">
-          <div class="block__title">
+      <div className="container">
+        <div className="block">
+          <div className="block__title">
             <h1>ерсм</h1>
           </div>
-          <div class="block__page-nav">
+          <div className="block__page-nav">
             <nav>
               <ul>
                 <li>
@@ -29,7 +30,7 @@ export default function ServicesPage() {
                 </li>
               </ul>
               <ul>
-                <li class="to-left">
+                <li className="to-left">
                   <img className="icon" src={img1} alt="" />
                 </li>
                 <li>
@@ -38,7 +39,7 @@ export default function ServicesPage() {
               </ul>
             </nav>
           </div>
-          <div class="block__info">
+          <div className="block__info">
             <p>
               ООО «Арктик Энергострой» выступает в качестве генерального
               подрядчика, результатом работы которого является функционирующий
@@ -59,13 +60,13 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <menu class="menu">
-            <nav class="nav">
-              <div class="nav__column">
-                <div class="nav__column_title">
+          <menu className="menu">
+            <nav className="nav">
+              <div className="nav__column">
+                <div className="nav__column_title">
                   <a href="#">Структура организации</a>
                 </div>
-                <ul class="nav__column_list">
+                <ul className="nav__column_list">
                   <li>
                     <a href="#">Руководство</a>
                   </li>
@@ -83,11 +84,11 @@ export default function ServicesPage() {
                   </li>
                 </ul>
               </div>
-              <div class="nav__column">
-                <div class="nav__column_title">
+              <div className="nav__column">
+                <div className="nav__column_title">
                   <a href="#">Оборудование</a>
                 </div>
-                <ul class="nav__column_list">
+                <ul className="nav__column_list">
                   <li>
                     <a href="#">Трансформаторы</a>
                   </li>
@@ -150,11 +151,11 @@ export default function ServicesPage() {
                   </li>
                 </ul>
               </div>
-              <div class="nav__column">
-                <div class="nav__column_title">
+              <div className="nav__column">
+                <div className="nav__column_title">
                   <a href="#">Услуги и сервис</a>
                 </div>
-                <ul class="nav__column_list">
+                <ul className="nav__column_list">
                   <li>
                     <a href="#">ЕРСМ</a>
                   </li>
@@ -181,11 +182,11 @@ export default function ServicesPage() {
                   </li>
                 </ul>
               </div>
-              <div class="nav__column">
-                <div class="nav__column_title">
+              <div className="nav__column">
+                <div className="nav__column_title">
                   <a href="#">О нас</a>
                 </div>
-                <ul class="nav__column_list">
+                <ul className="nav__column_list">
                   <li>
                     <a href="#">Ключевые проекты</a>
                   </li>
@@ -203,11 +204,11 @@ export default function ServicesPage() {
                   </li>
                 </ul>
               </div>
-              <div class="nav__column">
-                <div class="nav__column_title">
+              <div className="nav__column">
+                <div className="nav__column_title">
                   <a href="#">Контакты</a>
                 </div>
-                <ul class="nav__column_list">
+                <ul className="nav__column_list">
                   <li>
                     <a href="#">Пресс-центр</a>
                   </li>
