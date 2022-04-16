@@ -12,6 +12,7 @@ import img9 from "./../../assets/img/Customers/03.jpg";
 import img10 from "./../../assets/img/Customers/01.jpg";
 import img11 from "./../../assets/img/Customers/02.jpg";
 import img12 from "./../../assets/img/Customers/03.jpg";
+import ChoiceBlockCarousel from "../ChoiceBlockCarousel/ChoiceBlockCarousel";
 
 export default function ChoiceBlock() {
   return (
@@ -31,32 +32,7 @@ export default function ChoiceBlock() {
                 <div className="line"></div>
               </div>
               <div className="block">
-                <div className="owl-carousel owl-theme">
-                  <div className="owl__item">
-                    <img src={img1} alt="" />
-                    <img src={img2} alt="" />
-                  </div>
-                  <div className="owl__item">
-                    <img src={img3} alt="" />
-                    <img src={img4} alt="" />
-                  </div>
-                  <div className="owl__item">
-                    <img src={img5} alt="" />
-                    <img src={img6} alt="" />
-                  </div>
-                  <div className="owl__item">
-                    <img src={img7} alt="" />
-                    <img src={img8} alt="" />
-                  </div>
-                  <div className="owl__item">
-                    <img src={img9} alt="" />
-                    <img src={img10} alt="" />
-                  </div>
-                  <div className="owl__item">
-                    <img src={img11} alt="" />
-                    <img src={img12} alt="" />
-                  </div>
-                </div>
+                <ChoiceBlockCarousel />
               </div>
             </div>
           </div>
@@ -67,32 +43,7 @@ export default function ChoiceBlock() {
                 <div className="line"></div>
               </div>
               <div className="block">
-                <div className="owl-carousel owl-theme">
-                  <div className="owl__item">
-                    <img src={img1} alt="" />
-                    <img src={img2} alt="" />
-                  </div>
-                  <div className="owl__item">
-                    <img src={img3} alt="" />
-                    <img src={img4} alt="" />
-                  </div>
-                  <div className="owl__item">
-                    <img src={img5} alt="" />
-                    <img src={img6} alt="" />
-                  </div>
-                  <div className="owl__item">
-                    <img src={img7} alt="" />
-                    <img src={img8} alt="" />
-                  </div>
-                  <div className="owl__item">
-                    <img src={img9} alt="" />
-                    <img src={img10} alt="" />
-                  </div>
-                  <div className="owl__item">
-                    <img src={img11} alt="" />
-                    <img src={img12} alt="" />
-                  </div>
-                </div>
+                <ChoiceBlockCarousel />
               </div>
             </div>
           </div>
