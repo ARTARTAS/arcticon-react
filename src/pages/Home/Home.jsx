@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AboutBlock from "../../components/AboutBlock/AboutBlock";
 import CarrierBlock from "../../components/CarrierBlock/CarrierBlock";
 import CertificatesBlock from "../../components/CertificatesBlock/CertificatesBlock";
@@ -8,8 +8,9 @@ import LobbyBlock from "../../components/LobbyBlock/LobbyBlock";
 import MapBlock from "../../components/MapBlock/MapBlock";
 import NewsBlock from "../../components/NewsBlock/NewsBlock";
 import ServicesBlock from "../../components/ServicesBlock/ServicesBlock";
-
 import styled from "styled-components";
+
+import "../../scripts/home"
 
 const HomeStyled = styled.div`
   .container {
@@ -1312,8 +1313,8 @@ const HomeStyled = styled.div`
   }
 
   .one__one {
-    position: absolute;
-    display: none;
+    position: relative;
+    /* display: none; */
     top: 0;
     left: 0;
     height: 100%;
@@ -4519,7 +4520,7 @@ const HomeStyled = styled.div`
 export default function Home() {
   return (
     <HomeStyled>
-      {/* <LobbyBlock /> */}
+      <LobbyBlock />
       <NewsBlock />
       <AboutBlock />
       <CarrierBlock />

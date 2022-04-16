@@ -855,7 +855,7 @@ export default function Customers() {
             />
             <button>
               Перезвонить
-              <img classNameName="icon" src={img15} alt="" />
+              <img className="icon" src={img15} alt="" />
             </button>
           </form>
         </div>
@@ -875,7 +875,7 @@ export default function Customers() {
                   </div>
                   <a href="#">
                     Реализованные проекты
-                    <img classNameName="icon" src={img13} alt="" />
+                    <img className="icon" src={img13} alt="" />
                   </a>
                 </div>
                 <div className="cards">

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import arrowBlack from "./../../assets/svg/arrowBlack.svg";
 import img1 from "./../../assets/img/MainPage/BlockOne/FirstSection/back.png";

@@ -5,7 +5,7 @@ import img2 from "./../../assets/img/MainPage/Footer/Ellipse.png";
 import styled from "styled-components";
 
 const FooterStyles = styled.div`
-.container {
+  .container {
     position: relative;
     margin: 0px 50px;
     max-width: 1200px;
@@ -13,12 +13,12 @@ const FooterStyles = styled.div`
     width: 100%;
 
     @media (max-width: $md3 + px) {
-        margin: 0px 30px;
+      margin: 0px 30px;
     }
     @media (max-width: $md4 + px) {
-        margin: 0px 20px;
+      margin: 0px 20px;
     }
-}
+  }
   footer {
     position: relative;
     display: -webkit-box;
