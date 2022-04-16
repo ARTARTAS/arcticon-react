@@ -4583,7 +4583,7 @@ const HomeStyled = styled.div`
 export default function Home() {
   return (
     <HomeStyled>
-      {/* <LobbyBlock /> */}
+      <LobbyBlock />
       <NewsBlock />
       <AboutBlock />
       <CarrierBlock />

@@ -280,7 +280,7 @@ const MobileMenuStyles = styled.div`
   }
 `;
 
-export default function MobileMenu({ setMenu }) {
+export default function MobileMenu({ setMenu , visibleScroll}) {
   return (
     <MobileMenuStyles>
       <div className="device">
@@ -291,7 +291,7 @@ export default function MobileMenu({ setMenu }) {
                 href="#"
                 className="close-button"
                 id="close-button"
-                onClick={() => setMenu(false)}
+                onClick={() => {setMenu(false); visibleScroll()}}
               >
                 <div className="in">
                   <div className="close-button-block"></div>
