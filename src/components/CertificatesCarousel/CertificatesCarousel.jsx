@@ -8,13 +8,71 @@ import img5 from "./../../assets/img/MainPage/BlockTen/05.jpg";
 import img13 from "./../../assets/svg/home/details_black.svg";
 import styled from "styled-components";
 
-const StyledCarousel1 = styled.div`
+const StyledCarouselLeft = styled.div`
+  width: 250px;
+  margin: auto 0;
+  z-index: 3;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    width: 500px;
+  }
+
+  .slick-slider {
+    padding-top: 0;
+  }
+  .slick-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image {
+    width: 200px;
+    height: 300px;
+    img {
+      width: 200px;
+      height: 300px;
+    }
+    @media (max-width: 768px) {
+      width: 250px;
+      height: auto;
+      margin: 0px 5px;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  .button_next {
+    width: fit-content;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slick-arrow,
+  .slick-prev::before {
+    display: none;
+    pointer-events: none;
+  }
+`;
+
+const StyledCarouselRight = styled.div`
   width: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 40px;
   flex-direction: column;
+
+  @media (max-width: 992px) {
+    width: 300px;
+  }
+  @media (max-width: 768px) {
+    display: none;
+  }
 
   .slick-slider {
     padding-top: 0;
@@ -25,6 +83,7 @@ const StyledCarousel1 = styled.div`
     align-items: center;
     justify-content: center;
   }
+
   .slick-list {
     padding-bottom: 30px;
   }
@@ -34,6 +93,14 @@ const StyledCarousel1 = styled.div`
     img {
       width: 150px;
       height: 200px;
+    }
+
+    @media (max-width: 992px) {
+      width: 100px;
+
+      img {
+        width: 150px;
+      }
     }
   }
   .buttons {
@@ -72,109 +139,82 @@ const StyledCarousel1 = styled.div`
     pointer-events: none;
   }
 `;
-const StyledCarousel2 = styled.div`
-  width: 250px;
-  margin: auto 0;
-
-  .slick-slider {
-    padding-top: 0;
-  }
-  .slick-slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .image {
-    width: 200px;
-    height: 300px;
-    img {
-      width: 200px;
-      height: 300px;
-    }
-  }
-  .button_next {
-    width: fit-content;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .slick-arrow,
-  .slick-prev::before {
-    display: none;
-    pointer-events: none;
-  }
-`;
-
-// function SamplePrevArrow(props) {
-//   const { onClick } = props;
-//   return (
-//     <div className={"button_prev"} onClick={onClick}>
-//       <img src={img13} alt="" style={{ width: "50px" }} />
-//     </div>
-//   );
-// }
-
-// function SampleNextArrow(props) {
-//   const { onClick } = props;
-//   return (
-//     <div className={"button_next"} onClick={onClick}>
-//       <img src={img13} alt="" style={{ width: "50px" }} />
-//     </div>
-//   );
-// }
 
 export default class CertificatesCarousel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nav1: null,
-      nav2: null,
+      navLeft: null,
+      navRight: null,
     };
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
   }
 
   next() {
-    this.slider1.slickNext();
+    this.sliderRight.slickNext();
   }
   previous() {
-    this.slider1.slickPrev();
+    this.sliderRight.slickPrev();
   }
 
   componentDidMount() {
     this.setState({
-      nav1: this.slider1,
-      nav2: this.slider2,
+      navLeft: this.sliderLeft,
+      navRight: this.sliderRight,
     });
   }
   render() {
-    const settings = {
-      dots: false,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 1,
-    };
-    const settings2 = {
+    const settingsLeft = {
       dots: false,
       infinite: true,
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: 0,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            dots: false,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+          },
+        },
+      ],
+    };
+    const settingsRight = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      variableWidth: true,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            dots: false,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          },
+        },
+      ],
     };
 
     return (
       <>
         {" "}
-        <StyledCarousel2>
+        <StyledCarouselLeft>
           <Slider
-            {...settings2}
+            {...settingsLeft}
             styles={{ width: "500px" }}
-            asNavFor={this.state.nav2}
-            ref={(slider) => (this.slider1 = slider)}
+            asNavFor={this.state.navLeft}
+            ref={(slider) => (this.sliderRight = slider)}
           >
             <div className="image">
               <img src={img1} alt="" />
@@ -192,12 +232,12 @@ export default class CertificatesCarousel extends Component {
               <img src={img5} alt="" />
             </div>
           </Slider>
-        </StyledCarousel2>
-        <StyledCarousel1>
+        </StyledCarouselLeft>
+        <StyledCarouselRight>
           <Slider
-            {...settings}
-            asNavFor={this.state.nav1}
-            ref={(slider) => (this.slider2 = slider)}
+            {...settingsRight}
+            asNavFor={this.state.navRight}
+            ref={(slider) => (this.sliderLeft = slider)}
           >
             <div className="image">
               <img src={img1} alt="" />
@@ -223,7 +263,7 @@ export default class CertificatesCarousel extends Component {
               <img src={img13} alt="" />
             </button>
           </div>
-        </StyledCarousel1>
+        </StyledCarouselRight>
       </>
     );
   }
