@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import img1 from "./../../assets/img/Customers/01.jpg";
 import img2 from "./../../assets/img/Customers/02.jpg";
 import img3 from "./../../assets/img/Customers/03.jpg";
@@ -18,6 +18,63 @@ import img14 from "./../../assets/img/Customers/background.png";
 
 import styled from "styled-components";
 import CustomersCarousel from "../../components/CustomersCarousel/CustomersCarousel";
+import Modal from "../../components/Modal/Modal";
+
+export default function Customers() {
+  const [modal, setModal] = useState(false);
+
+  const setTimer = () => {
+    setInterval(function () {
+      // setModal(true);
+      console.log("modal set to true");
+    }, 60000);
+  };
+
+  useEffect(() => {
+    setTimer();
+  }, []);
+
+  return (
+    <CustomersStyles>
+      {modal ? <Modal setModal={setModal} /> : ""}
+
+      <section>
+        <div className="right_line"></div>
+        <div className="section__block">
+          <div className="container">
+            <div className="block">
+              <h1>Заказчики</h1>
+              <div className="block__info">
+                <div className="info">
+                  <h2>Компании, которые доверили нам выполнить работы.</h2>
+                  <div className="line__box">
+                    <div className="line"></div>
+                  </div>
+                  <a href="#">
+                    Реализованные проекты
+                    <img className="icon" src={img13} alt="" />
+                  </a>
+                </div>
+                <div className="cards">
+                  <CustomersCarousel />
+                  {/* <div className="button">
+                    <a href="#" className="next-button">
+                      Далее
+                      <img classNameName="icon" src={img13} alt="" />
+                    </a>
+                  </div> */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="background_image">
+          <img src={img14} alt="" />
+        </div>
+      </section>
+    </CustomersStyles>
+  );
+}
 
 const CustomersStyles = styled.div`
   .container {
@@ -797,65 +854,3 @@ const CustomersStyles = styled.div`
   }
   /*# sourceMappingURL=partners.css.map */
 `;
-
-export default function Customers() {
-  return (
-    <CustomersStyles>
-      <div className="back-call">
-        <div className="block">
-          <button className="exit"></button>
-          <form action="">
-            <div className="title">
-              <h2>Телефон для связи</h2>
-              <h2 className="phone">+7 (495) 409-32-14</h2>
-              <div className="line"></div>
-            </div>
-            <div className="info">
-              <p>Оставьте свой номер телефона и мы Вам перезвоним.</p>
-            </div>
-            <input
-              type="tel"
-              name="number"
-              id="number"
-              placeholder="Введите номер..."
-            />
-            <button>
-              Перезвонить
-              <img className="icon" src={img15} alt="" />
-            </button>
-          </form>
-        </div>
-      </div>
-      <div className="partners_section">
-        <section>
-          <div className="right_line"></div>
-          <div className="section__block">
-            <div className="container">
-              <div className="block">
-                <h1>Заказчики</h1>
-                <div className="block__info">
-                  <div className="info">
-                    <h2>Компании, которые доверили нам выполнить работы.</h2>
-                    <div className="line__box">
-                      <div className="line"></div>
-                    </div>
-                    <a href="#">
-                      Реализованные проекты
-                      <img className="icon" src={img13} alt="" />
-                    </a>
-                  </div>
-                  <div className="cards">
-                    <CustomersCarousel />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="background_image">
-            <img src={img14} alt="" />
-          </div>
-        </section>
-      </div>
-    </CustomersStyles>
-  );
-}

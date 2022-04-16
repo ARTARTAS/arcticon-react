@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import img1 from "./../../assets/img/logo.png";
 import img2 from "./../../assets/svg/home/location.svg";
 import img3 from "./../../assets/svg/home/mail.svg";
@@ -7,6 +7,7 @@ import img5 from "./../../assets/svg/home/loup.svg";
 import img6 from "./../../assets/svg/home/menu.svg";
 
 import styled from "styled-components";
+import MobileMenu from "../MobileMenu/MobileMenu";
 
 const HeaderStyles = styled.div`
   .container {
@@ -631,6 +632,12 @@ const HeaderStyles = styled.div`
 `;
 
 export default function Header() {
+  const [menu, setMenu] = useState(false);
+
+  menu
+    ? (document.body.style.overflow = "hidden")
+    : (document.body.style.overflow = "visible");
+
   return (
     <HeaderStyles>
       <header className="header">
@@ -691,13 +698,14 @@ export default function Header() {
                 <img className="search" src={img5} alt="" />
               </a>
               <div className="line"></div>
-              <a href="#" id="burger" className="open-main-nav">
+              <div className="open-main-nav" onClick={() => setMenu(true)}>
                 <img className="dots" src={img6} alt="" />
-              </a>
+              </div>
             </menu>
           </div>
         </div>
       </header>
+      {menu ? <MobileMenu setMenu={setMenu} /> : ""}
     </HeaderStyles>
   );
 }
