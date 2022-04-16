@@ -1,10 +1,4 @@
 import React from "react";
-import img1 from "./../../assets/img/logo.png";
-import img2 from "./../../assets/svg/home/location.svg";
-import img3 from "./../../assets/svg/home/mail.svg";
-import img4 from "./../../assets/svg/home/facebook.svg";
-import img5 from "./../../assets/svg/home/loup.svg";
-import img6 from "./../../assets/svg/home/menu.svg";
 
 import styled from "styled-components";
 
