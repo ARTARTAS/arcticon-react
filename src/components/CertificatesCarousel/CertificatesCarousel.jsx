@@ -10,13 +10,23 @@ import styled from "styled-components";
 
 const StyledCarousel1 = styled.div`
   width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  flex-direction: column;
+
   .slick-slider {
     padding-top: 0;
+    width: 100%;
   }
   .slick-slide {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .slick-list {
+    padding-bottom: 30px;
   }
   .image {
     width: 150px;
@@ -26,12 +36,34 @@ const StyledCarousel1 = styled.div`
       height: 200px;
     }
   }
+  .buttons {
+    display: flex;
+    width: fit-content;
+    margin-left: auto;
+    gap: 20px;
+  }
+  .button_prev {
+    width: fit-content;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(180deg);
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    background: none;
+  }
   .button_next {
     width: fit-content;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    background: none;
   }
 
   .slick-arrow,
@@ -42,6 +74,8 @@ const StyledCarousel1 = styled.div`
 `;
 const StyledCarousel2 = styled.div`
   width: 250px;
+  margin: auto 0;
+
   .slick-slider {
     padding-top: 0;
   }
@@ -72,21 +106,25 @@ const StyledCarousel2 = styled.div`
     pointer-events: none;
   }
 `;
-//  <div
-//       className={className}
-//       style={{ ...style, display: "block", background: "red" }}
-//       onClick={onClick}
-//     />
 
-function SampleNextArrow(props) {
-  const { onClick } = props;
-  return (
-    <div className={"button_next"} onClick={onClick}>
-      <p>Далее</p>
-      <img src={img13} alt="" style={{ width: "50px" }} />
-    </div>
-  );
-}
+// function SamplePrevArrow(props) {
+//   const { onClick } = props;
+//   return (
+//     <div className={"button_prev"} onClick={onClick}>
+//       <img src={img13} alt="" style={{ width: "50px" }} />
+//     </div>
+//   );
+// }
+
+// function SampleNextArrow(props) {
+//   const { onClick } = props;
+//   return (
+//     <div className={"button_next"} onClick={onClick}>
+//       <img src={img13} alt="" style={{ width: "50px" }} />
+//     </div>
+//   );
+// }
+
 export default class CertificatesCarousel extends Component {
   constructor(props) {
     super(props);
@@ -94,6 +132,15 @@ export default class CertificatesCarousel extends Component {
       nav1: null,
       nav2: null,
     };
+    this.next = this.next.bind(this);
+    this.previous = this.previous.bind(this);
+  }
+
+  next() {
+    this.slider1.slickNext();
+  }
+  previous() {
+    this.slider1.slickPrev();
   }
 
   componentDidMount() {
@@ -109,7 +156,6 @@ export default class CertificatesCarousel extends Component {
       speed: 500,
       slidesToShow: 3,
       slidesToScroll: 1,
-      nextArrow: <SampleNextArrow />,
     };
     const settings2 = {
       dots: false,
@@ -169,6 +215,14 @@ export default class CertificatesCarousel extends Component {
               <img src={img5} alt="" />
             </div>
           </Slider>
+          <div className="buttons">
+            <button className="button_prev" onClick={this.previous}>
+              <img src={img13} alt="" />
+            </button>
+            <button className="button_next" onClick={this.next}>
+              <img src={img13} alt="" />
+            </button>
+          </div>
         </StyledCarousel1>
       </>
     );

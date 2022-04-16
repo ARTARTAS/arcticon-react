@@ -572,6 +572,7 @@ const PartnersStyles = styled.div`
       color: #2d2d2d;
       -webkit-transition: 0.2s ease-in-out;
       transition: 0.2s ease-in-out;
+      gap: 20px;
     }
 
     section .section__block .block__info .info a:hover {
