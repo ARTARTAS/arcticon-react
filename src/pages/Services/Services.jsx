@@ -161,6 +161,7 @@ const ServicesStyles = styled.div`
   @media (max-width: 1199.98px) {
     section .pallet__grid_section:hover .block {
       padding: 25px;
+      min-height: 100px;
     }
   }
 
