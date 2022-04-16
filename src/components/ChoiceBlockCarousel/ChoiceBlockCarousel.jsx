@@ -17,8 +17,10 @@ import styled from "styled-components";
 
 const StyledCarousel = styled.div`
   width: 100%;
+
   .slick-slider {
     padding-top: 0;
+    display: flex;
   }
   .slick-slide {
     display: flex;
@@ -27,7 +29,7 @@ const StyledCarousel = styled.div`
   }
   .item {
     width: 100px;
-    height: 200px;
+    height: auto;
     img {
       width: 100px;
       height: auto;
@@ -38,6 +40,11 @@ const StyledCarousel = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+
+    @media (max-width: 767.98px) {
+      display: none;
+    }
   }
 
   .slick-arrow,
@@ -46,11 +53,6 @@ const StyledCarousel = styled.div`
     pointer-events: none;
   }
 `;
-//  <div
-//       className={className}
-//       style={{ ...style, display: "block", background: "red" }}
-//       onClick={onClick}
-//     />
 
 function SampleNextArrow(props) {
   const { onClick } = props;
