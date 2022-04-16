@@ -13,6 +13,11 @@ const StyledCarousel1 = styled.div`
   .slick-slider {
     padding-top: 0;
   }
+  .slick-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .image {
     width: 150px;
     height: 200px;
@@ -39,6 +44,11 @@ const StyledCarousel2 = styled.div`
   width: 250px;
   .slick-slider {
     padding-top: 0;
+  }
+  .slick-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .image {
     width: 200px;

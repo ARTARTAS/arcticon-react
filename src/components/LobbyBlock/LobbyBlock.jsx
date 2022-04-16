@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import arrowBlack from "./../../assets/svg/arrowBlack.svg";
 import img1 from "./../../assets/img/MainPage/BlockOne/FirstSection/back.png";
 import img2 from "./../../assets/img/MainPage/BlockOne/FirstSection/front.png";
@@ -8,6 +8,20 @@ import img5 from "./../../assets/img/MainPage/BlockOne/ThreeSection/back.png";
 import img6 from "./../../assets/img/MainPage/BlockOne/ThreeSection/front.png";
 
 export default function LobbyBlock() {
+  const [scroll, setScroll] = useState(true);
+
+  scroll
+    ? (document.body.style.overflow = "visible")
+    : (document.body.style.overflow = "hidden");
+
+  function delayedSetScroll(state) {
+    setTimeout(() => {
+      setScroll(state);
+    }, 500);
+  }
+
+  useEffect(() => {}, []);
+
   return (
     <>
       <section className="one__one">
@@ -34,7 +48,7 @@ export default function LobbyBlock() {
         </div>
       </section>
 
-      <section className="one__two">
+      {/* <section className="one__two">
         <div className="container">
           <div className="one__two_block">
             <div className="info">
@@ -275,7 +289,7 @@ export default function LobbyBlock() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }
