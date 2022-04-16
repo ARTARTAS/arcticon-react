@@ -291,7 +291,6 @@ const CustomersStyles = styled.div`
     transition: 0.2s ease-in-out;
   }
 
-  .partners_section {
     section {
       width: 100%;
       display: -webkit-box;
@@ -781,8 +780,6 @@ const CustomersStyles = styled.div`
     section .background_image img {
       width: 100%;
     }
-  }
-  /*# sourceMappingURL=partners.css.map */
 `;
 
 export default function Customers() {
