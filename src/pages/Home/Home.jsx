@@ -10,7 +10,7 @@ import NewsBlock from "../../components/NewsBlock/NewsBlock";
 import ServicesBlock from "../../components/ServicesBlock/ServicesBlock";
 import styled from "styled-components";
 
-import "../../scripts/home"
+import "../../scripts/home";
 
 const HomeStyled = styled.div`
   .container {
@@ -4335,6 +4335,31 @@ const HomeStyled = styled.div`
     margin: 0;
     margin-left: 5%;
     text-transform: uppercase;
+
+    @media (max-width: 1199.98px) {
+      font-size: 70px;
+    }
+
+    @media (max-width: 991.98px) {
+      font-size: 65px;
+    }
+
+    @media (max-width: 767.98px) {
+      font-size: 60px;
+      transform: rotate(0deg);
+      top: 0px;
+      left: 0px;
+      margin-left: 30px;
+      position: relative;
+      padding: 30px 0px;
+      font-size: 40px;
+      margin-right: auto;
+    }
+
+    @media (max-width: 479.98px) {
+      font-size: 30px;
+      margin-left: 20px;
+    }
   }
 
   .ten__block {
@@ -4354,6 +4379,21 @@ const HomeStyled = styled.div`
     align-items: center;
     margin: 0 auto;
     padding: 80px 0px 40px 0px;
+
+    @media (max-width: 1199.98px) {
+      padding: 70px 0px 30px 0px;
+    }
+
+    @media (max-width: 991.98px) {
+      padding: 45px 0px 30px 0px;
+    }
+
+    @media (max-width: 767.98px) {
+      padding: 30px 0px 30px 0px;
+    }
+    @media (max-width: 467.98px) {
+      padding: 0px;
+    }
   }
 
   .ten__block_images {
@@ -4363,6 +4403,13 @@ const HomeStyled = styled.div`
     grid-template-columns: repeat(2, 1fr);
     height: 400px;
     width: 100%;
+
+    @media (max-width: 767.98px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+    }
   }
 
   .ten__block_images .shown {
@@ -4507,12 +4554,28 @@ const HomeStyled = styled.div`
     padding: 30px 14%;
     background: #ffd600;
     margin-bottom: 60px;
+
+    @media (max-width: 767.98px) {
+      padding: 30px;
+    }
   }
 
   .ten .line p {
     font-weight: 400;
     font-size: 20px;
     line-height: 150%;
+
+    @media (max-width: 1199.98px) {
+      font-size: 18px;
+    }
+
+    @media (max-width: 991.98px) {
+      font-size: 16px;
+    }
+
+    @media (max-width: 767.98px) {
+      font-size: 14px;
+    }
   }
   /*# sourceMappingURL=index.css.map */
 `;
