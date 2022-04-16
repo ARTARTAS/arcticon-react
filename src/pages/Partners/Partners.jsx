@@ -16,6 +16,8 @@ import img13 from "./../../assets/svg/home/details_black.svg";
 import img15 from "./../../assets/svg/back-call.svg";
 import img14 from "./../../assets/img/Customers/background.png";
 
+import CustomersCarousel from "../../components/CustomersCarousel/CustomersCarousel";
+
 import styled from "styled-components";
 
 const PartnersStyles = styled.div`
@@ -819,7 +821,7 @@ export default function Partners() {
             />
             <button>
               Перезвонить
-              <img classNameName="icon" src={img15} alt="" />
+              <img className="icon" src={img15} alt="" />
             </button>
           </form>
         </div>
@@ -842,94 +844,11 @@ export default function Partners() {
                     </div>
                     <a href="#">
                       Реализованные проекты
-                      <img classNameName="icon" src={img13} alt="" />
+                      <img className="icon" src={img13} alt="" />
                     </a>
                   </div>
                   <div className="cards">
-                    <div className="owl-carousel owl-theme">
-                      <div className="cards__block">
-                        <div className="cards__block_img">
-                          <img src={img1} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img2} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img3} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img4} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img5} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img6} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img7} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img8} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img9} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img10} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img11} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img12} alt="" />
-                        </div>
-                      </div>
-                      <div className="cards__block">
-                        <div className="cards__block_img">
-                          <img src={img1} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img2} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img3} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img4} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img5} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img6} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img7} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img8} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img9} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img10} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img11} alt="" />
-                        </div>
-                        <div className="cards__block_img">
-                          <img src={img12} alt="" />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="button">
-                      <a href="#" className="next-button">
-                        Далее
-                        <img classNameName="icon" src={img13} alt="" />
-                      </a>
-                    </div>
+                    <CustomersCarousel />
                   </div>
                 </div>
               </div>
