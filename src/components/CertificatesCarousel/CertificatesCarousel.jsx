@@ -107,24 +107,6 @@ const StyledCarousel2 = styled.div`
   }
 `;
 
-// function SamplePrevArrow(props) {
-//   const { onClick } = props;
-//   return (
-//     <div className={"button_prev"} onClick={onClick}>
-//       <img src={img13} alt="" style={{ width: "50px" }} />
-//     </div>
-//   );
-// }
-
-// function SampleNextArrow(props) {
-//   const { onClick } = props;
-//   return (
-//     <div className={"button_next"} onClick={onClick}>
-//       <img src={img13} alt="" style={{ width: "50px" }} />
-//     </div>
-//   );
-// }
-
 export default class CertificatesCarousel extends Component {
   constructor(props) {
     super(props);
