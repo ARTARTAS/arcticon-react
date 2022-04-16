@@ -45,6 +45,7 @@ const AboutUsStyles = styled.div`
     -ms-flex-align: center;
     align-items: center;
     z-index: 2;
+    background: #e5e5e5;
   }
 
   .about_one .background {
@@ -920,7 +921,7 @@ const AboutUsStyles = styled.div`
 
   .about_three {
     width: 100%;
-    margin-bottom: 60px;
+    margin: 10px 0px;
     overflow: hidden;
     .fixed_bottom_one {
       animation: horizontalScroll 20s alternate infinite ease-in-out;
