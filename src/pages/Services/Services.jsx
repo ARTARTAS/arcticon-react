@@ -123,18 +123,20 @@ const ServicesStyles = styled.div`
     padding: 30px;
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
-    height: 200px;
+    min-height: 200px;
   }
 
   @media (max-width: 1199.98px) {
     section .pallet__grid_section {
       padding: 25px;
+      min-height: 170px;
     }
   }
 
   @media (max-width: 991.98px) {
     section .pallet__grid_section {
       padding: 20px;
+      min-height: 100px;
     }
   }
 
@@ -200,6 +202,8 @@ const ServicesStyles = styled.div`
     font-weight: 700;
     font-size: 22px;
     padding: 0px 0px 30px 0px;
+    line-height: 130%;
+    width: fit-content;
   }
 
   @media (max-width: 1199.98px) {
@@ -222,9 +226,13 @@ const ServicesStyles = styled.div`
 
   section .pallet__grid_section .block__title a {
     display: none;
-    padding-left: 10px;
-    -webkit-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
+    padding-left: 15px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  section .pallet__grid_section .block__title a:hover {
+    transform: scale(1.1);
   }
 
   section .pallet__grid_section .block__title a .icon {
