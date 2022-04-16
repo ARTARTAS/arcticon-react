@@ -31,9 +31,12 @@ const StyledCustomersCarousel = styled.div`
   .button_next {
     width: fit-content;
     margin: 0 auto;
+    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 15px;
+    cursor: pointer;
   }
 
   .slick-arrow,
