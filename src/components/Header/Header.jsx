@@ -364,13 +364,17 @@ const HeaderStyles = styled.div`
 export default function Header() {
   const [menu, setMenu] = useState(false);
 
-  menu
-    ? (document.body.style.overflow = "hidden")
-    : (document.body.style.overflow = "visible");
+  const visibleScroll = () => {
+    document.body.style.overflow = "visible";
+  };
+
+  const hiddenScroll = () => {
+    document.body.style.overflow = "hidden";
+  };
 
   return (
     <HeaderStyles>
-      {menu ? <MobileMenu setMenu={setMenu} /> : ""}
+      {menu ? <MobileMenu setMenu={setMenu} visibleScroll={visibleScroll} /> : ""}
       <header className="header">
         <div className="header__container">
           <div className="header__menu">
@@ -429,7 +433,13 @@ export default function Header() {
                 <img className="search" src={img5} alt="" />
               </a>
               <div className="line"></div>
-              <div className="open-main-nav" onClick={() => setMenu(true)}>
+              <div
+                className="open-main-nav"
+                onClick={() => {
+                  setMenu(true);
+                  hiddenScroll();
+                }}
+              >
                 <img className="dots" src={img6} alt="" />
               </div>
             </menu>

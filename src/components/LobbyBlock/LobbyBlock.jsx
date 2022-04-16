@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import arrowBlack from "./../../assets/svg/arrowBlack.svg";
 import img1 from "./../../assets/img/MainPage/BlockOne/FirstSection/back.png";
 import img2 from "./../../assets/img/MainPage/BlockOne/FirstSection/front.png";
@@ -8,8 +8,32 @@ import img5 from "./../../assets/img/MainPage/BlockOne/ThreeSection/back.png";
 import img6 from "./../../assets/img/MainPage/BlockOne/ThreeSection/front.png";
 
 export default function LobbyBlock() {
+  const [section, setSection] = useState(0);
+
+  const visibleScroll = () => {
+    document.body.style.overflow = "visible";
+    console.log('visible scroll')
+  };
+
+  const hiddenScroll = () => {
+    document.body.style.overflow = "hidden";
+    console.log('hidden scroll')
+  };
+
+  hiddenScroll();
+
+  window.onwheel = function (e) {
+    if (e.wheelDelta >= 0) {
+      console.log('scroll top')
+    } else {
+      console.log('scroll down')
+    }
+
+    // this.oldScroll = this.scrollY;
+  };
+
   return (
-    <>
+    <div>
       <section className="one__one">
         <div className="container">
           <div className="one__one_block">
@@ -276,6 +300,6 @@ export default function LobbyBlock() {
           </div>
         </div>
       </section> */}
-    </>
+    </div>
   );
 }
