@@ -1,6 +1,5 @@
 import React from "react";
-import img1 from "./../../assets/img/MainPage/BlockTen/01.jpg";
-import img2 from "./../../assets/img/MainPage/BlockTen/02.jpg";
+import CertificatesCarousel from "../CertificatesCarousel/CertificatesCarousel";
 
 export default function CertificatesBlock() {
   return (
@@ -9,23 +8,7 @@ export default function CertificatesBlock() {
       <div className="container">
         <div className="ten__block">
           <div className="ten__block_images">
-            <div className="shown">
-              <img src={img1} alt="" />
-            </div>
-            <div className="list">
-              <div className="image">
-                <img src={img2} alt="" />
-              </div>
-              {/* <div className="image">
-                <img src={img3} alt="" />
-              </div>
-              <div className="image">
-                <img src={img4} alt="" />
-              </div>
-              <div className="image">
-                <img src={img5} alt="" />
-              </div> */}
-            </div>
+            <CertificatesCarousel />
           </div>
         </div>
       </div>
