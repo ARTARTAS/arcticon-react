@@ -8,24 +8,11 @@ import img5 from "./../../assets/img/MainPage/BlockOne/ThreeSection/back.png";
 import img6 from "./../../assets/img/MainPage/BlockOne/ThreeSection/front.png";
 
 export default function LobbyBlock() {
-  const [isScroll, setScroll] = useState(false);
   const [section, setSection] = useState(0);
 
   const minute = 60000;
 
-  const animationTime = minute / 2;
-
-  const unlockScroll = () => {
-    setInterval(function () {
-      setScroll(false);
-      console.log("unlock scroll");
-    }, animationTime);
-  };
-
-  const lockScroll = () => {
-    setScroll(true);
-    console.log("lock scroll");
-  };
+  const animationTime = minute;
 
   const visibleScroll = () => {
     document.body.style.overflow = "visible";
@@ -37,19 +24,19 @@ export default function LobbyBlock() {
     console.log("hidden scroll");
   };
 
+  function showBlockOne() {}
+
   function setSettings() {
     hiddenScroll();
 
+    /// show block one
+    function showBlockOne() {}
+
     window.onwheel = function (e) {
-      console.log(isScroll);
-      if (isScroll == false) {
-        if (e.wheelDelta >= 0) {
-          console.log("scroll top");
-        } else {
-          console.log("scroll down");
-        }
-        lockScroll();
-        unlockScroll();
+      if (e.wheelDelta >= 0) {
+        console.log("scroll top");
+      } else {
+        console.log("scroll down");
       }
     };
   }
@@ -59,6 +46,18 @@ export default function LobbyBlock() {
       setSettings();
     };
   }, []);
+
+  // const unlockScrollFromTime = () => {
+  //   setInterval(function () {
+  //     setScroll(false);
+  //     console.log("unlock scroll");
+  //   }, animationTime);
+  // };
+
+  // const lockScroll = () => {
+  //   setScroll(true);
+  //   console.log("lock scroll");
+  // };
 
   // $(".one__one, .one__two, .one__three").on("touchstart", function (e) {
   //   startPosition = e.originalEvent.touches[0].pageY;
@@ -93,6 +92,7 @@ export default function LobbyBlock() {
           </div>
         </div>
         <div className="images">
+          {/* {stat1 ?  } */}
           <img className="back" src={img1} alt="" />
           <img className="front" src={img2} alt="" />
         </div>

@@ -11,6 +11,7 @@ import ServicesBlock from "../../components/ServicesBlock/ServicesBlock";
 import styled from "styled-components";
 
 import "../../scripts/home";
+import Preloader from "../../components/Preloader/Preloader";
 
 const HomeStyled = styled.div`
   .container {
@@ -4581,17 +4582,31 @@ const HomeStyled = styled.div`
 `;
 
 export default function Home() {
+  const [isLoading, setLoading] = useState(true);
+
+  const videoIsLoaded = () => {
+    setLoading(false);
+  };
+
+  document.body.style.overflow = "hidden";
+
   return (
     <HomeStyled>
-      <LobbyBlock />
-      <NewsBlock />
-      <AboutBlock />
-      <CarrierBlock />
-      <ChoiceBlock />
-      <MapBlock />
-      <EquipmentBlock />
-      <ServicesBlock />
-      <CertificatesBlock />
+      {isLoading ? (
+        <Preloader loaded={videoIsLoaded}></Preloader>
+      ) : (
+        <div>
+          <LobbyBlock />
+          <NewsBlock />
+          <AboutBlock />
+          <CarrierBlock />
+          <ChoiceBlock />
+          <MapBlock />
+          <EquipmentBlock />
+          <ServicesBlock />
+          <CertificatesBlock />
+        </div>
+      )}
     </HomeStyled>
   );
 }
