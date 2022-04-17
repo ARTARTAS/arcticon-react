@@ -2967,15 +2967,14 @@ const HomeStyled = styled.div`
     -ms-flex-item-align: end;
     align-self: flex-end;
     overflow: hidden;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+    height: fit-content;
+    width: 100%;
+
+    .video {
+      height: 100%;
+      width: 100%;
+    }
   }
 
   @media (max-width: 991.98px) {
@@ -4606,7 +4605,7 @@ export default function Home() {
     setLoading(false);
   };
 
-  document.body.style.overflow = "hidden";
+  // document.body.style.overflow = "hidden";
 
   return (
     <HomeStyled>

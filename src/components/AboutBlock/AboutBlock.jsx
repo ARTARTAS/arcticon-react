@@ -1,7 +1,7 @@
 import React from "react";
 import arrowBlack from "./../../assets/svg/home/arrow_black.svg";
 import img1 from "./../../assets/img/MainPage/BlockThree/logo_img.png";
-import img2 from "./../../assets/img/MainPage/BlockThree/01.png";
+import img2 from "./../../assets/img/MainPage/BlockThree/video.gif";
 
 export default function AboutBlock() {
   return (
@@ -25,7 +25,15 @@ export default function AboutBlock() {
             <h3>Оборот компании</h3>
           </div>
           <div className="block__video">
-            <img src={img2} alt="" />
+            <video
+              muted
+              autoPlay
+              src={img2}
+              preload={"auto"}
+              type={"video/mp4"}
+              className="video"
+            ></video>
+            {/* <img src={img2} alt="" /> */}
           </div>
           <div className="block__title">
             <h1>О нас</h1>

@@ -27,7 +27,7 @@ export default function LobbyBlock() {
   function showBlockOne() {}
 
   function setSettings() {
-    hiddenScroll();
+    // hiddenScroll();
 
     /// show block one
     function showBlockOne() {
