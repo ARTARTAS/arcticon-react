@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Contacts from "./pages/Contacts/Contacts";
 import Customers from "./pages/Customers/Customers";
+import Feedback from "./pages/Feedback/Feedback";
 
 import Home from "./pages/Home/Home";
 import Partners from "./pages/Partners/Partners";
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="/customers" element={<Customers />} />
         <Route exact path="/partners" element={<Partners />} />
         <Route exact path="/contacts" element={<Contacts />} />
+        <Route exact path="/feedback" element={<Feedback />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
