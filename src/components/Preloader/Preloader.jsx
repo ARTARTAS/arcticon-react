@@ -10,17 +10,22 @@ const PreloaderStyle = styled.div`
   left: 0;
   z-index: 100;
   background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .preloader {
     width: 100%;
-    height: 100%;
+    height: auto;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 
     .video {
-      height: 100%;
-      min-width: 100%;
+      width: 100%;
+      height: auto;
+      min-height: 100vh;
     }
   }
 `;

@@ -10,7 +10,6 @@ import NewsBlock from "../../components/NewsBlock/NewsBlock";
 import ServicesBlock from "../../components/ServicesBlock/ServicesBlock";
 import styled from "styled-components";
 
-// import "../../scripts/home";
 import Preloader from "../../components/Preloader/Preloader";
 
 const HomeStyled = styled.div`
@@ -211,7 +210,7 @@ const HomeStyled = styled.div`
     }
   }
 
-  .modal__one .block__image svg {
+  .modal__one .block__image .back {
     position: absolute;
     width: 100%;
     height: 400px;
@@ -221,7 +220,7 @@ const HomeStyled = styled.div`
   }
 
   @media (max-width: 767.98px) {
-    .modal__one .block__image svg {
+    .modal__one .block__image .back {
       top: 0px;
       left: auto;
       margin-bottom: 0;
@@ -229,7 +228,7 @@ const HomeStyled = styled.div`
   }
 
   @media (max-width: 479.98px) {
-    .modal__one .block__image svg {
+    .modal__one .block__image .back {
       width: auto;
       height: 200px;
     }
@@ -632,28 +631,28 @@ const HomeStyled = styled.div`
     width: 100%;
   }
 
-  .modal__two .block__image .modal__one_front {
+  .modal__two .block__image .modal__two_front {
     position: absolute;
     width: 120%;
     z-index: 3;
   }
 
   @media (max-width: 767.98px) {
-    .modal__two .block__image .modal__one_front {
+    .modal__two .block__image .modal__two_front {
       width: auto;
       height: 100%;
     }
   }
 
   @media (max-width: 479.98px) {
-    .modal__two .block__image .modal__one_front {
+    .modal__two .block__image .modal__two_front {
       width: 100%;
       height: auto;
       max-height: 100%;
     }
   }
 
-  .modal__two .block__image svg {
+  .modal__two .block__image .back {
     position: absolute;
     width: 100%;
     height: 400px;
@@ -662,7 +661,7 @@ const HomeStyled = styled.div`
   }
 
   @media (max-width: 767.98px) {
-    .modal__two .block__image svg {
+    .modal__two .block__image .back  {
       top: 0px;
       left: auto;
       margin-bottom: 0;
@@ -1041,7 +1040,7 @@ const HomeStyled = styled.div`
     }
   }
 
-  .modal__three .block__image svg {
+  .modal__three .block__image .back {
     position: absolute;
     width: 150%;
     height: 600px;
@@ -1049,7 +1048,7 @@ const HomeStyled = styled.div`
   }
 
   @media (max-width: 767.98px) {
-    .modal__three .block__image svg {
+    .modal__three .block__image .back {
       top: 0px;
       left: auto;
       height: 100%;
@@ -1058,7 +1057,7 @@ const HomeStyled = styled.div`
   }
 
   @media (max-width: 479.98px) {
-    .modal__three .block__image svg {
+    .modal__three .block__image .back {
       width: auto;
     }
   }
@@ -3646,8 +3645,6 @@ export default function Home() {
   const videoIsLoaded = () => {
     setLoading(false);
   };
-
-  // document.body.style.overflow = "hidden";
 
   return (
     <HomeStyled>

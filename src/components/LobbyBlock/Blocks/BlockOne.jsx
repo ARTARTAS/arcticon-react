@@ -1,39 +1,37 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import $ from "jquery";
-import arrowBlack from "./../../../assets/svg/arrowBlack.svg";
-import img1 from "./../../../assets/img/MainPage/BlockOne/FirstSection/back.png";
-import img2 from "./../../../assets/img/MainPage/BlockOne/FirstSection/front.png";
+import button from "./../../../assets/svg/arrowOrange.svg";
+import backImg from "./../../../assets/img/MainPage/BlockOne/FirstSection/back.png";
+import frontImg from "./../../../assets/img/MainPage/BlockOne/FirstSection/front.png";
+import modalBackgroundImg from "./../../../assets/img/MainPage/ModalOne/background.png";
+import modalFrontImg from "./../../../assets/img/MainPage/ModalOne/front.png";
+import modalBackImg from "./../../../assets/img/MainPage/ModalOne/back.svg";
 
-export default function BlockOne() {
-  const animationTime = 500;
+export default function BlockOne(props) {
+  const animationTime = props.animationTime;
   const windowWidth = $(window).width();
 
   // media points
-  const md1 = 1199.98;
   const md2 = 991.98;
   const md3 = 767.98;
   const md4 = 479.98;
 
   function show() {
-    console.log("show block one");
     $(".one__one_block .info a").on("click", function () {
       $(".modal__one").css("z-index", "100");
       $(".modal__one").animate({ opacity: 1 }, 500);
       $(".modal__one").css("display", "flex");
-
-      let wrapper = $(".wrapper");
-
-      wrapper.css("overflow", "visible");
+      $(".wrapper").css("overflow", "visible");
       $("body").css("overflow", "hidden");
+      window.onwheel = () => {};
     });
     // Modal close button
     $(".modal__one .modal_close-button").on("click", function () {
       $(".modal__one").animate({ opacity: 0 }, 500, function () {
         $(".modal__one").css("display", "none");
-        let wrapper = $(".wrapper");
+        $(".wrapper").css("overflow", "hidden");
 
-        wrapper.css("overflow", "hidden");
-        $("body").css("overflow", "visible");
+        props.scrollSetting();
       });
     });
     // Show section
@@ -119,14 +117,14 @@ export default function BlockOne() {
               </h2>
               <a href="#">
                 Подробнее
-                <img src={arrowBlack} alt="" />
+                <img className="icon" src={button} alt="" />
               </a>
             </div>
           </div>
         </div>
         <div className="images">
-          <img className="back" src={img1} alt="" />
-          <img className="front" src={img2} alt="" />
+          <img className="back" src={backImg} alt="" />
+          <img className="front" src={frontImg} alt="" />
         </div>
       </section>
 
@@ -138,15 +136,15 @@ export default function BlockOne() {
             <div className="block__image">
               <img
                 className="modal__one_front"
-                src="<?php echo get_template_directory_uri(); ?>/img/MainPage/ModalOne/front.png"
+                src={modalFrontImg}
                 alt="front image"
               />
               <img
                 className="modal__one_background"
-                src="<?php echo get_template_directory_uri(); ?>/img/MainPage/ModalOne/background.png"
+                src={modalBackgroundImg}
                 alt="background iamge"
               />
-              <img src="" alt="svg" />
+              <img className="back" src={modalBackImg} alt="svg" />
             </div>
             <div className="block__info">
               <div className="block__info_title">
