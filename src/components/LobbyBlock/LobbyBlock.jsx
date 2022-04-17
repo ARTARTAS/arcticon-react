@@ -10,27 +10,68 @@ import img6 from "./../../assets/img/MainPage/BlockOne/ThreeSection/front.png";
 export default function LobbyBlock() {
   const [section, setSection] = useState(0);
 
+  const minute = 60000;
+
+  const animationTime = minute;
+
   const visibleScroll = () => {
     document.body.style.overflow = "visible";
-    console.log('visible scroll')
+    console.log("visible scroll");
   };
 
   const hiddenScroll = () => {
     document.body.style.overflow = "hidden";
-    console.log('hidden scroll')
+    console.log("hidden scroll");
   };
 
-  hiddenScroll();
+  function showBlockOne() {}
 
-  window.onwheel = function (e) {
-    if (e.wheelDelta >= 0) {
-      console.log('scroll top')
-    } else {
-      console.log('scroll down')
+  function setSettings() {
+    // hiddenScroll();
+
+    /// show block one
+    function showBlockOne() {
+
     }
 
-    // this.oldScroll = this.scrollY;
-  };
+    window.onwheel = function (e) {
+      if (e.wheelDelta >= 0) {
+        console.log("scroll top");
+      } else {
+        console.log("scroll down");
+      }
+    };
+  }
+
+  useEffect(() => {
+    return () => {
+      setSettings();
+    };
+  }, []);
+
+  // const unlockScrollFromTime = () => {
+  //   setInterval(function () {
+  //     setScroll(false);
+  //     console.log("unlock scroll");
+  //   }, animationTime);
+  // };
+
+  // const lockScroll = () => {
+  //   setScroll(true);
+  //   console.log("lock scroll");
+  // };
+
+  // $(".one__one, .one__two, .one__three").on("touchstart", function (e) {
+  //   startPosition = e.originalEvent.touches[0].pageY;
+  // });
+  // $(".one__one, .one__two, .one__three").on("touchend", function (e) {
+  //   endPosition = e.originalEvent.changedTouches[0].pageY;
+  //   if (startPosition < endPosition && startPosition < endPosition - 70) {
+  //     ScrollTop();
+  //   } else if (startPosition > endPosition && startPosition - 70 > endPosition) {
+  //     ScrollBottom();
+  //   }
+  // });
 
   return (
     <div>
@@ -53,6 +94,7 @@ export default function LobbyBlock() {
           </div>
         </div>
         <div className="images">
+          {/* {stat1 ?  } */}
           <img className="back" src={img1} alt="" />
           <img className="front" src={img2} alt="" />
         </div>
