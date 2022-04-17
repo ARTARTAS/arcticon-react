@@ -30,7 +30,9 @@ export default function LobbyBlock() {
     hiddenScroll();
 
     /// show block one
-    function showBlockOne() {}
+    function showBlockOne() {
+
+    }
 
     window.onwheel = function (e) {
       if (e.wheelDelta >= 0) {
