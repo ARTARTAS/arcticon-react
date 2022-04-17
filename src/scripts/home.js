@@ -125,7 +125,7 @@ export const blockOne = {
 
   // Show section
   show: function () {
-    $(this.button).click(function () {
+    $(this.button).on('click', function () {
       $(".modal__one").css("z-index", "100");
       $(".modal__one").animate({ opacity: 1 }, 500);
       $(".modal__one").css("display", "flex");
@@ -146,7 +146,6 @@ export const blockOne = {
       });
     });
 
-    console.log("show sections " + $(this.section))
     // Show section
     $(this.section).css("display", "flex");
     // Show info block
@@ -226,8 +225,6 @@ export const blockOne = {
     }, animationTime + 100);
   },
 };
-
-blockOne.show();
 
 export const blockTwo = {
   button: $(".one__two_block .info a"),
