@@ -8,29 +8,69 @@ import img5 from "./../../assets/img/MainPage/BlockOne/ThreeSection/back.png";
 import img6 from "./../../assets/img/MainPage/BlockOne/ThreeSection/front.png";
 
 export default function LobbyBlock() {
+  const [isScroll, setScroll] = useState(false);
   const [section, setSection] = useState(0);
+
+  const minute = 60000;
+
+  const animationTime = minute / 2;
+
+  const unlockScroll = () => {
+    setInterval(function () {
+      setScroll(false);
+      console.log("unlock scroll");
+    }, animationTime);
+  };
+
+  const lockScroll = () => {
+    setScroll(true);
+    console.log("lock scroll");
+  };
 
   const visibleScroll = () => {
     document.body.style.overflow = "visible";
-    console.log('visible scroll')
+    console.log("visible scroll");
   };
 
   const hiddenScroll = () => {
     document.body.style.overflow = "hidden";
-    console.log('hidden scroll')
+    console.log("hidden scroll");
   };
 
-  hiddenScroll();
+  function setSettings() {
+    hiddenScroll();
 
-  window.onwheel = function (e) {
-    if (e.wheelDelta >= 0) {
-      console.log('scroll top')
-    } else {
-      console.log('scroll down')
-    }
+    window.onwheel = function (e) {
+      console.log(isScroll);
+      if (isScroll == false) {
+        if (e.wheelDelta >= 0) {
+          console.log("scroll top");
+        } else {
+          console.log("scroll down");
+        }
+        lockScroll();
+        unlockScroll();
+      }
+    };
+  }
 
-    // this.oldScroll = this.scrollY;
-  };
+  useEffect(() => {
+    return () => {
+      setSettings();
+    };
+  }, []);
+
+  // $(".one__one, .one__two, .one__three").on("touchstart", function (e) {
+  //   startPosition = e.originalEvent.touches[0].pageY;
+  // });
+  // $(".one__one, .one__two, .one__three").on("touchend", function (e) {
+  //   endPosition = e.originalEvent.changedTouches[0].pageY;
+  //   if (startPosition < endPosition && startPosition < endPosition - 70) {
+  //     ScrollTop();
+  //   } else if (startPosition > endPosition && startPosition - 70 > endPosition) {
+  //     ScrollBottom();
+  //   }
+  // });
 
   return (
     <div>
