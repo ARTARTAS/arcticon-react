@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import $ from "jquery";
 
 import styled from "styled-components";
@@ -146,7 +146,7 @@ const LobbyBlockStyles = styled.div`
             color: white;
             margin-left: 10px;
 
-            svg {
+            img {
               margin-left: 10px;
             }
           }
@@ -184,7 +184,7 @@ const LobbyBlockStyles = styled.div`
             }
           }
 
-          svg {
+          img {
             margin-left: 5px;
             transition: 0.2s ease-in-out;
           }
@@ -657,13 +657,6 @@ export default function LobbyBlock() {
   const [section, setSection] = useState(0);
 
   const animationTime = 500;
-  const windowWidth = $(window).width();
-
-  // media points
-  const md1 = 1199.98;
-  const md2 = 991.98;
-  const md3 = 767.98;
-  const md4 = 479.98;
 
   // craete animation objects for all blocks
   const blockOne = {
@@ -810,20 +803,18 @@ export default function LobbyBlock() {
   }
 
   function getSection() {
-    console.log("get section " + section);
     switch (section) {
       case 0:
-        return <BlockOne />;
+        return <BlockOne scrollSetting={setScrollSettings} animationTime={animationTime} />;
       case 1:
-        return <BlockTwo />;
+        return <BlockTwo scrollSetting={setScrollSettings} animationTime={animationTime}  />;
       case 2:
-        return <BlockThree />;
+        return <BlockThree scrollSetting={setScrollSettings} animationTime={animationTime}  />;
     }
   }
 
   useEffect(() => {
     return () => {
-      $("body").css("overflow", "hidden");
       setScrollSettings();
     };
   }, []);

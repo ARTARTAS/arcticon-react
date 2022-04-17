@@ -1,39 +1,30 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect} from "react";
 import $ from "jquery";
-import arrowBlack from "./../../../assets/svg/arrowBlack.svg";
-import img3 from "./../../../assets/img/MainPage/BlockOne/SecondSection/back.png";
-import img4 from "./../../../assets/img/MainPage/BlockOne/SecondSection/front.png";
+import button from "./../../../assets/svg/arrowOrangeWithCircle.svg";
+import backImg from "./../../../assets/img/MainPage/BlockOne/SecondSection/back.png";
+import frontImg from "./../../../assets/img/MainPage/BlockOne/SecondSection/front.png";
+import modalBackImg from "./../../../assets/img/MainPage/ModalTwo/back.svg";
+import modalFrontImg from "./../../../assets/img/MainPage/ModalTwo/front.png";
 
-export default function BlockTwo() {
-  const animationTime = 500;
-  const windowWidth = $(window).width();
+export default function BlockTwo(props) {
+  const animationTime = props.animationTime;
 
-  // media points
-  const md1 = 1199.98;
-  const md2 = 991.98;
-  const md3 = 767.98;
-  const md4 = 479.98;
   function show() {
-    console.log("show block two");
     $(".one__two_block .info a").on("click", function () {
       $(".modal__two").css("z-index", "100");
       $(".modal__two").animate({ opacity: 1 }, 500);
       $(".modal__two").css("display", "flex");
-
-      let wrapper = $(".wrapper");
-
-      wrapper.css("overflow", "visible");
+      $(".wrapper").css("overflow", "visible");
       $("body").css("overflow", "hidden");
+      window.onwheel = () => {};
     });
     // Modal close button
     $(".modal__two .modal_close-button").on("click", function () {
       $(".modal__two").animate({ opacity: 0 }, 500, function () {
         $(".modal__two").css("display", "none");
-        let wrapper = $(".wrapper");
-
-        wrapper.css("overflow", "hidden");
-        $("body").css("overflow", "visible");
+        $(".wrapper").css("overflow", "hidden");
       });
+      props.scrollSetting();
     });
 
     // show section two
@@ -84,14 +75,14 @@ export default function BlockTwo() {
               </h1>
               <a href="#">
                 Подробнее
-                <img src={arrowBlack} alt="" />
+                <img className="icon" src={button} alt="" />
               </a>
             </div>
           </div>
         </div>
         <div className="images">
-          <img className="back" src={img3} alt="" />
-          <img className="front" src={img4} alt="" />
+          <img className="back" src={backImg} alt="" />
+          <img className="front" src={frontImg} alt="" />
         </div>
       </section>
       <section className="modal__two">
@@ -151,8 +142,8 @@ export default function BlockTwo() {
               <a href="">Проекты</a>
             </div>
             <div className="block__image">
-              <img className="modal__one_front" src="" alt="front image" />
-              <img src="" alt="svg" />
+              <img className="modal__two_front" src={modalFrontImg} alt="front image" />
+              <img  className="back" src={modalBackImg} alt="back image" />
             </div>
           </div>
         </div>

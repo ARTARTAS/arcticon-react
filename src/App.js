@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import AboutUs from "./pages/AboutUs/AboutUs";
@@ -12,7 +12,13 @@ import Partners from "./pages/Partners/Partners";
 import Services from "./pages/Services/Services";
 import ServicesPage from "./pages/ServicesPage/ServicesPage";
 
+import $ from "jquery";
+
 function App() {
+  let location = useLocation();
+  if (location.pathname === "/") $("body").css("overflow", "hidden");
+  else $("body").css("overflow", "visible");
+
   return (
     <>
       <Header />

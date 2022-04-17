@@ -1,40 +1,34 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import $ from "jquery";
-import arrowBlack from "./../../../assets/svg/arrowBlack.svg";
-import img5 from "./../../../assets/img/MainPage/BlockOne/ThreeSection/back.png";
-import img6 from "./../../../assets/img/MainPage/BlockOne/ThreeSection/front.png";
+import button from "./../../../assets/svg/arrowOrangeWithCircle.svg";
+import backImg from "./../../../assets/img/MainPage/BlockOne/ThreeSection/back.png";
+import frontImg from "./../../../assets/img/MainPage/BlockOne/ThreeSection/front.png";
+import modalBackImg from "./../../../assets/img/MainPage/ModalThree/back.svg";
+import modalFrontImg from "./../../../assets/img/MainPage/ModalThree/front.png";
 
-export default function BlockThree() {
-  const animationTime = 500;
+export default function BlockThree(props) {
+  const animationTime = props.animationTime;
   const windowWidth = $(window).width();
 
   // media points
   const md1 = 1199.98;
-  const md2 = 991.98;
-  const md3 = 767.98;
-  const md4 = 479.98;
 
   function show() {
-    console.log("show block three");
     $(".one__three_block .info a").on("click", function () {
       $(".modal__three").css("z-index", "100");
       $(".modal__three").animate({ opacity: 1 }, 500);
       $(".modal__three").css("display", "flex");
-
-      let wrapper = $(".wrapper");
-
-      wrapper.css("overflow", "visible");
+      $(".wrapper").css("overflow", "visible");
       $("body").css("overflow", "hidden");
+      window.onwheel = () => {};
     });
     // Modal close button
     $(".modal__three .modal_close-button").on("click", function () {
       $(".modal__three").animate({ opacity: 0 }, 500, function () {
         $(".modal__three").css("display", "none");
-        let wrapper = $(".wrapper");
-
-        wrapper.css("overflow", "hidden");
-        $("body").css("overflow", "visible");
+        $(".wrapper").css("overflow", "hidden");
       });
+      props.scrollSetting();
     });
     $(".one__three").css("display", "flex");
     // Show info block
@@ -74,14 +68,14 @@ export default function BlockThree() {
               <h2>для топливно-энергетического комплекса</h2>
               <a href="#">
                 Подробнее
-                <img src={arrowBlack} alt="" />
+                <img className="icon" src={button} alt="" />
               </a>
             </div>
           </div>
         </div>
         <div className="images">
-          <img className="back" src={img5} alt="" />
-          <img className="front" src={img6} alt="" />
+          <img className="back" src={backImg} alt="" />
+          <img className="front" src={frontImg} alt="" />
         </div>
       </section>
       <section className="modal__three">
@@ -92,10 +86,10 @@ export default function BlockThree() {
             <div className="block__image">
               <img
                 className="modal__one_front"
-                src="<?php echo get_template_directory_uri(); ?>/img/MainPage/ModalThree/front.png"
+                src={modalFrontImg}
                 alt="front image"
               />
-              <img src="" alt="svg" />
+              <img className="back" src={modalBackImg} alt="svg" />
             </div>
             <div className="block__info">
               <div className="block__info_text">

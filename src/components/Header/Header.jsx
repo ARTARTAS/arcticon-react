@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import img1 from "./../../assets/img/logo.png";
+import img1_1 from "./../../assets/img/logo_black.png";
 import img2 from "./../../assets/svg/home/location.svg";
 import img3 from "./../../assets/svg/home/mail.svg";
 import img4 from "./../../assets/svg/home/facebook.svg";
-import img5 from "./../../assets/svg/home/loup.svg";
-import img6 from "./../../assets/svg/home/menu.svg";
+import loup from "./../../assets/svg/home/loup.svg";
+import loupBlack from "./../../assets/svg/home/loup_black.svg";
+import dots from "./../../assets/svg/home/menu.svg";
+import dotsBlack from "./../../assets/svg/home/menu_black.svg";
 
 import styled from "styled-components";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import { NavLink, useLocation } from "react-router-dom";
 
 const HeaderStyles = styled.div`
   .container {
@@ -87,7 +91,6 @@ const HeaderStyles = styled.div`
       padding: 0px 20px;
     }
   }
-
   .hover {
     color: red;
   }
@@ -316,8 +319,6 @@ const HeaderStyles = styled.div`
   .header__menu .menu__sub .search {
     width: 19px;
     height: 19px;
-    color: white;
-    fill: white;
   }
 
   @media (max-width: 1199.98px) {
@@ -330,7 +331,6 @@ const HeaderStyles = styled.div`
   .header__menu .menu__sub .dots {
     width: 23px;
     height: 43px;
-    fill: white;
   }
 
   @media (max-width: 1199.98px) {
@@ -359,6 +359,19 @@ const HeaderStyles = styled.div`
       margin: 0px 16px;
     }
   }
+
+  .white {
+    background: white;
+    .menu__sub .line {
+      background: black;
+    }
+    .menu__main .menu .contacts a {
+      color: black;
+    }
+    .menu__main .menu nav ul .active a {
+      color: black;
+    }
+  }
 `;
 
 export default function Header() {
@@ -372,16 +385,32 @@ export default function Header() {
     document.body.style.overflow = "hidden";
   };
 
+  let location = useLocation();
+
   return (
     <HeaderStyles>
-      {menu ? <MobileMenu setMenu={setMenu} visibleScroll={visibleScroll} /> : ""}
+      {menu ? (
+        <MobileMenu setMenu={setMenu} visibleScroll={visibleScroll} />
+      ) : (
+        ""
+      )}
       <header className="header">
-        <div className="header__container">
+        <div
+          className={
+            location.pathname === "/"
+              ? "header__container"
+              : "header__container white"
+          }
+        >
           <div className="header__menu">
             <menu className="menu__main">
-              <a className="logo" href="/">
-                <img src={img1} alt="" />
-              </a>
+              <NavLink className="logo" to={"/"}>
+                {location.pathname === "/" ? (
+                  <img src={img1} alt="" />
+                ) : (
+                  <img src={img1_1} alt="" />
+                )}
+              </NavLink>
               <div className="menu">
                 <div className="contacts">
                   <div className="phone">
@@ -390,39 +419,28 @@ export default function Header() {
                   <div className="mail">
                     <a href="mailto:info@arcticcon.ru">info@arcticcon.ru</a>
                   </div>
-                  <div className="icons">
-                    <a href="">
-                      <img src={img2} alt="" />
-                    </a>
-                    <a href="">
-                      <img src={img3} alt="" />
-                    </a>
-                    <a href="">
-                      <img src={img4} alt="" />
-                    </a>
-                  </div>
                 </div>
                 <nav>
                   <ul>
                     <li className="active">
-                      <a href="/about">О нас</a>
+                      <NavLink to={"/about"}>О нас</NavLink>
                     </li>
                     <li>
-                      <a href="#">Продукция</a>
+                      <NavLink to={"/"}>Продукция</NavLink>
                     </li>
                     <li className="active">
-                      <a id="button" href="/services">
+                      <NavLink id="button" to={"/services"}>
                         Услуги и сервис
-                      </a>
+                      </NavLink>
                     </li>
                     <li className="active">
-                      <a href="/customers">Заказчики</a>
+                      <NavLink to={"/customers"}>Заказчики</NavLink>
                     </li>
                     <li className="active">
-                      <a href="/partners">Партнеры</a>
+                      <NavLink to={"/partners"}>Партнеры</NavLink>
                     </li>
                     <li className="active">
-                      <a href="/contacts">Контакты</a>
+                      <NavLink to={"/contacts"}>Контакты</NavLink>
                     </li>
                   </ul>
                 </nav>
@@ -430,7 +448,11 @@ export default function Header() {
             </menu>
             <menu className="menu__sub">
               <a href="#">
-                <img className="search" src={img5} alt="" />
+                {location.pathname === "/" ? (
+                  <img className="search" src={loup} alt="" />
+                ) : (
+                  <img className="search" src={loupBlack} alt="" />
+                )}
               </a>
               <div className="line"></div>
               <div
@@ -440,7 +462,11 @@ export default function Header() {
                   hiddenScroll();
                 }}
               >
-                <img className="dots" src={img6} alt="" />
+                {location.pathname === "/" ? (
+                  <img className="dots" src={dots} alt="" />
+                ) : (
+                  <img className="dots" src={dotsBlack} alt="" />
+                )}
               </div>
             </menu>
           </div>
