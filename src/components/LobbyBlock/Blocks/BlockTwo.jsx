@@ -1,6 +1,6 @@
 import React, { useEffect} from "react";
 import $ from "jquery";
-import button from "./../../../assets/svg/arrowOrange.svg";
+import button from "./../../../assets/svg/arrowOrangeWithCircle.svg";
 import backImg from "./../../../assets/img/MainPage/BlockOne/SecondSection/back.png";
 import frontImg from "./../../../assets/img/MainPage/BlockOne/SecondSection/front.png";
 import modalBackImg from "./../../../assets/img/MainPage/ModalTwo/back.svg";

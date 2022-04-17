@@ -661,7 +661,7 @@ const HomeStyled = styled.div`
   }
 
   @media (max-width: 767.98px) {
-    .modal__two .block__image .back  {
+    .modal__two .block__image .back {
       top: 0px;
       left: auto;
       margin-bottom: 0;
@@ -3648,9 +3648,9 @@ export default function Home() {
 
   return (
     <HomeStyled>
-      {/* {isLoading ? (
+      {isLoading ? (
         <Preloader loaded={videoIsLoaded}></Preloader>
-      ) : ( */}
+      ) : (
         <div>
           <LobbyBlock />
           <NewsBlock />
@@ -3662,7 +3662,7 @@ export default function Home() {
           <ServicesBlock />
           <CertificatesBlock />
         </div>
-      {/* )} */}
+      )}
     </HomeStyled>
   );
 }

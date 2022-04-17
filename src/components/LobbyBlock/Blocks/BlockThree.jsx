@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import $ from "jquery";
-import button from "./../../../assets/svg/arrowOrange.svg";
+import button from "./../../../assets/svg/arrowOrangeWithCircle.svg";
 import backImg from "./../../../assets/img/MainPage/BlockOne/ThreeSection/back.png";
 import frontImg from "./../../../assets/img/MainPage/BlockOne/ThreeSection/front.png";
 import modalBackImg from "./../../../assets/img/MainPage/ModalThree/back.svg";
@@ -14,7 +14,6 @@ export default function BlockThree(props) {
   const md1 = 1199.98;
 
   function show() {
-    console.log("show block three");
     $(".one__three_block .info a").on("click", function () {
       $(".modal__three").css("z-index", "100");
       $(".modal__three").animate({ opacity: 1 }, 500);
