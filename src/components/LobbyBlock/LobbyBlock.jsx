@@ -1,347 +1,832 @@
 import React, { useEffect, useRef, useState } from "react";
-import arrowBlack from "./../../assets/svg/arrowBlack.svg";
-import img1 from "./../../assets/img/MainPage/BlockOne/FirstSection/back.png";
-import img2 from "./../../assets/img/MainPage/BlockOne/FirstSection/front.png";
-import img3 from "./../../assets/img/MainPage/BlockOne/SecondSection/back.png";
-import img4 from "./../../assets/img/MainPage/BlockOne/SecondSection/front.png";
-import img5 from "./../../assets/img/MainPage/BlockOne/ThreeSection/back.png";
-import img6 from "./../../assets/img/MainPage/BlockOne/ThreeSection/front.png";
+import $ from "jquery";
+
+import styled from "styled-components";
+import BlockOne from "./Blocks/BlockOne";
+import BlockTwo from "./Blocks/BlockTwo";
+import BlockThree from "./Blocks/BlockThree";
+
+const LobbyBlockStyles = styled.div`
+  overflow: hidden;
+  width: 100%;
+  height: calc(100vh - 170px);
+  background: black;
+
+  .one {
+    width: 100%;
+    height: calc(100vh - 120px);
+    position: relative;
+    background-color: #000000;
+
+    @media (max-width: 1199.98px) {
+      height: calc(100vh - 75px);
+    }
+    @media (max-width: 991.98px) {
+      height: calc(100vh - 70px);
+    }
+    @media (max-width: 767.98px) {
+      height: calc(100vh - 65px);
+    }
+    @media (max-width: 479.98px) {
+      height: calc(100vh - 60px);
+    }
+  }
+
+  .one__one {
+    position: absolute;
+    /* display: none; */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #0c0c0c;
+
+    @media (max-width: 767.98px) {
+      flex-direction: column;
+    }
+
+    .container {
+      @media (max-width: 767.98px) {
+        height: fit-content;
+      }
+    }
+
+    &_block {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      @media (max-width: 767.98px) {
+        height: fit-content;
+        padding: 0px 20px;
+        margin-top: 60px;
+        padding-top: 50px;
+      }
+
+      .info {
+        height: fit-content;
+        width: 40%;
+        font-family: "Montserrat", sans-serif;
+        z-index: 3;
+
+        @media (max-width: 991.98px) {
+          width: 45%;
+        }
+        @media (max-width: 767.98px) {
+          width: 100%;
+        }
+
+        h1 {
+          color: #ffd600;
+          font-weight: 800;
+          text-transform: uppercase;
+          line-height: 125%;
+          font-size: 48px;
+          padding-bottom: 50px;
+          padding-left: 50px;
+          opacity: 0;
+
+          @media (max-width: 1199.98px) {
+            font-size: 40px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 30px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 27px;
+            padding-left: 20px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 20px;
+          }
+        }
+
+        h2 {
+          font-size: 25px;
+          line-height: 125%;
+          color: #ffffff;
+          padding-bottom: 50px;
+          text-transform: uppercase;
+          opacity: 0;
+
+          @media (max-width: 1199.98px) {
+            font-size: 20px;
+            line-height: 24px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 16px;
+            line-height: 20px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 14px;
+            line-height: 17px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 12px;
+            line-height: 15px;
+          }
+        }
+
+        a {
+          width: fit-content;
+          font-weight: 600;
+          color: #ffc729;
+          font-size: 18px;
+          padding-left: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: 0.2s ease-in-out;
+          opacity: 0;
+
+          &:hover {
+            color: white;
+            margin-left: 10px;
+
+            svg {
+              margin-left: 10px;
+            }
+          }
+
+          @media (max-width: 1199.98px) {
+            font-size: 16px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 14px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 13px;
+            padding-left: 20px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 12px;
+          }
+
+          .icon {
+            fill: none;
+            width: 51px;
+            height: 54px;
+
+            @media (max-width: 1199.98px) {
+              width: 48px;
+              height: 51px;
+            }
+            @media (max-width: 991.98px) {
+              width: 45px;
+              height: 48px;
+            }
+            @media (max-width: 767.98px) {
+              width: 42px;
+              height: 45px;
+            }
+          }
+
+          svg {
+            margin-left: 5px;
+            transition: 0.2s ease-in-out;
+          }
+        }
+      }
+    }
+
+    .images {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      @media (max-width: 767.98px) {
+        position: relative;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+      .back {
+        position: absolute;
+        top: 70px;
+        height: calc(100% - 70px);
+        right: -100%;
+        max-width: none;
+
+        @media (max-width: 991.98px) {
+          height: calc(90% - 50px);
+          top: calc(5% + 50px);
+          right: -60px;
+        }
+        @media (max-width: 767.98px) {
+          top: -100px;
+          height: calc(100% + 100px);
+        }
+      }
+      .front {
+        position: absolute;
+        height: 56%;
+        top: 32%;
+        right: -100%;
+        max-width: none;
+
+        @media (max-width: 991.98px) {
+          height: 50%;
+          top: 34%;
+          right: 70px;
+        }
+        @media (max-width: 767.98px) {
+          top: 0;
+          height: 90%;
+          right: 20px;
+        }
+        @media (max-width: 479.98px) {
+          height: auto;
+          right: 0;
+          width: 100%;
+          min-width: 400px;
+        }
+      }
+    }
+  }
+
+  .one__two {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #0c0c0c;
+
+    @media (max-width: 767.98px) {
+      flex-direction: column;
+    }
+
+    .container {
+      @media (max-width: 767.98px) {
+        height: fit-content;
+      }
+    }
+
+    &_block {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      @media (max-width: 767.98px) {
+        height: fit-content;
+        padding: 0px 20px;
+        margin-top: 60px;
+        padding-top: 50px;
+      }
+
+      .info {
+        height: fit-content;
+        width: 50%;
+        font-family: "Montserrat", sans-serif;
+        z-index: 3;
+
+        @media (max-width: 767.98px) {
+          width: 100%;
+        }
+
+        h2 {
+          font-size: 25px;
+          line-height: 125%;
+          color: #ffffff;
+          padding-bottom: 50px;
+          padding-left: 50px;
+          text-transform: uppercase;
+          opacity: 0;
+
+          @media (max-width: 1199.98px) {
+            font-size: 20px;
+            line-height: 24px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 16px;
+            line-height: 20px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 14px;
+            line-height: 17px;
+            padding-left: 20px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 12px;
+            line-height: 15px;
+          }
+        }
+
+        h1 {
+          color: #ffd600;
+          font-weight: 800;
+          text-transform: uppercase;
+          line-height: 125%;
+          font-size: 48px;
+          padding-bottom: 50px;
+          opacity: 0;
+
+          @media (max-width: 1199.98px) {
+            font-size: 40px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 30px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 27px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 20px;
+          }
+        }
+
+        a {
+          width: fit-content;
+          font-weight: 600;
+          color: #ffc729;
+          font-size: 18px;
+          padding-left: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: 0.2s ease-in-out;
+          opacity: 0;
+
+          &:hover {
+            color: white;
+            margin-left: 10px;
+
+            svg {
+              margin-left: 10px;
+            }
+          }
+
+          @media (max-width: 1199.98px) {
+            font-size: 16px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 14px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 13px;
+            padding-left: 20px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 12px;
+          }
+
+          .icon {
+            fill: none;
+            width: 51px;
+            height: 54px;
+
+            @media (max-width: 1199.98px) {
+              width: 48px;
+              height: 51px;
+            }
+            @media (max-width: 991.98px) {
+              width: 45px;
+              height: 48px;
+            }
+            @media (max-width: 767.98px) {
+              width: 42px;
+              height: 45px;
+            }
+          }
+
+          svg {
+            margin-left: 5px;
+            transition: 0.2s ease-in-out;
+          }
+        }
+      }
+    }
+
+    .images {
+      @media (max-width: 767.98px) {
+        position: relative;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+      .back {
+        position: absolute;
+        top: calc(5% + 70px);
+        height: calc(90% - 70px);
+        right: -100%;
+        max-width: none;
+
+        @media (max-width: 991.98px) {
+          height: calc(90% - 50px);
+          top: calc(5% + 50px);
+        }
+        @media (max-width: 767.98px) {
+          top: -100px;
+          height: calc(100% + 100px);
+        }
+      }
+      .front {
+        position: absolute;
+        height: 80%;
+        right: -100%;
+        bottom: 0;
+      }
+    }
+  }
+
+  .one__three {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #0c0c0c;
+
+    @media (max-width: 767.98px) {
+      flex-direction: column;
+    }
+
+    .container {
+      @media (max-width: 767.98px) {
+        height: fit-content;
+      }
+    }
+
+    &_block {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      @media (max-width: 767.98px) {
+        height: fit-content;
+        padding: 0px 20px;
+        margin-top: 60px;
+        padding-top: 50px;
+      }
+
+      .info {
+        height: fit-content;
+        width: 40%;
+        font-family: "Montserrat", sans-serif;
+        z-index: 3;
+
+        @media (max-width: 991.98px) {
+          width: 45%;
+        }
+        @media (max-width: 767.98px) {
+          width: 100%;
+        }
+
+        h1 {
+          color: #ffd600;
+          font-weight: 800;
+          text-transform: uppercase;
+          line-height: 125%;
+          font-size: 48px;
+          padding-bottom: 50px;
+          padding-left: 50px;
+          opacity: 0;
+
+          @media (max-width: 1199.98px) {
+            font-size: 40px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 30px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 27px;
+            padding-left: 20px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 20px;
+          }
+        }
+
+        h2 {
+          font-size: 25px;
+          line-height: 125%;
+          color: #ffffff;
+          padding-bottom: 50px;
+          text-transform: uppercase;
+          opacity: 0;
+
+          @media (max-width: 1199.98px) {
+            font-size: 20px;
+            line-height: 24px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 16px;
+            line-height: 20px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 14px;
+            line-height: 17px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 12px;
+            line-height: 15px;
+          }
+        }
+
+        a {
+          width: fit-content;
+          font-weight: 600;
+          color: #ffc729;
+          font-size: 18px;
+          padding-left: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: 0.2s ease-in-out;
+          opacity: 0;
+
+          &:hover {
+            color: white;
+            margin-left: 10px;
+
+            svg {
+              margin-left: 10px;
+            }
+          }
+
+          @media (max-width: 1199.98px) {
+            font-size: 16px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 14px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 13px;
+            padding-left: 20px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 12px;
+          }
+
+          .icon {
+            fill: none;
+            width: 51px;
+            height: 54px;
+
+            @media (max-width: 1199.98px) {
+              width: 48px;
+              height: 51px;
+            }
+            @media (max-width: 991.98px) {
+              width: 45px;
+              height: 48px;
+            }
+            @media (max-width: 767.98px) {
+              width: 42px;
+              height: 45px;
+            }
+          }
+
+          svg {
+            margin-left: 5px;
+            transition: 0.2s ease-in-out;
+          }
+        }
+      }
+    }
+
+    .images {
+      @media (max-width: 991.98px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      @media (max-width: 767.98px) {
+        position: relative;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+      .back {
+        position: absolute;
+        top: 120px;
+        width: 100%;
+        right: -100%;
+        max-width: none;
+
+        @media (max-width: 991.98px) {
+          top: auto;
+          // height: 100%;
+          width: auto;
+        }
+      }
+      .front {
+        position: absolute;
+        height: 70%;
+        top: 25%;
+        right: -100%;
+        max-width: none;
+
+        @media (max-width: 1199.98px) {
+          right: 0px;
+        }
+
+        @media (max-width: 991.98px) {
+          height: 50%;
+          top: 34%;
+        }
+        @media (max-width: 767.98px) {
+          top: 0;
+          height: 90%;
+        }
+      }
+    }
+  }
+`;
 
 export default function LobbyBlock() {
   const [section, setSection] = useState(0);
 
-  const minute = 60000;
+  const animationTime = 500;
+  const windowWidth = $(window).width();
 
-  const animationTime = minute;
+  // media points
+  const md1 = 1199.98;
+  const md2 = 991.98;
+  const md3 = 767.98;
+  const md4 = 479.98;
 
-  const visibleScroll = () => {
-    document.body.style.overflow = "visible";
-    console.log("visible scroll");
+  // craete animation objects for all blocks
+  const blockOne = {
+    hide: function () {
+      $(".one__one_block .info")
+        .children()
+        .each(function (position) {
+          if (position == 2) {
+            $(this).animate({ opacity: 0 }, animationTime - 200);
+          } else {
+            $(this)
+              .delay(position * 200)
+              .animate({ opacity: 0 }, animationTime);
+          }
+        });
+      $(".one__one .images .front").animate({ right: "-100%" }, animationTime);
+      $(".one__one .images .back")
+        .delay(100)
+        .animate({ right: "-100%" }, animationTime);
+
+      setTimeout(() => {
+        $(".one__one").css("display", "none");
+      }, animationTime + 100);
+    },
+  };
+  const blockTwo = {
+    // Hide section
+    hide: function () {
+      $(".one__two_block .info")
+        .children()
+        .each(function (position) {
+          if (position == 2) {
+            $(this).animate({ opacity: 0 }, animationTime - 200);
+          } else {
+            $(this)
+              .delay(position * 200)
+              .animate({ opacity: 0 }, animationTime);
+          }
+        });
+      $(".one__two .images .front")
+        .delay(100)
+        .animate({ right: "-100%" }, animationTime);
+      $(".one__two .images .back").animate({ right: "-100%" }, animationTime);
+
+      setTimeout(() => {
+        $(".one__two").css("display", "none");
+      }, animationTime + 100);
+    },
+  };
+  const blockThree = {
+    hide: function () {
+      $(".one__three_block .info")
+        .children()
+        .each(function (position) {
+          if (position == 2) {
+            $(this).animate({ opacity: 0 }, animationTime - 200);
+          } else {
+            $(this)
+              .delay(position * 200)
+              .animate({ opacity: 0 }, animationTime);
+          }
+        });
+      $(".one__three .images .front")
+        .delay(100)
+        .animate({ right: "-100%" }, 500);
+      $(".one__three .images .back").animate({ right: "-100%" }, 500);
+      setTimeout(() => {
+        $(".one__three").css("display", "none");
+      }, animationTime + 100);
+    },
   };
 
-  const hiddenScroll = () => {
-    document.body.style.overflow = "hidden";
-    console.log("hidden scroll");
-  };
+  // set sections to array
+  const sections = [blockOne, blockTwo, blockThree];
 
-  function showBlockOne() {}
+  var scrollPosition = 0;
+  var scroll = false;
 
-  function setSettings() {
-    // hiddenScroll();
+  const cahngeBlockTime = 600;
 
-    /// show block one
-    function showBlockOne() {
+  function ScrollTop() {
+    if (scrollPosition < 1) return;
 
+    if ($("body").css("overflow") == "hidden auto") {
+      $("html, body").animate(
+        {
+          scrollTop: 0,
+        },
+        500
+      );
+      $("body").css("overflow", "hidden");
     }
 
+    scroll = true;
+
+    if (scrollPosition < sections.length) sections[scrollPosition].hide();
+
+    --scrollPosition;
+
+    setTimeout(() => {
+      setSection(scrollPosition);
+      UnlockScroll();
+    }, cahngeBlockTime);
+  }
+
+  function ScrollBottom() {
+    if (scrollPosition > sections.length - 2) return;
+    scroll = true;
+
+    if (scrollPosition != sections.length - 1) sections[scrollPosition].hide();
+
+    ++scrollPosition;
+
+    setTimeout(() => {
+      setSection(scrollPosition);
+      UnlockScroll();
+    }, cahngeBlockTime);
+
+    if (scrollPosition == sections.length - 1) {
+      setTimeout(() => {
+        $("body").css({
+          overflowY: "visible",
+        });
+      }, cahngeBlockTime);
+    }
+  }
+
+  function UnlockScroll() {
+    setTimeout(() => {
+      scroll = false;
+    }, cahngeBlockTime);
+  }
+
+  function setScrollSettings() {
     window.onwheel = function (e) {
-      if (e.wheelDelta >= 0) {
-        console.log("scroll top");
-      } else {
-        console.log("scroll down");
+      if (scroll == false && $(document).scrollTop() == 0) {
+        if (e.wheelDelta >= 0) {
+          ScrollTop();
+        } else {
+          ScrollBottom();
+        }
       }
     };
   }
 
+  function getSection() {
+    console.log("get section " + section);
+    switch (section) {
+      case 0:
+        return <BlockOne />;
+      case 1:
+        return <BlockTwo />;
+      case 2:
+        return <BlockThree />;
+    }
+  }
+
   useEffect(() => {
     return () => {
-      setSettings();
+      $("body").css("overflow", "hidden");
+      setScrollSettings();
     };
   }, []);
 
-  // const unlockScrollFromTime = () => {
-  //   setInterval(function () {
-  //     setScroll(false);
-  //     console.log("unlock scroll");
-  //   }, animationTime);
-  // };
-
-  // const lockScroll = () => {
-  //   setScroll(true);
-  //   console.log("lock scroll");
-  // };
-
-  // $(".one__one, .one__two, .one__three").on("touchstart", function (e) {
-  //   startPosition = e.originalEvent.touches[0].pageY;
-  // });
-  // $(".one__one, .one__two, .one__three").on("touchend", function (e) {
-  //   endPosition = e.originalEvent.changedTouches[0].pageY;
-  //   if (startPosition < endPosition && startPosition < endPosition - 70) {
-  //     ScrollTop();
-  //   } else if (startPosition > endPosition && startPosition - 70 > endPosition) {
-  //     ScrollBottom();
-  //   }
-  // });
-
-  return (
-    <div>
-      <section className="one__one">
-        <div className="container">
-          <div className="one__one_block">
-            <div className="info">
-              <h1>
-                передовые <br /> технологии
-              </h1>
-              <h2>
-                и эффективные решения для производственных, транспортных
-                строительных и сельскохозяйственных предприятий
-              </h2>
-              <a href="#">
-                Подробнее
-                <img src={arrowBlack} alt="" />
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="images">
-          {/* {stat1 ?  } */}
-          <img className="back" src={img1} alt="" />
-          <img className="front" src={img2} alt="" />
-        </div>
-      </section>
-
-      {/* <section className="one__two">
-        <div className="container">
-          <div className="one__two_block">
-            <div className="info">
-              <h2>
-                Мы проектируем,
-                <br />
-                комплектуем, строим
-                <br />
-                и поддерживаем
-                <br />
-                инфраструктуру для
-              </h2>
-              <h1>
-                энергетических
-                <br /> отраслей
-              </h1>
-              <a href="#">
-                Подробнее
-                <img src={arrowBlack} alt="" />
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="images">
-          <img className="back" src={img3} alt="" />
-          <img className="front" src={img4} alt="" />
-        </div>
-      </section>
-
-      <section className="one__three">
-        <div className="container">
-          <div className="one__three_block">
-            <div className="info">
-              <h1>Решения</h1>
-              <h2>для топливно-энергетического комплекса</h2>
-              <a href="#">
-                Подробнее
-                <img src={arrowBlack} alt="" />
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="images">
-          <img className="back" src={img5} alt="" />
-          <img className="front" src={img6} alt="" />
-        </div>
-      </section>
-
-      <section className="modal__one">
-        <div className="modal_close-button"></div>
-        <div className="line"></div>
-        <div className="container">
-          <div className="block">
-            <div className="block__image">
-              <img
-                className="modal__one_front"
-                src="<?php echo get_template_directory_uri(); ?>/img/MainPage/ModalOne/front.png"
-                alt="front image"
-              />
-              <img
-                className="modal__one_background"
-                src="<?php echo get_template_directory_uri(); ?>/img/MainPage/ModalOne/background.png"
-                alt="background iamge"
-              />
-              <img src="" alt="svg" />
-            </div>
-            <div className="block__info">
-              <div className="block__info_title">
-                <h1>ООО «Артик Энергострой» </h1>
-              </div>
-              <div className="block__info_text">
-                <p>
-                  Предоставляет полный комплекс услуг по проектированию, сборке,
-                  поставке, внедрению и сопровождению автоматизированных систем
-                  управления технологическими процессами (АСУТП) любой
-                  сложности, включая подсистемы противоаварийной и
-                  противопожарной защиты, системы управления энергообеспечением,
-                  системы телемеханики, локальные системы управления блочным
-                  оборудованием, производственно-диспетчерские службы и пр.
-                </p>
-                <p>
-                  Компания является официальным поставщиком таких компаний как
-                  Cisco, Lenovo, Emerson и др., а так же имеет опыт реализации
-                  крупных проектов для таки Заказчиков как ООО ИК «СИБИНТЕК»
-                  (Изготовление и поставка программно-технического комплекса
-                  автоматизированной системы управления с проведением
-                  шеф-монтажных и пусконаладочных работ для центрального пункта
-                  сбора нефти Куюмбинского нефтегазоконденсатного
-                  месторождения), АО «Мурманский морской торговый порт»
-                  (Поставка коммутационного оборудования) и др.
-                </p>
-                <p>
-                  С более подробной информацией об опыте Компании, оборудовании
-                  предоставляемых услугах Вы сможете ознакомится в разделах
-                  сайта (идет активная ссылка на разделы):
-                </p>
-              </div>
-              <div className="buttons">
-                <a href="">ПРОДУКЦИЯ</a>
-                <a href="">УСЛУГИ И СЕРВИС</a>
-                <a href="">Проекты</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="modal__two">
-        <div className="modal_close-button"></div>
-        <div className="line"></div>
-        <div className="container">
-          <div className="block">
-            <div className="block__info_text">
-              <p>
-                ООО «Арктик Энергострой» начала свою деятельность в 2010 году с
-                проекта строительства воздушной линии электропередачи 35 кВ
-                «Харьяга – ЦПС Инзырей» для нужд ООО «Лукойл-Коми».
-              </p>
-              <p>
-                После успешной реализации проекта, компания заработала авторитет
-                и ее стали приглашать к участию в крупных и технически сложных
-                проектах Тимано-Печорской нефтегазоносной провинции, например,
-                для поставки, шеф-монтажа и пусконаладочных работ
-                трансформаторов типа ТДНС 16000/35 в северном исполнении УХЛ 1
-                для Энергоцентра №2 на базе ГТУ ЭГЭС-12 для нужд ООО «СК
-                «РУСВЬЕТПЕТРО».
-              </p>
-              <p>
-                Получив опыт и признание Заказчиков, компания продолжает свою
-                деятельность в Республике Коми и Ненецком автономном округе,
-                объем и сложность работ с каждым годом увеличивалась, штат
-                компании пополнялся квалифицированными, компетентными кадрами,
-                благодаря которым ООО «Арктик Энергострой» пополнило свой
-                портфель контрактов такими значимыми и статусными как «Поставка
-                котельной с разработкой конструкторской документации и
-                выполнением шеф-монтажных и пусконаладочных работ, выполнение
-                инспекции давальческого котельного оборудования Заказчика»,
-                «Выполнение комплекса пусконаладочных работ и испытаний
-                оборудования по объекту "Газотурбинная установка выработки
-                электроэнергии" (ГТУ Solar TITAN 130)» и пр.
-              </p>
-            </div>
-            <div className="block__info_text-bottom">
-              <p>
-                Помимо нефтегазовых компаний, ООО «Арктик Энергострой» имеет
-                хороший опыт реализации контрактов в энергоснабжении гражданских
-                объектов, например участие в проекте внешнего электроснабжения
-                госпиталя в Мурманской области для ФГУП «Главное
-                военно-строительное управление №14», а так же для атомной
-                промышленности, в проекте поставки модуля очистки для Курской
-                АЭС.
-              </p>
-              <p>
-                С более подробной информацией об опыте Компании, оборудовании
-                предоставляемых услугах Вы сможете ознакомится в разделах сайта
-                (идет активная ссылка на разделы):
-              </p>
-            </div>
-            <div className="buttons">
-              <a href="">ПРОДУКЦИЯ</a>
-              <a href="">УСЛУГИ И СЕРВИС</a>
-              <a href="">Проекты</a>
-            </div>
-            <div className="block__image">
-              <img
-                className="modal__one_front"
-                src="<?php echo get_template_directory_uri(); ?>/img/MainPage/ModalTwo/front.png"
-                alt="front image"
-              />
-              <img src="" alt="svg" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="modal__three">
-        <div className="modal_close-button"></div>
-        <div className="line"></div>
-        <div className="container">
-          <div className="block">
-            <div className="block__image">
-              <img
-                className="modal__one_front"
-                src="<?php echo get_template_directory_uri(); ?>/img/MainPage/ModalThree/front.png"
-                alt="front image"
-              />
-              <img src="" alt="svg" />
-            </div>
-            <div className="block__info">
-              <div className="block__info_text">
-                <p>
-                  Существенную часть портфеля заказов ООО « Арктик Энергострой»
-                  формируют крупнейшие компании топливно-энергетического
-                  комплекса России, такие как: ПАО «СИБУР Холдинг»,
-                  Госкорпорация «Росатом», ООО «Славнефть-Красноярскнефтегаз»,
-                  ПАО «ЯТЭК», ООО «ЗАРУБЕЖНЕФТЬ-добыча Харьяга», ПАО
-                  «Криогенмаш», АО «РОСАН ИНТЕРНЕШНЛ», АО «Ангарская
-                  нефтехимическая компания».
-                </p>
-                <p>
-                  За время деятельности нами запроектировано, поставлено,
-                  смонтировано и введено в эксплуатацию в различных регионах
-                  страны, в том числе в районах крайнего севера с суровыми
-                  климатическими условиями, такое оборудование, как:
-                </p>
-                <ul>
-                  <li>емкостное и теплообменное оборудование</li>
-                  <li>запорно-регулирующая арматура</li>
-                  <li>контрольно-пропускные пункты</li>
-                  <li>терминалы мобильной связи</li>
-                  <li>сетевое и коммутационное оборудование</li>
-                  <li>взрывозащищенное оборудование</li>
-                  <li>газоанализаторы</li>
-                  <li>контрольно-измерительные приборы и автоматика</li>
-                  <li>кабельная арматуры и муфты</li>
-                  <li>кабельнесущие системы</li>
-                  <li>кабельно-проводниковая продукция</li>
-                  <li>стальные опоры</li>
-                  <li>электрощитовое оборудование</li>
-                  <li>источники бесперебойного питания</li>
-                  <li>вентиляционное оборудование</li>
-                  <li>частотные преобразователи</li>
-                  <li>трансформаторы и трансформаторные подстанции</li>
-                  <li>котельное оборудование</li>
-                  <li>оборудование для крепления скважин и прочее</li>
-                </ul>
-                <p>
-                  С более подробной информацией об опыте Компании, оборудовании
-                  предоставляемых услугах Вы сможете ознакомится в разделах
-                  сайта (идет активная ссылка на разделы):
-                </p>
-              </div>
-              <div className="buttons">
-                <a href="">ПРОДУКЦИЯ</a>
-                <a href="">УСЛУГИ И СЕРВИС</a>
-                <a href="">Проекты</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-    </div>
-  );
+  return <LobbyBlockStyles>{getSection()}</LobbyBlockStyles>;
 }
