@@ -3640,10 +3640,12 @@ const HomeStyled = styled.div`
 `;
 
 export default function Home() {
-  const [isLoading, setLoading] = useState(true);
+  let preloader = sessionStorage.getItem("preloader")
+  const [isLoading, setLoading] = useState(preloader == null ? true : false);
 
   const videoIsLoaded = () => {
     setLoading(false);
+    sessionStorage.setItem("preloader", true);
   };
 
   return (
