@@ -817,6 +817,7 @@ export default function LobbyBlock() {
   useEffect(() => {
     return () => {
       setScrollSettings();
+      $("body").css("overflow", "hidden");
     };
   }, []);
 
