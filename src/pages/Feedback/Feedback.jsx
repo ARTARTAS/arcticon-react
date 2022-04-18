@@ -4,6 +4,7 @@ import emailjs from "@emailjs/browser";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 import img1 from "./../../assets/img/Feedback/Mask Group.png";
+import button from "./../../assets/svg/home/arrow_black.svg";
 
 const StyledFeedback = styled.section`
   min-height: calc(100vh - 120px);
@@ -119,10 +120,10 @@ const StyledFeedback = styled.section`
 
 export default function Feedback() {
   const [isSubmitted, setSubmitted] = useState(false);
-  emailjs.init("_RFQc2g62Vt5-qPKs");
+  emailjs.init("E0i2RoE9nEIERi1ie");
 
   const sendEmail = (templateParams) =>
-    emailjs.send("service_7z9rv8m", "template_e9xi65h", templateParams).then(
+    emailjs.send("service_4sp3219", "template_34h9wmj", templateParams).then(
       function (response) {
         setSubmitted(true);
         console.log("SUCCESS!", response.status, response.text);
@@ -170,11 +171,11 @@ export default function Feedback() {
             onSubmit={(values, { setSubmitting, resetForm }) => {
               setTimeout(() => {
                 var templateParams = {
-                  to_name: "Mechanical Engineering",
+                  to_name: "Arcticon",
                   from_name: values.name,
+                  from_org: values.org,
                   from_phone: values.phone,
                   reply_to: values.email,
-                  message: values.message,
                 };
                 sendEmail(templateParams);
                 // alert(JSON.stringify(values, null, 2));
@@ -244,7 +245,7 @@ export default function Feedback() {
                       ? "Отправленно"
                       : "Отправить"}
                   </p>
-                  <img src="" alt="buttn" />
+                  <img src={button} alt="buttn" />
                 </button>
                 <div>
                   <div className="checkboxBlock">
