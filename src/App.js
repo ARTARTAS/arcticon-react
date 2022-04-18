@@ -13,6 +13,8 @@ import Services from "./pages/Services/Services";
 import ServicesPage from "./pages/ServicesPage/ServicesPage";
 
 import $ from "jquery";
+import Projects from "./pages/Projects/Projects";
+import Project from "./pages/Project/Project";
 
 function App() {
   let location = useLocation();
@@ -31,6 +33,8 @@ function App() {
         <Route exact path="/partners" element={<Partners />} />
         <Route exact path="/contacts" element={<Contacts />} />
         <Route exact path="/feedback" element={<Feedback />} />
+        <Route exact path="/projects" element={<Projects />} />
+        <Route exact path="/project" element={<Project />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />

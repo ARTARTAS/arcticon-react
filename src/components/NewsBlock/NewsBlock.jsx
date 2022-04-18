@@ -11,8 +11,6 @@ export default function NewsBlock() {
       <div className="white-list"></div>
       <div className="container">
         <div className="two__block">
-          Can create loop by PHP and make array in wordpress load from array
-          this columns
           <div className="two__block_column">
             <div className="column">
               <div className="column__title">
