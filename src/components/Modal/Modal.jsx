@@ -1,6 +1,7 @@
 import React from "react";
 import img15 from "./../../assets/svg/back-call.svg";
-
+import emailjs from "@emailjs/browser";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import styled from "styled-components";
 
 const ModalStyles = styled.div`
@@ -270,12 +271,119 @@ const ModalStyles = styled.div`
 `;
 
 export default function Modal({ close }) {
+  emailjs.init("E0i2RoE9nEIERi1ie");
+
+  const sendEmail = (templateParams) =>
+    emailjs.send("service_4sp3219", "template_34h9wmj", templateParams).then(
+      function (response) {
+        close();
+        console.log("SUCCESS!", response.status, response.text);
+      },
+      function (error) {
+        console.log("FAILED...", error);
+      }
+    );
   return (
     <ModalStyles>
       <div className="back-call">
         <div className="block">
           <button className="exit" onClick={close}></button>
-          <form action="">
+          <Formik
+            initialValues={{
+              phone: "",
+            }}
+            validate={(values) => {
+              const errors = {};
+
+              if (!values.phone) {
+                errors.name = "Required";
+              }
+
+              return errors;
+            }}
+            onSubmit={(values, { setSubmitting, resetForm }) => {
+              setTimeout(() => {
+                var templateParams = {
+                  to_name: "Arcticon",
+                  from_phone: values.phone,
+                };
+                sendEmail(templateParams);
+                setSubmitting(false);
+              }, 400);
+              // resetForm();
+            }}
+          >
+            {({ isSubmitting }) => (
+              <Form className="form">
+                <h1>ЗАКАЖИТЕ ОБРАТНЫЙ ЗВОНОК</h1>
+                <div>
+                  <Field
+                    className="field"
+                    type="name"
+                    name="name"
+                    placeholder="ФИО"
+                  />
+                  <ErrorMessage className="error" name="name" component="div" />
+                </div>
+                <div>
+                  <Field
+                    className="field"
+                    type="organization"
+                    name="org"
+                    placeholder="Организация"
+                  />
+                  <ErrorMessage className="error" name="org" component="div" />
+                </div>
+                <div>
+                  <Field
+                    className="field"
+                    type="phone"
+                    name="phone"
+                    placeholder="Телефон"
+                  />
+                  <ErrorMessage
+                    className="error"
+                    name="phone"
+                    component="div"
+                  />
+                </div>
+                <div>
+                  <Field
+                    className="field"
+                    type="email"
+                    name="email"
+                    placeholder={"Электронная почта"}
+                  />
+                  <ErrorMessage
+                    className="error"
+                    name="email"
+                    component="div"
+                  />
+                </div>
+
+                <button type="submit">
+                  Перезвонить
+                  <img src={button} alt="buttn" />
+                </button>
+                <div>
+                  <div className="checkboxBlock">
+                    <Field className="checkbox" type="checkbox" name="toggle" />
+                    <p className="checkboxText">
+                      Даю согласие на обработку моих персональных данных в
+                      соответсвии с политкой конфиденциальности.
+                    </p>
+                  </div>
+                  <ErrorMessage
+                    className="error"
+                    name="toggle"
+                    component="div"
+                  />
+                </div>
+              </Form>
+            )}
+          </Formik>
+
+          {/* <form action="">
             <div className="title">
               <h2>Телефон для связи</h2>
               <h2 className="phone">+7 (495) 409-32-14</h2>
@@ -294,7 +402,7 @@ export default function Modal({ close }) {
               Перезвонить
               <img className="icon" src={img15} alt="" />
             </button>
-          </form>
+          </form> */}
         </div>
       </div>
     </ModalStyles>
