@@ -792,7 +792,6 @@ export default function LobbyBlock() {
 
   function setScrollSettings() {
     window.onwheel = function (e) {
-      console.log('make scroll')
       if (scroll == false && $(document).scrollTop() == 0) {
         if (e.wheelDelta >= 0) {
           ScrollTop();
