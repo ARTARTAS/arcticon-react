@@ -791,6 +791,7 @@ export default function LobbyBlock() {
   }
 
   function setScrollSettings() {
+    $(".wrapper").css("overflow", "visible");
     window.onwheel = function (e) {
       if (scroll == false && $(document).scrollTop() == 0) {
         if (e.wheelDelta >= 0) {
