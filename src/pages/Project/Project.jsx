@@ -2,6 +2,7 @@ import React from "react";
 import map from "./../../assets/img/MainPage/BlockSeven/map.png";
 
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const ProjectStyles = styled.div`
   height: 100%;
@@ -207,6 +208,7 @@ const ProjectStyles = styled.div`
 `;
 
 export default function Project(props) {
+  window.scrollTo(0, 0);
   return (
     <ProjectStyles>
       <div class="container">
@@ -218,7 +220,7 @@ export default function Project(props) {
             <nav>
               <ul>
                 <li>
-                  <a href="/">Главная</a>
+                  <NavLink to={"/"}>Главная</NavLink>
                 </li>
                 <li>
                   {/* <svg class="icon">
@@ -226,9 +228,9 @@ export default function Project(props) {
                   </svg> */}
                 </li>
                 <li>
-                  <a class="second" href="/projects/">
+                  <button className="second" onClick={props.changeLink}>
                     Реализованные проекты
-                  </a>
+                  </button>
                 </li>
                 <li>
                   {/* <svg class="icon">
@@ -236,9 +238,7 @@ export default function Project(props) {
                   </svg> */}
                 </li>
                 <li>
-                  <a class="object" href="">
-                    ООО «ЗапСибНефтехим»
-                  </a>
+                  <button>ООО «ЗапСибНефтехим»</button>
                 </li>
               </ul>
               <ul>
@@ -248,31 +248,16 @@ export default function Project(props) {
                   </svg> */}
                 </li>
                 <li>
-                  <a href="/projects/">Назад</a>
+                  <button onClick={props.changeLink}>Назад</button>
                 </li>
               </ul>
             </nav>
           </div>
           <div class="block__list">
             <ul>
-              <li>Поставка пробоотборного устройства</li>
-              <li>Поставка металлорукава и комплектующих</li>
-              <li>Поставка кабельных муфт</li>
-              <li>Поставка мачтовых опор</li>
-              <li>Поставка фасадных ламельных систем</li>
-              <li>ППоставка листов стеклопластиковых</li>
-              <li>Поставка постов управления</li>
-              <li>Поставка панелей ПСТ</li>
-              <li>Поставка коммутационного оборудования</li>
-              <li>Поставка опор ОГС</li>
-              <li>Поставка блоков коммутации и управления</li>
-              <li>
-                Поставка антенно-мачтового сооружения для размещения
-                оборудования радиосвязи
-              </li>
-              <li>Поставка кабельно-проводниковой продукции</li>
-              <li>Поставка опор освещения</li>
-              <li>Поставка компьютерного оборудования</li>
+              {props.project[0].list.map((text, index) => (
+                <li key={index}>{text}</li>
+              ))}
             </ul>
           </div>
           <menu class="menu">
