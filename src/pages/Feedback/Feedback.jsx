@@ -48,6 +48,19 @@ const StyledFeedback = styled.section`
       box-shadow: 6px 6px 30px rgba(0, 0, 0, 0.1);
 
       padding: 40px 50px 36px 66px;
+
+      div {
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+      .error {
+        position: absolute;
+        width: fit-content;
+        right: 0;
+        top: 5px;
+        padding-right: 30px;
+      }
       h1 {
         font-family: "Montserrat";
         font-style: normal;
@@ -82,6 +95,17 @@ const StyledFeedback = styled.section`
         display: flex;
         align-items: center;
         justify-content: center;
+        padding-right: 10px;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          padding-right: 0px;
+
+          p {
+            padding-right: 5px;
+          }
+        }
+
         p {
           font-family: "Montserrat";
           font-style: normal;
@@ -93,6 +117,7 @@ const StyledFeedback = styled.section`
           letter-spacing: -0.015em;
 
           color: #000000;
+          transition: all 0.2s ease-in-out;
         }
       }
       .checkboxBlock {
@@ -114,6 +139,40 @@ const StyledFeedback = styled.section`
           color: #000000;
         }
       }
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .back {
+      width: 100%;
+      overflow: hidden;
+      img {
+        max-width: none;
+        width: auto;
+      }
+    }
+    .formBlock {
+      padding: 0px 30px;
+      h1 {
+        text-align: center;
+      }
+      .form {
+        width: 100%;
+        max-width: 450px;
+        padding: 30px;
+        align-items: center;
+        div {
+          width: 100%;
+        }
+        .field {
+          width: 100%;
+        }
+      }
+    }
+  }
+  @media (max-width: 479.98px) {
+    .formBlock {
+      padding: 0px 20px;
     }
   }
 `;
@@ -152,19 +211,19 @@ export default function Feedback() {
               const errors = {};
 
               if (!values.name) {
-                errors.name = "Required";
+                errors.name = "Не заполненно";
               } else if (!values.org) {
-                errors.org = "Required";
+                errors.org = "Не заполненно";
               } else if (!values.phone) {
-                errors.phone = "Required";
+                errors.phone = "Не заполненно";
               } else if (!values.email) {
-                errors.email = "Required";
+                errors.email = "Не заполненно";
               } else if (
                 !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
               ) {
-                errors.email = "Invalid email address";
+                errors.email = "Неверный email адресс";
               } else if (!values.toggle) {
-                errors.toggle = "Required";
+                errors.toggle = "Не заполненно";
               }
               return errors;
             }}
