@@ -732,6 +732,8 @@ export default function LobbyBlock() {
   // set sections to array
   const sections = [blockOne, blockTwo, blockThree];
 
+  let startPosition = 0;
+  let endPosition = 0;
   var scrollPosition = 0;
   var scroll = false;
 
@@ -798,6 +800,17 @@ export default function LobbyBlock() {
         } else {
           ScrollBottom();
         }
+      }
+    };
+    window.ontouchstart = function (e) {
+      startPosition = e.touches[0].pageY;
+    };
+    window.ontouchend = function (e) {
+      endPosition = e.changedTouches[0].pageY;
+      if (startPosition < endPosition && startPosition < endPosition - 70) {
+        ScrollTop();
+      } else if (startPosition > endPosition && startPosition - 70 > endPosition) {
+        ScrollBottom();
       }
     };
   }
