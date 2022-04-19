@@ -3,7 +3,6 @@ import img15 from "./../../assets/svg/back-call.svg";
 import emailjs from "@emailjs/browser";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import styled from "styled-components";
-import $ from "jquery";
 
 const ModalStyles = styled.div`
   .back-call {
@@ -15,15 +14,6 @@ const ModalStyles = styled.div`
     background: #000000;
     color: white;
     font-family: "Montserrat", sans-serif;
-    transform: translateX(-300px);
-    transition: all 5 linear;
-    /* opacity: 0; */
-  }
-  .open_block {
-    /* right: 0; */
-    transform: translateX(0px);
-    /* opacity: 1; */
-    transition: all 5 linear;
   }
 
   @media (max-width: 1199.98px) {
@@ -228,10 +218,13 @@ const ModalStyles = styled.div`
     color: #ffc729;
     -webkit-transition: 0.2s ease-in-out;
     transition: 0.2s ease-in-out;
+    gap: 10px;
+    padding-right: 5px;
   }
 
   .back-call .block form button:hover {
     color: white;
+    padding-right: 0px;
   }
 
   @media (max-width: 1199.98px) {
@@ -294,13 +287,6 @@ export default function Modal({ close }) {
         console.log("FAILED...", error);
       }
     );
-
-  useEffect(() => {
-    setTimeout(() => {
-      // $(".back-call").addClass("open_block");
-      setOpen(true);
-    }, 5000);
-  }, []);
 
   return (
     <ModalStyles>

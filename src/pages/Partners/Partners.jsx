@@ -1,19 +1,5 @@
 import React, { useEffect, useState } from "react";
-import img1 from "./../../assets/img/Customers/01.jpg";
-import img2 from "./../../assets/img/Customers/02.jpg";
-import img3 from "./../../assets/img/Customers/03.jpg";
-import img4 from "./../../assets/img/Customers/01.jpg";
-import img5 from "./../../assets/img/Customers/02.jpg";
-import img6 from "./../../assets/img/Customers/03.jpg";
-import img7 from "./../../assets/img/Customers/01.jpg";
-import img8 from "./../../assets/img/Customers/02.jpg";
-import img9 from "./../../assets/img/Customers/03.jpg";
-import img10 from "./../../assets/img/Customers/01.jpg";
-import img11 from "./../../assets/img/Customers/02.jpg";
-import img12 from "./../../assets/img/Customers/03.jpg";
-
 import img13 from "./../../assets/svg/home/details_black.svg";
-import img15 from "./../../assets/svg/back-call.svg";
 import img14 from "./../../assets/img/Customers/background.png";
 
 import CustomersCarousel from "../../components/CustomersCarousel/CustomersCarousel";
@@ -419,107 +405,25 @@ const PartnersStyles = styled.div`
   section .section__block .block__info .button {
     display: none;
   }
-
-  section .section__block .block__info .owl-nav {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-  }
-
-  section .section__block .block__info .owl-prev {
-    display: none;
-  }
-
-  section .section__block .block__info .owl-next {
+  section .section__block .block__info .cards .button_next {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    -ms-flex-item-align: end;
-    align-self: flex-end;
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 14px;
     color: #2d2d2d;
-    -webkit-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+    -webkit-transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
+    gap: 10px;
   }
 
-  section .section__block .block__info .owl-next:hover {
+  section .section__block .block__info .cards .button_next:hover {
     color: gray;
-    margin-left: 10px;
-  }
-
-  section .section__block .block__info .owl-next:hover svg {
-    margin-left: 10px;
-  }
-
-  @media (max-width: 1199.98px) {
-    section .section__block .block__info .owl-next {
-      font-size: 16px;
-      top: 30px;
-    }
-  }
-
-  @media (max-width: 991.98px) {
-    section .section__block .block__info .owl-next {
-      font-size: 14px;
-      top: 60px;
-    }
-  }
-
-  @media (max-width: 767.98px) {
-    section .section__block .block__info .owl-next {
-      font-size: 13px;
-      top: 25px;
-    }
-  }
-
-  @media (max-width: 479.98px) {
-    section .section__block .block__info .owl-next {
-      font-size: 12px;
-    }
-  }
-
-  section .section__block .block__info .owl-next .icon {
-    width: 51px;
-    height: 54px;
-    fill: none;
-  }
-
-  @media (max-width: 1199.98px) {
-    section .section__block .block__info .owl-next .icon {
-      width: 48px;
-      height: 51px;
-    }
-  }
-
-  @media (max-width: 991.98px) {
-    section .section__block .block__info .owl-next .icon {
-      width: 45px;
-      height: 48px;
-    }
-  }
-
-  @media (max-width: 767.98px) {
-    section .section__block .block__info .owl-next .icon {
-      width: 42px;
-      height: 45px;
-    }
-  }
-
-  section .section__block .block__info .owl-next svg {
-    -webkit-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-    padding-left: 5px;
+    padding-left: 10px;
   }
 
   section .background_image {
@@ -557,7 +461,7 @@ export default function Partners() {
 
   return (
     <PartnersStyles>
-      {modal ? <Modal close={closeModal} /> : ""}
+      {modal ? <Modal close={closeModal} /> : ''}
 
       <section>
         <div className="right_line"></div>
