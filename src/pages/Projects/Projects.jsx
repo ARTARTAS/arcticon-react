@@ -489,9 +489,27 @@ const ProjectsStyles = styled.div`
     }
   }
 `;
+const Item = ({ index, project, showProject, col }) => {
+  if (index <= col) {
+    return (
+      <button
+        key={index}
+        onClick={() => {
+          showProject(project.name);
+        }}
+      >
+        {project.name}
+      </button>
+    );
+  } else {
+    return;
+  }
+};
 
 export default function Projects(props) {
   const [link, setLink] = useState(false);
+  const [col, setCol] = useState(9);
+
   const [project, setProject] = useState(state.projects[0]);
 
   function showProject(name) {
@@ -524,17 +542,17 @@ export default function Projects(props) {
                 <h2>Заказчики</h2>
                 <div className="block__orders_grid">
                   {state.projects.map((project, index) => (
-                    <button
-                      key={index}
-                      onClick={() => {
-                        showProject(project.name);
-                      }}
-                    >
-                      {project.name}
-                    </button>
+                    <Item
+                      project={project}
+                      index={index}
+                      showProject={showProject}
+                      col={col}
+                    />
                   ))}
                 </div>
-                <button className="more">Еще</button>
+                <button className="more" onClick={() => setCol(col + 10)}>
+                  Еще
+                </button>
               </div>
             </div>
 
