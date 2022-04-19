@@ -23,9 +23,11 @@ const StyledCustomersCarousel = styled.div`
   .item {
     width: 75px;
     height: 75px;
+
     img {
       width: 100px;
       height: auto;
+      margin: 0 auto;
     }
   }
   .button_next {
