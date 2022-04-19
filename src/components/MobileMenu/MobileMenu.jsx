@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 import styled from "styled-components";
 
@@ -280,7 +281,7 @@ const MobileMenuStyles = styled.div`
   }
 `;
 
-export default function MobileMenu({ setMenu , visibleScroll}) {
+export default function MobileMenu({ setMenu, visibleScroll }) {
   return (
     <MobileMenuStyles>
       <div className="device">
@@ -291,7 +292,10 @@ export default function MobileMenu({ setMenu , visibleScroll}) {
                 href="#"
                 className="close-button"
                 id="close-button"
-                onClick={() => {setMenu(false); visibleScroll()}}
+                onClick={() => {
+                  setMenu(false);
+                  visibleScroll();
+                }}
               >
                 <div className="in">
                   <div className="close-button-block"></div>
@@ -304,22 +308,70 @@ export default function MobileMenu({ setMenu , visibleScroll}) {
               </div>
             </li>
             <li>
-              <a href="#">О нас</a>
+              <NavLink
+                to={"#"}
+                onClick={() => {
+                  setMenu(false);
+                  visibleScroll();
+                }}
+              >
+                О нас
+              </NavLink>
             </li>
             <li>
-              <a href="#">Продукция</a>
+              <NavLink
+                to={"#"}
+                onClick={() => {
+                  setMenu(false);
+                  visibleScroll();
+                }}
+              >
+                Продукция
+              </NavLink>
             </li>
             <li className="active">
-              <a href="/services">Услуги и сервис</a>
+              <NavLink
+                to={"/services"}
+                onClick={() => {
+                  setMenu(false);
+                  visibleScroll();
+                }}
+              >
+                Услуги и сервис
+              </NavLink>
             </li>
             <li className="active">
-              <a href="/customers">Заказчики</a>
+              <NavLink
+                to={"/customers"}
+                onClick={() => {
+                  setMenu(false);
+                  visibleScroll();
+                }}
+              >
+                Заказчики
+              </NavLink>
             </li>
             <li className="active">
-              <a href="/partners">Партнеры</a>
+              <NavLink
+                to={"/partners"}
+                onClick={() => {
+                  setMenu(false);
+                  visibleScroll();
+                }}
+              >
+                Партнеры
+              </NavLink>
             </li>
             <li className="active">
-              <a href="/contacts">Контакты</a>
+              <NavLink
+                to={"/contacts"}
+                onClick={() => {
+                  setMenu(false);
+                  visibleScroll();
+                }}
+              >
+                Контакты
+              </NavLink>
             </li>
           </ul>
         </nav>
