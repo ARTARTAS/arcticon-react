@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import img15 from "./../../assets/svg/back-call.svg";
-
+import emailjs from "@emailjs/browser";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import styled from "styled-components";
+import $ from "jquery";
 
 const ModalStyles = styled.div`
   .back-call {
     position: fixed;
     top: 30vh;
-    right: 0;
+    right: 0px;
     z-index: 100;
     width: 300px;
     background: #000000;
     color: white;
     font-family: "Montserrat", sans-serif;
+    transform: translateX(-300px);
+    transition: all 5 linear;
+    /* opacity: 0; */
+  }
+  .open_block {
+    /* right: 0; */
+    transform: translateX(0px);
+    /* opacity: 1; */
+    transition: all 5 linear;
   }
 
   @media (max-width: 1199.98px) {
@@ -270,31 +281,81 @@ const ModalStyles = styled.div`
 `;
 
 export default function Modal({ close }) {
+  emailjs.init("E0i2RoE9nEIERi1ie");
+  const [open, setOpen] = useState(false);
+
+  const sendEmail = (templateParams) =>
+    emailjs.send("service_4sp3219", "template_34h9wmj", templateParams).then(
+      function (response) {
+        close();
+        console.log("SUCCESS!", response.status, response.text);
+      },
+      function (error) {
+        console.log("FAILED...", error);
+      }
+    );
+
+  useEffect(() => {
+    setTimeout(() => {
+      // $(".back-call").addClass("open_block");
+      setOpen(true);
+    }, 5000);
+  }, []);
+
   return (
     <ModalStyles>
-      <div className="back-call">
+      <div className={open ? "back-call open_block" : "back-call"}>
         <div className="block">
           <button className="exit" onClick={close}></button>
-          <form action="">
-            <div className="title">
-              <h2>Телефон для связи</h2>
-              <h2 className="phone">+7 (495) 409-32-14</h2>
-              <div className="line"></div>
-            </div>
-            <div className="info">
-              <p>Оставьте свой номер телефона и мы Вам перезвоним.</p>
-            </div>
-            <input
-              type="tel"
-              name="number"
-              id="number"
-              placeholder="Введите номер..."
-            />
-            <button>
-              Перезвонить
-              <img className="icon" src={img15} alt="" />
-            </button>
-          </form>
+          <Formik
+            initialValues={{
+              phone: "",
+            }}
+            validate={(values) => {
+              const errors = {};
+
+              if (!values.phone) {
+                errors.name = "Required";
+              }
+
+              return errors;
+            }}
+            onSubmit={(values, { setSubmitting, resetForm }) => {
+              setTimeout(() => {
+                var templateParams = {
+                  to_name: "Arcticon",
+                  from_phone: values.phone,
+                };
+                sendEmail(templateParams);
+                setSubmitting(false);
+              }, 400);
+              // resetForm();
+            }}
+          >
+            {({ isSubmitting }) => (
+              <Form className="form">
+                <div className="title">
+                  <h2>Телефон для связи</h2>
+                  <h2 className="phone">+7 (495) 409-32-14</h2>
+                  <div className="line"></div>
+                </div>
+                <div className="info">
+                  <p>Оставьте свой номер телефона и мы Вам перезвоним.</p>
+                </div>
+                <Field
+                  className="field"
+                  type="phone"
+                  name="phone"
+                  placeholder="Введите номер"
+                />
+                <ErrorMessage className="error" name="phone" component="div" />
+                <button type="submit">
+                  Перезвонить
+                  <img className="icon" src={img15} alt="" />
+                </button>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>
     </ModalStyles>

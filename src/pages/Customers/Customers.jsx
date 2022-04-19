@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import img13 from "./../../assets/svg/home/details_black.svg";
 import img14 from "./../../assets/img/Customers/background.png";
+import emailjs from "@emailjs/browser";
 
 import styled from "styled-components";
 import CustomersCarousel from "../../components/CustomersCarousel/CustomersCarousel";
@@ -520,30 +521,19 @@ const CustomersStyles = styled.div`
 export default function Customers() {
   const [modal, setModal] = useState(false);
 
-  let showModalTimer = 60000;
-
-  const setTimer = () => {
-    setInterval(function () {
-      if (modal == false) {
-        setModal(true);
-        setTimer();
-      }
-    }, showModalTimer);
-  };
-
   const closeModal = () => {
     setModal(false);
-    setTimer();
   };
 
   useEffect(() => {
-    setTimer();
+    setTimeout(() => {
+      setModal(true);
+    }, 5000);
   }, []);
 
   return (
     <CustomersStyles>
-      {modal ? <Modal close={closeModal} /> : ""}
-
+      <Modal close={closeModal} />
       <section>
         <div className="right_line"></div>
         <div className="section__block">
