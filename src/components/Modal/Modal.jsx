@@ -28,6 +28,12 @@ const ModalStyles = styled.div`
     }
   }
 
+  @media (max-width: 767.98px) {
+    .back-call {
+      display: none;
+    }
+  }
+
   .back-call .block {
     height: 100%;
     width: 100%;
