@@ -533,8 +533,7 @@ export default function Customers() {
 
   return (
     <CustomersStyles>
-      {modal ? <Modal close={closeModal} /> : ""}
-
+      <Modal close={closeModal} />
       <section>
         <div className="right_line"></div>
         <div className="section__block">
