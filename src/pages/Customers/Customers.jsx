@@ -433,6 +433,7 @@ const CustomersStyles = styled.div`
 `;
 
 export default function Customers() {
+  window.scrollTo(0, 0);
   const [modal, setModal] = useState(false);
 
   const closeModal = () => {

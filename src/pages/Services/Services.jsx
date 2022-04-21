@@ -388,6 +388,7 @@ const ServicesStyles = styled.div`
 `;
 
 export default function Services() {
+  window.scrollTo(0, 0);
   return (
     <ServicesStyles>
       <section>

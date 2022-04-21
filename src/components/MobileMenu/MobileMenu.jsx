@@ -294,7 +294,6 @@ export default function MobileMenu({ setMenu, visibleScroll }) {
                 id="close-button"
                 onClick={() => {
                   setMenu(false);
-                  visibleScroll();
                 }}
               >
                 <div className="in">
@@ -309,7 +308,7 @@ export default function MobileMenu({ setMenu, visibleScroll }) {
             </li>
             <li>
               <NavLink
-                to={"#"}
+                to={"/about"}
                 onClick={() => {
                   setMenu(false);
                   visibleScroll();

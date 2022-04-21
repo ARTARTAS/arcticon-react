@@ -1163,6 +1163,7 @@ const AboutUsStyles = styled.div`
 `;
 
 export default function AboutUs() {
+  window.scrollTo(0, 0);
   return (
     <AboutUsStyles>
       <section className="about_one">

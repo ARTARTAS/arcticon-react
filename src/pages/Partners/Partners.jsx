@@ -6,6 +6,7 @@ import CustomersCarousel from "../../components/CustomersCarousel/CustomersCarou
 
 import styled from "styled-components";
 import Modal from "../../components/Modal/Modal";
+import { NavLink } from "react-router-dom";
 
 const PartnersStyles = styled.div`
   .container {
@@ -437,6 +438,7 @@ const PartnersStyles = styled.div`
 `;
 
 export default function Partners() {
+  window.scrollTo(0, 0);
   const [modal, setModal] = useState(false);
 
   let showModalTimer = 60000;
@@ -461,7 +463,7 @@ export default function Partners() {
 
   return (
     <PartnersStyles>
-      {modal ? <Modal close={closeModal} /> : ''}
+      {modal ? <Modal close={closeModal} /> : ""}
 
       <section>
         <div className="right_line"></div>
@@ -478,10 +480,10 @@ export default function Partners() {
                   <div className="line__box">
                     <div className="line"></div>
                   </div>
-                  <a href="#">
+                  <NavLink to="/projects">
                     Реализованные проекты
                     <img className="icon" src={img13} alt="" />
-                  </a>
+                  </NavLink>
                 </div>
                 <div className="cards">
                   <CustomersCarousel />

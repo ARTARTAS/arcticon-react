@@ -11,6 +11,7 @@ import ServicesBlock from "../../components/ServicesBlock/ServicesBlock";
 import styled from "styled-components";
 
 import Preloader from "../../components/Preloader/Preloader";
+import SideNav from "../../components/SideNav/SideNav";
 
 const HomeStyled = styled.div`
   .container {
@@ -3654,6 +3655,7 @@ export default function Home() {
         <Preloader loaded={videoIsLoaded}></Preloader>
       ) : (
         <div>
+          <SideNav />
           <LobbyBlock />
           <NewsBlock />
           <AboutBlock />

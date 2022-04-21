@@ -178,6 +178,7 @@ const StyledFeedback = styled.section`
 `;
 
 export default function Feedback() {
+  window.scrollTo(0, 0);
   const [isSubmitted, setSubmitted] = useState(false);
   emailjs.init("E0i2RoE9nEIERi1ie");
 

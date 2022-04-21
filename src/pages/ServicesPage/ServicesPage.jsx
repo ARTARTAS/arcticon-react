@@ -264,6 +264,7 @@ const ServicesPageStyles = styled.div`
 `;
 
 export default function ServicesPage() {
+  window.scrollTo(0, 0);
   return (
     <ServicesPageStyles>
       <section>

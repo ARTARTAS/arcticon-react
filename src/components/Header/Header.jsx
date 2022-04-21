@@ -21,10 +21,10 @@ const HeaderStyles = styled.div`
     height: 100%;
     width: 100%;
 
-    @media (max-width: $md3 + px) {
+    @media (max-width: 767.98px) {
       margin: 0px 30px;
     }
-    @media (max-width: $md4 + px) {
+    @media (max-width: 479.98px) {
       margin: 0px 20px;
     }
   }
@@ -418,6 +418,17 @@ export default function Header() {
                   </div>
                   <div className="mail">
                     <a href="mailto:info@arcticcon.ru">info@arcticcon.ru</a>
+                  </div>
+                  <div class="icons">
+                    <NavLink to="/contacts">
+                      <img src={img2} alt="" />
+                    </NavLink>
+                    <a href="">
+                      <img src={img3} alt="" />
+                    </a>
+                    <a href="">
+                      <img src={img4} alt="" />
+                    </a>
                   </div>
                 </div>
                 <nav>

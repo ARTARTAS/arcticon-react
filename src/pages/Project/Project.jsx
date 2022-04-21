@@ -1,6 +1,8 @@
 import React from "react";
 import map from "./../../assets/img/MainPage/BlockSeven/map.png";
 
+import arrow from "./../../assets/svg/arrowBlack.svg";
+
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
@@ -77,10 +79,14 @@ const ProjectStyles = styled.div`
 
         li {
           margin-right: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
 
-          a {
+          .button {
             font-weight: 400;
             font-size: 16px;
+            cursor: pointer;
 
             &:hover {
               color: rgb(212, 212, 212);
@@ -220,35 +226,44 @@ export default function Project(props) {
             <nav>
               <ul>
                 <li>
-                  <NavLink to={"/"}>Главная</NavLink>
+                  <NavLink className="button" to={"/"}>
+                    Главная
+                  </NavLink>
                 </li>
                 <li>
+                  <img className="icon" src={arrow} alt="" />
                   {/* <svg class="icon">
                     <use xlink:href="<?php echo get_template_directory_uri(); ?>/svg/service-page.svg#arrow"></use>
                   </svg> */}
                 </li>
                 <li>
-                  <button className="second" onClick={props.changeLink}>
+                  <NavLink className="button" to="/projects">
                     Реализованные проекты
-                  </button>
+                  </NavLink>
                 </li>
                 <li>
+                  <img className="icon" src={arrow} alt="" />
                   {/* <svg class="icon">
                     <use xlink:href="<?php echo get_template_directory_uri(); ?>/svg/service-page.svg#arrow"></use>
                   </svg> */}
                 </li>
                 <li>
-                  <button>ООО «ЗапСибНефтехим»</button>
+                  <a src="#" className="button">
+                    ООО «ЗапСибНефтехим»
+                  </a>
                 </li>
               </ul>
               <ul>
                 <li class="to-left">
+                  <img className="icon" src={arrow} alt="" />
                   {/* <svg class="icon">
                     <use xlink:href="<?php echo get_template_directory_uri(); ?>/svg/service-page.svg#arrow"></use>
                   </svg> */}
                 </li>
                 <li>
-                  <button onClick={props.changeLink}>Назад</button>
+                  <NavLink className="button" to="/projects">
+                    Назад
+                  </NavLink>
                 </li>
               </ul>
             </nav>

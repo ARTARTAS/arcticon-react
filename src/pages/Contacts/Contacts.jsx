@@ -413,6 +413,7 @@ const ContactsStyled = styled.div`
 `;
 
 export default function Contacts() {
+  window.scrollTo(0, 0);
   return (
     <ContactsStyled>
       <div className="container">

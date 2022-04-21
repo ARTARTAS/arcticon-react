@@ -2,6 +2,7 @@ import React from "react";
 import arrowBlack from "./../../assets/svg/home/arrow_black.svg";
 import img1 from "./../../assets/img/MainPage/BlockThree/logo_img.png";
 import img2 from "./../../assets/img/MainPage/BlockThree/video.gif";
+import { NavLink } from "react-router-dom";
 
 export default function AboutBlock() {
   return (
@@ -57,10 +58,10 @@ export default function AboutBlock() {
               клиентам необходимую гибкость.
             </p>
           </div>
-          <a href="#">
+          <NavLink to="/about">
             Далее
             <img className="icon" src={arrowBlack} alt="" />
-          </a>
+          </NavLink>
         </div>
       </div>
     </section>

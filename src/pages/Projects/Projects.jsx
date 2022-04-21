@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import map from "./../../assets/img/MainPage/BlockSeven/map.png";
-
+import button from "./../../assets/svg/home/arrow_black.svg";
 import styled from "styled-components";
 import Project from "../Project/Project";
 
@@ -370,6 +370,7 @@ const ProjectsStyles = styled.div`
         align-items: center;
         transition: 0.2s ease-in-out;
         background: none;
+        gap: 10px;
 
         &:hover {
           color: #ffc729;
@@ -489,6 +490,7 @@ const ProjectsStyles = styled.div`
     }
   }
 `;
+
 const Item = ({ index, project, showProject, col }) => {
   if (index <= col) {
     return (
@@ -506,7 +508,7 @@ const Item = ({ index, project, showProject, col }) => {
   }
 };
 
-export default function Projects(props) {
+export default function Projects() {
   const [link, setLink] = useState(false);
   const [col, setCol] = useState(9);
 
@@ -520,14 +522,14 @@ export default function Projects(props) {
     setLink(true);
   }
 
-  function changeLink() {
-    setLink(false);
-  }
+  // function changeLink() {
+  //   setLink(false);
+  // }
 
   return (
     <>
       {link == true ? (
-        <Project project={project} changeLink={changeLink} />
+        <Project project={project} />
       ) : (
         <ProjectsStyles>
           <div className="container">
@@ -552,6 +554,7 @@ export default function Projects(props) {
                 </div>
                 <button className="more" onClick={() => setCol(col + 10)}>
                   Еще
+                  <img src={button} alt="button" />
                 </button>
               </div>
             </div>
