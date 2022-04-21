@@ -734,7 +734,7 @@ export default function LobbyBlock() {
 
   let startPosition = 0;
   let endPosition = 0;
-  var scrollPosition = 0;
+  var scrollPosition = section;
   var scroll = false;
 
   const cahngeBlockTime = 600;
@@ -776,14 +776,6 @@ export default function LobbyBlock() {
       setSection(scrollPosition);
       UnlockScroll();
     }, cahngeBlockTime);
-
-    if (scrollPosition == sections.length - 1) {
-      setTimeout(() => {
-        $("body").css({
-          overflowY: "visible",
-        });
-      }, cahngeBlockTime);
-    }
   }
 
   function UnlockScroll() {
@@ -809,7 +801,10 @@ export default function LobbyBlock() {
       endPosition = e.changedTouches[0].pageY;
       if (startPosition < endPosition && startPosition < endPosition - 70) {
         ScrollTop();
-      } else if (startPosition > endPosition && startPosition - 70 > endPosition) {
+      } else if (
+        startPosition > endPosition &&
+        startPosition - 70 > endPosition
+      ) {
         ScrollBottom();
       }
     };
@@ -818,18 +813,36 @@ export default function LobbyBlock() {
   function getSection() {
     switch (section) {
       case 0:
-        return <BlockOne scrollSetting={setScrollSettings} animationTime={animationTime} />;
+        return (
+          <BlockOne
+            scrollSetting={setScrollSettings}
+            animationTime={animationTime}
+          />
+        );
       case 1:
-        return <BlockTwo scrollSetting={setScrollSettings} animationTime={animationTime}  />;
+        return (
+          <BlockTwo
+            scrollSetting={setScrollSettings}
+            animationTime={animationTime}
+          />
+        );
       case 2:
-        return <BlockThree scrollSetting={setScrollSettings} animationTime={animationTime}  />;
+        return (
+          <BlockThree
+            scrollSetting={setScrollSettings}
+            animationTime={animationTime}
+          />
+        );
     }
   }
 
   useEffect(() => {
-    return () => {
-      setScrollSettings();
-    };
+    setScrollSettings();
+    if (window.scrollY > 0) {
+      scrollPosition = 2;
+      setSection(2);
+      $("body").css("overflowY", "visible");
+    }
   }, []);
 
   return <LobbyBlockStyles>{getSection()}</LobbyBlockStyles>;

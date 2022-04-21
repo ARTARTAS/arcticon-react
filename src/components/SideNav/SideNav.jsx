@@ -56,12 +56,12 @@ const SideNavStyles = styled.div`
   }
 `;
 
-export default function SideNav() {
+export default function SideNav(props) {
   return (
     <SideNavStyles>
       <div className="top">
         <div className="block">
-          <button className="block__info">
+          <button onClick={props.scrollToTop} className="block__info">
             <img src={home} alt="home" />
           </button>
         </div>

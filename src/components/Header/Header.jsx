@@ -422,7 +422,7 @@ export default function Header() {
                   <div className="mail">
                     <a href="mailto:info@arcticcon.ru">info@arcticcon.ru</a>
                   </div>
-                  <div class="icons">
+                  <div className="icons">
                     <NavLink to="/contacts">
                       {location.pathname === "/" ? (
                         <img src={locationIcon} alt="" />

@@ -14,6 +14,9 @@ export default function BlockThree(props) {
   const md1 = 1199.98;
 
   function show() {
+    $("body").css({
+      overflowY: "visible",
+    });
     $(".one__three_block .info a").on("click", function () {
       $(".modal__three").css("z-index", "100");
       $(".modal__three").animate({ opacity: 1 }, 500);

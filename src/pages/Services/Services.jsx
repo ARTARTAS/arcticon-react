@@ -384,7 +384,6 @@ const ServicesStyles = styled.div`
   section .menu .nav__column_list li a:hover {
     text-decoration: underline;
   }
-  /*# sourceMappingURL=services.css.map */
 `;
 
 export default function Services() {

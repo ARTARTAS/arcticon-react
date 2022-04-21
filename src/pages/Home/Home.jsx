@@ -9,9 +9,10 @@ import MapBlock from "../../components/MapBlock/MapBlock";
 import NewsBlock from "../../components/NewsBlock/NewsBlock";
 import ServicesBlock from "../../components/ServicesBlock/ServicesBlock";
 import styled from "styled-components";
-
+import $ from "jquery";
 import Preloader from "../../components/Preloader/Preloader";
 import SideNav from "../../components/SideNav/SideNav";
+import { NavLink, useLocation } from "react-router-dom";
 
 const HomeStyled = styled.div`
   .container {
@@ -3641,8 +3642,12 @@ const HomeStyled = styled.div`
 `;
 
 export default function Home() {
-  let preloader = sessionStorage.getItem("preloader")
+  let preloader = sessionStorage.getItem("preloader");
   const [isLoading, setLoading] = useState(preloader == null ? true : false);
+
+  function scrollToTop() {
+    window.scrollTo(0, 0);
+  }
 
   const videoIsLoaded = () => {
     setLoading(false);
@@ -3655,7 +3660,7 @@ export default function Home() {
         <Preloader loaded={videoIsLoaded}></Preloader>
       ) : (
         <div>
-          <SideNav />
+          <SideNav scrollToTop={scrollToTop} />
           <LobbyBlock />
           <NewsBlock />
           <AboutBlock />
