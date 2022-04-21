@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import img1 from "./../../assets/img/logo.png";
 import img1_1 from "./../../assets/img/logo_black.png";
-import img2 from "./../../assets/svg/home/location.svg";
-import img3 from "./../../assets/svg/home/mail.svg";
-import img4 from "./../../assets/svg/home/facebook.svg";
+import locationIcon from "./../../assets/svg/home/location.svg";
+import locationBlack from "./../../assets/svg/home/location_black.svg";
+import mail from "./../../assets/svg/home/mail.svg";
+import mailBlack from "./../../assets/svg/home/mail_black.svg";
+import facebook from "./../../assets/svg/home/facebook.svg";
+import facebook_black from "./../../assets/svg/home/facebook_black.svg";
 import loup from "./../../assets/svg/home/loup.svg";
 import loupBlack from "./../../assets/svg/home/loup_black.svg";
 import dots from "./../../assets/svg/home/menu.svg";
@@ -421,13 +424,25 @@ export default function Header() {
                   </div>
                   <div class="icons">
                     <NavLink to="/contacts">
-                      <img src={img2} alt="" />
+                      {location.pathname === "/" ? (
+                        <img src={locationIcon} alt="" />
+                      ) : (
+                        <img src={locationBlack} alt="" />
+                      )}
                     </NavLink>
                     <a href="">
-                      <img src={img3} alt="" />
+                      {location.pathname === "/" ? (
+                        <img src={mail} alt="" />
+                      ) : (
+                        <img src={mailBlack} alt="" />
+                      )}
                     </a>
                     <a href="">
-                      <img src={img4} alt="" />
+                      {location.pathname === "/" ? (
+                        <img src={facebook} alt="" />
+                      ) : (
+                        <img src={facebook_black} alt="" />
+                      )}
                     </a>
                   </div>
                 </div>
