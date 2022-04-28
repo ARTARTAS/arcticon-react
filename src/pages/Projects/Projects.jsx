@@ -522,14 +522,14 @@ export default function Projects() {
     setLink(true);
   }
 
-  // function changeLink() {
-  //   setLink(false);
-  // }
+  function changeLink() {
+    setLink(false);
+  }
 
   return (
     <>
       {link == true ? (
-        <Project project={project} />
+        <Project project={project} back={changeLink} />
       ) : (
         <ProjectsStyles>
           <div className="container">
@@ -546,6 +546,7 @@ export default function Projects() {
                   {state.projects.map((project, index) => (
                     <Item
                       project={project}
+                      key={index}
                       index={index}
                       showProject={showProject}
                       col={col}

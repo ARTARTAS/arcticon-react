@@ -14,12 +14,12 @@ export default function EquipmentBlock() {
           <div className="eight__block_list">
             <div className="card">
               <div className="card__info">
-                <a href="#" className="card__info_img">
+                <a href="" className="card__info_img">
                   <img src={img1} alt="" />
                 </a>
                 <div className="card__info_bottom">
                   <h3>Трансформаторы</h3>
-                  <a href="#">
+                  <a href="">
                     Подробнее
                     <img className="icon" src={arrowOrange} alt="" />
                   </a>
@@ -28,12 +28,12 @@ export default function EquipmentBlock() {
             </div>
             <div className="card">
               <div className="card__info">
-                <a href="#" className="card__info_img">
+                <a href="" className="card__info_img">
                   <img src={img1} alt="" />
                 </a>
                 <div className="card__info_bottom">
                   <h3>Трансформаторы</h3>
-                  <a href="#">
+                  <a href="">
                     Подробнее
                     <img className="icon" src={arrowOrange} alt="" />
                   </a>
@@ -42,12 +42,12 @@ export default function EquipmentBlock() {
             </div>
             <div className="card">
               <div className="card__info">
-                <a href="#" className="card__info_img">
+                <a href="" className="card__info_img">
                   <img src={img1} alt="" />
                 </a>
                 <div className="card__info_bottom">
                   <h3>Трансформаторы</h3>
-                  <a href="#">
+                  <a href="">
                     Подробнее
                     <img className="icon" src={arrowOrange} alt="" />
                   </a>
@@ -56,12 +56,12 @@ export default function EquipmentBlock() {
             </div>
             <div className="card">
               <div className="card__info">
-                <a href="#" className="card__info_img">
+                <a href="" className="card__info_img">
                   <img src={img1} alt="" />
                 </a>
                 <div className="card__info_bottom">
                   <h3>Трансформаторы</h3>
-                  <a href="#">
+                  <a href="">
                     Подробнее
                     <img className="icon" src={arrowOrange} alt="" />
                   </a>
@@ -70,12 +70,12 @@ export default function EquipmentBlock() {
             </div>
             <div className="card">
               <div className="card__info">
-                <a href="#" className="card__info_img">
+                <a href="" className="card__info_img">
                   <img src={img1} alt="" />
                 </a>
                 <div className="card__info_bottom">
                   <h3>Трансформаторы</h3>
-                  <a href="#">
+                  <a href="">
                     Подробнее
                     <img className="icon" src={arrowOrange} alt="" />
                   </a>
@@ -84,7 +84,7 @@ export default function EquipmentBlock() {
             </div>
           </div>
           <div className="eight__block_button">
-            <a href="#">
+            <a href="">
               Ещё
               <img className="icon" src={arrowBlack} alt="" />
             </a>

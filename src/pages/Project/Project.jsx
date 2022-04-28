@@ -123,6 +123,7 @@ const ProjectStyles = styled.div`
           font-size: 20px;
           padding: 10px 0px;
           line-height: 130%;
+          list-style: inside;
 
           @media (max-width: 1199.98px) {
             font-size: 18px;
@@ -217,12 +218,12 @@ export default function Project(props) {
   window.scrollTo(0, 0);
   return (
     <ProjectStyles>
-      <div class="container">
-        <div class="block">
-          <div class="block__title">
+      <div className="container">
+        <div className="block">
+          <div className="block__title">
             <h1>Реализованные проекты</h1>
           </div>
-          <div class="block__page-nav">
+          <div className="block__page-nav">
             <nav>
               <ul>
                 <li>
@@ -232,20 +233,18 @@ export default function Project(props) {
                 </li>
                 <li>
                   <img className="icon" src={arrow} alt="" />
-                  {/* <svg class="icon">
-                    <use xlink:href="<?php echo get_template_directory_uri(); ?>/svg/service-page.svg#arrow"></use>
-                  </svg> */}
                 </li>
                 <li>
-                  <NavLink className="button" to="/projects">
+                  <NavLink
+                    className="button"
+                    to="/projects"
+                    onClick={props.back}
+                  >
                     Реализованные проекты
                   </NavLink>
                 </li>
                 <li>
                   <img className="icon" src={arrow} alt="" />
-                  {/* <svg class="icon">
-                    <use xlink:href="<?php echo get_template_directory_uri(); ?>/svg/service-page.svg#arrow"></use>
-                  </svg> */}
                 </li>
                 <li>
                   <a src="#" className="button">
@@ -254,34 +253,35 @@ export default function Project(props) {
                 </li>
               </ul>
               <ul>
-                <li class="to-left">
+                <li className="to-left">
                   <img className="icon" src={arrow} alt="" />
-                  {/* <svg class="icon">
-                    <use xlink:href="<?php echo get_template_directory_uri(); ?>/svg/service-page.svg#arrow"></use>
-                  </svg> */}
                 </li>
                 <li>
-                  <NavLink className="button" to="/projects">
+                  <NavLink
+                    className="button"
+                    to="/projects"
+                    onClick={props.back}
+                  >
                     Назад
                   </NavLink>
                 </li>
               </ul>
             </nav>
           </div>
-          <div class="block__list">
+          <div className="block__list">
             <ul>
               {props.project[0].list.map((text, index) => (
                 <li key={index}>{text}</li>
               ))}
             </ul>
           </div>
-          <menu class="menu">
-            <nav class="nav">
-              <div class="nav__column">
-                <div class="nav__column_title">
+          <menu className="menu">
+            <nav className="nav">
+              <div className="nav__column">
+                <div className="nav__column_title">
                   <a href="#">Структура организации</a>
                 </div>
-                <ul class="nav__column_list">
+                <ul className="nav__column_list">
                   <li>
                     <a href="#">Руководство</a>
                   </li>
@@ -299,11 +299,11 @@ export default function Project(props) {
                   </li>
                 </ul>
               </div>
-              <div class="nav__column">
-                <div class="nav__column_title">
+              <div className="nav__column">
+                <div className="nav__column_title">
                   <a href="#">Оборудование</a>
                 </div>
-                <ul class="nav__column_list">
+                <ul className="nav__column_list">
                   <li>
                     <a href="#">Трансформаторы</a>
                   </li>
@@ -366,11 +366,11 @@ export default function Project(props) {
                   </li>
                 </ul>
               </div>
-              <div class="nav__column">
-                <div class="nav__column_title">
+              <div className="nav__column">
+                <div className="nav__column_title">
                   <a href="#">Услуги и сервис</a>
                 </div>
-                <ul class="nav__column_list">
+                <ul className="nav__column_list">
                   <li>
                     <a href="#">ЕРСМ</a>
                   </li>
@@ -397,11 +397,11 @@ export default function Project(props) {
                   </li>
                 </ul>
               </div>
-              <div class="nav__column">
-                <div class="nav__column_title">
+              <div className="nav__column">
+                <div className="nav__column_title">
                   <a href="#">О нас</a>
                 </div>
-                <ul class="nav__column_list">
+                <ul className="nav__column_list">
                   <li>
                     <a href="#">Ключевые проекты</a>
                   </li>
@@ -419,11 +419,11 @@ export default function Project(props) {
                   </li>
                 </ul>
               </div>
-              <div class="nav__column">
-                <div class="nav__column_title">
+              <div className="nav__column">
+                <div className="nav__column_title">
                   <a href="#">Контакты</a>
                 </div>
-                <ul class="nav__column_list">
+                <ul className="nav__column_list">
                   <li>
                     <a href="#">Пресс-центр</a>
                   </li>

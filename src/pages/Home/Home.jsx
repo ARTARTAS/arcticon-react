@@ -2836,9 +2836,24 @@ const HomeStyled = styled.div`
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    @media (max-width: 1199.98px) {
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 19px;
+    }
+    @media (max-width: 991.98px) {
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 18px;
+    }
+
+    @media (max-width: 767.98px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 17px;
+    }
   }
 
   .eight__block_list .card {
@@ -2846,9 +2861,6 @@ const HomeStyled = styled.div`
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -2856,9 +2868,16 @@ const HomeStyled = styled.div`
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    margin: 20px;
     height: 270px;
     min-width: 200px;
+    width: auto;
+
+    @media (max-width: 1199.98px) {
+      min-width: 167px;
+    }
+    @media (max-width: 767.98px) {
+      min-width: 126px;
+    }
   }
 
   .eight__block_list .card__info {
@@ -2892,6 +2911,7 @@ const HomeStyled = styled.div`
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    gap: 10px;
   }
 
   .eight__block_list .card__info_img {
@@ -2975,11 +2995,26 @@ const HomeStyled = styled.div`
     font-size: 12px;
     border: 1px solid #ffc729;
     padding: 10px 14px;
+
+    @media (max-width: 1199.98px) {
+      font-size: 11px;
+      padding: 9px 13px;
+    }
+
+    @media (max-width: 991.98px) {
+      font-size: 10px;
+      padding: 8px 11px;
+    }
+
+    @media (max-width: 479.98px) {
+      font-size: 8px;
+      padding: 8px 10px;
+    }
   }
 
   .eight__block_list .card__info_bottom a .icon {
-    width: 26px;
-    height: 12px;
+    width: 20px;
+    height: 10px;
   }
 
   .eight__block_list .card__info_bottom a svg {
@@ -3655,9 +3690,8 @@ export default function Home() {
   };
 
   useEffect(() => {
-    fetchData()
+    fetchData();
   }, []);
-
 
   // const newData = "dcp";
 
