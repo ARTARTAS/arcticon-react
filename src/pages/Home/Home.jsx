@@ -9,10 +9,10 @@ import MapBlock from "../../components/MapBlock/MapBlock";
 import NewsBlock from "../../components/NewsBlock/NewsBlock";
 import ServicesBlock from "../../components/ServicesBlock/ServicesBlock";
 import styled from "styled-components";
-import $ from "jquery";
 import Preloader from "../../components/Preloader/Preloader";
 import SideNav from "../../components/SideNav/SideNav";
-import { NavLink, useLocation } from "react-router-dom";
+import store from "../../redux/store";
+import { AddData, fetchData } from "../../redux/actions";
 
 const HomeStyled = styled.div`
   .container {
@@ -3653,6 +3653,18 @@ export default function Home() {
     setLoading(false);
     sessionStorage.setItem("preloader", true);
   };
+
+  useEffect(() => {
+    fetchData()
+  }, []);
+
+
+  // const newData = "dcp";
+
+  // const addNewData = (newData) => {
+  //   AddData(newData);
+  // }
+  // addNewData(newData);
 
   return (
     <HomeStyled>

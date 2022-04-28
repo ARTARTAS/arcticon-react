@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import $ from "jquery";
-
 import styled from "styled-components";
 import BlockOne from "./Blocks/BlockOne";
 import BlockTwo from "./Blocks/BlockTwo";
