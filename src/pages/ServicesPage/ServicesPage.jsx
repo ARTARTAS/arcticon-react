@@ -1,7 +1,8 @@
 import React from "react";
-import img1 from "./../../assets/svg/services/arrow.svg";
+import arrow from "./../../assets/svg/services/arrow.svg";
 
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const ServicesPageStyles = styled.div`
   .container {
@@ -26,8 +27,6 @@ const ServicesPageStyles = styled.div`
 
   section {
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -88,15 +87,11 @@ const ServicesPageStyles = styled.div`
   }
 
   section .block__page-nav ul {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
     padding: 10px 0px;
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
     height: fit-content;
   }
 
@@ -183,8 +178,6 @@ const ServicesPageStyles = styled.div`
 
   section .block .menu .nav {
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
@@ -200,7 +193,6 @@ const ServicesPageStyles = styled.div`
 
   @media (max-width: 767.98px) {
     section .block .menu .nav {
-      display: -ms-grid;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
     }
@@ -208,8 +200,6 @@ const ServicesPageStyles = styled.div`
 
   @media (max-width: 479.98px) {
     section .block .menu .nav {
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex;
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
@@ -260,7 +250,6 @@ const ServicesPageStyles = styled.div`
   section .block .menu .nav__column_list li a:hover {
     text-decoration: underline;
   }
-  /*# sourceMappingURL=service-page.css.map */
 `;
 
 export default function ServicesPage() {
@@ -277,16 +266,16 @@ export default function ServicesPage() {
               <nav>
                 <ul>
                   <li>
-                    <a href="/">Главная</a>
+                    <NavLink to="/">Главная</NavLink>
                   </li>
                   <li>
-                    <img className="icon" src={img1} alt="" />
+                    <img className="icon" src={arrow} alt="" />
                   </li>
                   <li>
                     <a href="/services/">Услуги и сервис</a>
                   </li>
                   <li>
-                    <img className="icon" src={img1} alt="" />
+                    <img className="icon" src={arrow} alt="" />
                   </li>
                   <li>
                     <a href="">ЕРСМ</a>
@@ -294,7 +283,7 @@ export default function ServicesPage() {
                 </ul>
                 <ul>
                   <li className="to-left">
-                    <img className="icon" src={img1} alt="" />
+                    <img className="icon" src={arrow} alt="" />
                   </li>
                   <li>
                     <a href="/services/">Назад</a>

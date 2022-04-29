@@ -34,6 +34,11 @@ const MobileMenuStyles = styled.div`
       -webkit-box-align: end;
       -ms-flex-align: end;
       align-items: flex-end;
+
+      @media (max-width: 767.98px) {
+        width: 100%;
+        justify-content: center;
+      }
     }
 
     .main-nav .exit {
@@ -171,6 +176,15 @@ const MobileMenuStyles = styled.div`
       transform-origin: 0 0;
       -webkit-transition: all 0.275s 0.1s;
       transition: all 0.275s 0.1s;
+
+      @media (max-width: 767.98px) {
+        transform: translateX(0%) skew(0deg);
+        width: 100%;
+        padding: 40px;
+      }
+      @media (max-width: 479.98px) {
+        padding: 20px;
+      }
     }
 
     .main-nav li {
@@ -179,6 +193,9 @@ const MobileMenuStyles = styled.div`
       text-align: right;
       -webkit-transform: skew(16deg);
       transform: skew(16deg);
+      @media (max-width: 767.98px) {
+        transform: skew(0deg);
+      }
     }
 
     /* Apparition effect on links */
