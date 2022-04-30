@@ -2773,7 +2773,7 @@ const HomeStyled = styled.div`
   .seven__block img {
     width: 100%;
   }
-  
+
   .nine {
     position: relative;
     width: 100%;

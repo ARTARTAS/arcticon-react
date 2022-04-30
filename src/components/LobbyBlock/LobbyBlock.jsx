@@ -8,7 +8,7 @@ import BlockThree from "./Blocks/BlockThree";
 const LobbyBlockStyles = styled.div`
   overflow: hidden;
   width: 100%;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 120px);
   background: black;
 
   .one {
