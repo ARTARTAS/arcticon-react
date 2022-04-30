@@ -557,7 +557,7 @@ export default function Footer() {
                 </div>
               </div>
             </div>
-            <div className="follow__mobile">
+            {/* <div className="follow__mobile">
               <h4>Follow us: </h4>
               <a href="">
                 {" "}
@@ -575,7 +575,7 @@ export default function Footer() {
                 {" "}
                 <img src={img2} alt="" />
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="line"></div>
@@ -590,7 +590,7 @@ export default function Footer() {
                   владельцев сайта.
                 </p>
               </div>
-              <div className="follow">
+              {/* <div className="follow">
                 <h4>Follow us: </h4>
                 <a href="">
                   {" "}
@@ -608,7 +608,7 @@ export default function Footer() {
                   {" "}
                   <img src={img2} alt="" />
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

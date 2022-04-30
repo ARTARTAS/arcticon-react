@@ -72,11 +72,22 @@ export default function ChoiceBlockCarousel() {
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
   };
+
   return (
     <StyledCarousel>
       <Slider {...settings}>
         <div className="item">
-          <img src={img1} alt="" />
+          <div
+            className="top_img"
+            onMouseOver={(e) => {
+              e.target.childNodes[0].src = img2;
+            }}
+            onMouseOut={(e) => {
+              e.target.childNodes[0].src = img1;
+            }}
+          >
+            <img src={img1} alt="" />
+          </div>
           <img src={img2} alt="" />
         </div>
         <div className="item">

@@ -1,13 +1,9 @@
 import React from "react";
-import arrowBlack from "./../../assets/svg/home/arrow_black.svg";
 import ChoiceBlockCarousel from "../ChoiceBlockCarousel/ChoiceBlockCarousel";
 
 export default function ChoiceBlock() {
   return (
     <section className="six">
-      <button className="next-button">
-        <img className="icon" src={arrowBlack} alt="" />
-      </button>
       <div className="container">
         <div className="six__block">
           <div className="six__block_title">
