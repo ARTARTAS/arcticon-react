@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+
 import AboutBlock from "../../components/AboutBlock/AboutBlock";
 import CarrierBlock from "../../components/CarrierBlock/CarrierBlock";
 import CertificatesBlock from "../../components/CertificatesBlock/CertificatesBlock";
@@ -8,7 +10,6 @@ import LobbyBlock from "../../components/LobbyBlock/LobbyBlock";
 import MapBlock from "../../components/MapBlock/MapBlock";
 import NewsBlock from "../../components/NewsBlock/NewsBlock";
 import ServicesBlock from "../../components/ServicesBlock/ServicesBlock";
-import styled from "styled-components";
 import Preloader from "../../components/Preloader/Preloader";
 import SideNav from "../../components/SideNav/SideNav";
 import store from "../../redux/store";
