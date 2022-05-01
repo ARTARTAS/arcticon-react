@@ -282,8 +282,6 @@ const PartnersStyles = styled.div`
   }
 
   section .section__block .block__info .info a {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
