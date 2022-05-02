@@ -42,6 +42,7 @@ const ProductsStyles = styled.div`
 
   .title {
     margin-bottom: 50px;
+
     h1 {
       font-family: "Montserrat", sans-serif;
       font-weight: 700;
@@ -51,19 +52,28 @@ const ProductsStyles = styled.div`
   .search {
     width: 100%;
     margin-bottom: 30px;
+
     &__block {
       width: 50%;
       border-bottom: 1px solid black;
       padding: 10px 20px;
       display: flex;
       justify-content: space-between;
+      gap: 20px;
+
       input {
         font-family: "Montserrat", sans-serif;
         font-size: 18px;
         font-weight: 300;
+        width: 100%;
       }
-      img {
-        width: 15px;
+      button {
+        background: none;
+        cursor: pointer;
+
+        img {
+          width: 15px;
+        }
       }
     }
   }
@@ -461,6 +471,15 @@ export default function Products() {
     makeSort();
   }
 
+  function makeSearch(event) {
+    if (event.type == "click") {
+      console.log("click");
+    }
+    if (event.key === "Enter") {
+      console.log("press enter");
+    }
+  }
+
   useEffect(() => {
     if (productsObject == null) changeProductsObject(productsState);
   }, []);
@@ -473,8 +492,14 @@ export default function Products() {
         </div>
         <div className="search">
           <div className="search__block">
-            <input type="text" placeholder="Найти в каталоге" />
-            <img src={loupBlack} alt="лупа" />
+            <input
+              type="text"
+              placeholder="Найти в каталоге"
+              onKeyDown={makeSearch}
+            />
+            <button onClick={makeSearch}>
+              <img src={loupBlack} alt="лупа" />
+            </button>
           </div>
         </div>
         <div className="sort">
