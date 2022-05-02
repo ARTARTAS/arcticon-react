@@ -451,8 +451,8 @@ export default function Header() {
                     <li className="active">
                       <NavLink to={"/about"}>О нас</NavLink>
                     </li>
-                    <li>
-                      <NavLink to={"/"}>Продукция</NavLink>
+                    <li className="active">
+                      <NavLink to={"/products"}>Продукция</NavLink>
                     </li>
                     <li className="active">
                       <NavLink id="button" to={"/services"}>

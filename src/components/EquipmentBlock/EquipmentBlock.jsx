@@ -407,8 +407,8 @@ export default function EquipmentBlock() {
               <h1>Оборудование</h1>
             </div>
             <div className="eight__block_list">
-              {products.map((product) => (
-                <div className="card">
+              {products.map((product, index) => (
+                <div className="card" key={index}>
                   <div className="card__info">
                     <a href="" className="card__info_img">
                       <img src={product.img} alt="" />
