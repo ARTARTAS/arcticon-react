@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import img1 from "./../../assets/img/Products/Equipment/01.png";
@@ -352,22 +352,30 @@ const ProductsStyles = styled.div`
 `;
 
 export default function Products() {
+  const [productsObject, changeProductsObject] = useState(null);
+
   const products = [
     {
       img: img1,
       title: "Трансформаторы",
+      type: "Трансформаторы",
+      creator: "Cisco",
     },
     {
       img: img2,
       title: "Сетевое и коммутационное оборудование",
+      type: "Трансформаторы",
+      creator: "Polycom",
     },
     {
       img: img3,
       title: "Кабели и провода",
+      creator: "Cisco",
     },
     {
       img: img4,
       title: "Емкостное и теплообменное оборудование",
+      creator: "Cisco",
     },
     {
       img: img5,
@@ -380,18 +388,22 @@ export default function Products() {
     {
       img: img7,
       title: "Системы бесперебойного питания",
+      creator: "Polycom",
     },
     {
       img: img8,
       title: "Контрольно-измерительные приборы и автоматика",
+      creator: "Polycom",
     },
     {
       img: img9,
       title: "Осветительное оборудование",
+      creator: "Polycom",
     },
     {
       img: img10,
       title: "Кабеленесущие системы",
+      creator: "Polycom",
     },
   ];
 
@@ -410,6 +422,49 @@ export default function Products() {
 
   const manufacturers = ["Cisco", "Polycom"];
 
+  let productsState = {
+    type: productsObject != null ? productsObject.type : "",
+    creator: productsObject != null ? productsObject.creator : "",
+    products: products,
+    equipmentType: equipmentType,
+    manufacturers: manufacturers,
+  };
+
+  function makeSort() {
+    if (productsState.type != "" && productsState.creator != "") {
+      productsState.products = productsState.products.filter(
+        (x) =>
+          x.creator == productsState.creator && x.type == productsState.type
+      );
+    } else if (productsState.type != "") {
+      productsState.products = productsState.products.filter(
+        (x) => x.type == productsState.type
+      );
+    } else if (productsState.creator != "") {
+      productsState.products = productsState.products.filter(
+        (x) => x.creator == productsState.creator
+      );
+    } else {
+      productsState.products = products;
+    }
+
+    changeProductsObject(productsState);
+  }
+
+  function changeType(text) {
+    productsState.type = text !== undefined ? text : "";
+    makeSort();
+  }
+
+  function changeCreator(text) {
+    productsState.creator = text !== undefined ? text : "";
+    makeSort();
+  }
+
+  useEffect(() => {
+    if (productsObject == null) changeProductsObject(productsState);
+  }, []);
+
   return (
     <ProductsStyles>
       <div className="container">
@@ -427,35 +482,39 @@ export default function Products() {
             className="equipment"
             type="subcategory-name"
             name="subcategory-name"
-            list={equipmentType}
+            list={productsState.equipmentType}
             title="Тип оборудования"
+            change={changeType}
           />
           <DropDownList
             className="manufacturer"
             type="subcategory-name"
             name="subcategory-name"
-            list={manufacturers}
+            list={productsState.manufacturers}
             title="Производитель"
+            change={changeCreator}
           />
         </div>
         <div className="products">
           <div className="list">
-            {products.map((product, index) => (
-              <div className="card" key={index}>
-                <div className="card__info">
-                  <a href="" className="card__info_img">
-                    <img src={product.img} alt="" />
-                  </a>
-                  <div className="card__info_bottom">
-                    <h3>{product.title}</h3>
-                    <a href="">
-                      Подробнее
-                      <img className="icon" src={arrowOrange} alt="" />
-                    </a>
+            {productsObject != null
+              ? productsObject.products.map((product, index) => (
+                  <div className="card" key={index}>
+                    <div className="card__info">
+                      <a href="" className="card__info_img">
+                        <img src={product.img} alt="" />
+                      </a>
+                      <div className="card__info_bottom">
+                        <h3>{product.title}</h3>
+                        <a href="">
+                          Подробнее
+                          <img className="icon" src={arrowOrange} alt="" />
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                ))
+              : ""}
           </div>
           <div className="button">
             <a href="">
