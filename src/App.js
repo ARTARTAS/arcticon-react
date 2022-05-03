@@ -17,6 +17,9 @@ import Projects from "./pages/Projects/Projects";
 import Project from "./pages/Project/Project";
 import News from "./pages/News/News";
 import Products from "./pages/Products/Products";
+import { getAllCategories } from "./Firebase";
+
+// Get 5 products
 
 function App() {
   let location = useLocation();

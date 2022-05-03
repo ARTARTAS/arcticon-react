@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import arrowBlack from "./../../assets/svg/home/arrow_black.svg";
 import arrowOrange from "./../../assets/svg/arrowOrange.svg";
 import img1 from "./../../assets/img/Products/Equipment/01.png";
@@ -354,7 +354,9 @@ const EquipmentBlockStyles = styled.div`
   }
 `;
 
-export default function EquipmentBlock() {
+export default function EquipmentBlock(props) {
+  const [categories, setCategories] = useState(0);
+
   const products = [
     {
       img: img1,
@@ -398,6 +400,14 @@ export default function EquipmentBlock() {
     },
   ];
 
+  useEffect(() => {
+    if (categories == 0 && props.categories != 0) {
+      setCategories(props.categories);
+    }
+
+    // console.log(categories);
+  }, []);
+
   return (
     <EquipmentBlockStyles>
       <section className="eight">
@@ -407,22 +417,24 @@ export default function EquipmentBlock() {
               <h1>Оборудование</h1>
             </div>
             <div className="eight__block_list">
-              {products.map((product, index) => (
-                <div className="card" key={index}>
-                  <div className="card__info">
-                    <a href="" className="card__info_img">
-                      <img src={product.img} alt="" />
-                    </a>
-                    <div className="card__info_bottom">
-                      <h3>{product.title}</h3>
-                      <a href="">
-                        Подробнее
-                        <img className="icon" src={arrowOrange} alt="" />
-                      </a>
+              {categories != 0
+                ? categories.map((product, index) => (
+                    <div className="card" key={index}>
+                      <div className="card__info">
+                        <a href="" className="card__info_img">
+                          <img src="" alt="" />
+                        </a>
+                        <div className="card__info_bottom">
+                          <h3>{product.name}</h3>
+                          <a href="">
+                            Подробнее
+                            <img className="icon" src={arrowOrange} alt="" />
+                          </a>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              ))}
+                  ))
+                : ""}
             </div>
             <div className="eight__block_button">
               <a href="">

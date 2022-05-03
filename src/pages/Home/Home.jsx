@@ -14,6 +14,7 @@ import Preloader from "../../components/Preloader/Preloader";
 import SideNav from "../../components/SideNav/SideNav";
 import store from "../../redux/store";
 import { AddData, fetchData } from "../../redux/actions";
+import { getAllCategories } from "../../Firebase";
 
 const HomeStyled = styled.div`
   .container {
@@ -3328,6 +3329,8 @@ const HomeStyled = styled.div`
 
 export default function Home() {
   let preloader = sessionStorage.getItem("preloader");
+
+  const [categories, setCategories] = useState(0);
   const [isLoading, setLoading] = useState(preloader == null ? true : false);
 
   function scrollToTop() {
@@ -3341,7 +3344,13 @@ export default function Home() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    // fetchData();
+    if (categories == 0) {
+      getAllCategories().then((e) => {
+        setCategories(e);
+      });
+    }
+
+    console.log(categories);
   }, []);
 
   // const newData = "dcp";
@@ -3355,7 +3364,7 @@ export default function Home() {
     <HomeStyled>
       {isLoading ? (
         <Preloader loaded={videoIsLoaded}></Preloader>
-      ) : (
+      ) : categories != 0 ? (
         <div>
           <SideNav scrollToTop={scrollToTop} />
           <LobbyBlock />
@@ -3364,10 +3373,12 @@ export default function Home() {
           <CarrierBlock />
           <ChoiceBlock />
           <MapBlock />
-          <EquipmentBlock />
+          <EquipmentBlock categories={categories} />
           <ServicesBlock />
           <CertificatesBlock />
         </div>
+      ) : (
+        ""
       )}
     </HomeStyled>
   );

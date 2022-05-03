@@ -1,5 +1,5 @@
 import React from "react";
-import { collectionGroup } from "firebase/firestore";
+import { collectionGroup, limit, startAt } from "firebase/firestore";
 
 import { initializeApp } from "firebase/app";
 import {
@@ -31,13 +31,22 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 
+// export let categories = [];
+
 export const db = getFirestore();
 export const auth = getAuth();
 
-export function getAllCategories() {
+export async function getAllCategories() {
   let categories = [];
-  const colRef = collection(db, "cotegories");
-  await getDocs(colRef)
+  const productsQuery = query(
+    collection(db, "categories"),
+    where('subcollectionID', '==', 0),
+    limit(5)
+  );
+  // const result = await getDocs(productsQuery);
+  // const colRef = collection(db, "categories", where('subcollectionID', '==', ''));
+
+  await getDocs(productsQuery)
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         categories.push({ id: doc.id, name: doc.data().name });
