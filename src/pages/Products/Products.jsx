@@ -95,7 +95,6 @@ const ProductsStyles = styled.div`
       display: grid;
       grid-gap: 20px;
       grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: repeat(2, 1fr);
 
       @media (max-width: 1199.98px) {
         grid-template-columns: repeat(4, 1fr);
@@ -261,10 +260,11 @@ const ProductsStyles = styled.div`
       display: flex;
       justify-content: center;
 
-      a {
+      button {
         display: flex;
         justify-content: center;
         align-items: center;
+        background: none;
 
         font-family: "Montserrat", sans-serif;
         font-weight: 600;
@@ -363,6 +363,7 @@ const ProductsStyles = styled.div`
 
 export default function Products() {
   const [productsObject, changeProductsObject] = useState(null);
+  const [col, setCol] = useState(5);
 
   const products = [
     {
@@ -523,7 +524,7 @@ export default function Products() {
         <div className="products">
           <div className="list">
             {productsObject != null
-              ? productsObject.products.map((product, index) => (
+              ? productsObject.products.slice(0, col).map((product, index) => (
                   <div className="card" key={index}>
                     <div className="card__info">
                       <a href="" className="card__info_img">
@@ -542,10 +543,14 @@ export default function Products() {
               : ""}
           </div>
           <div className="button">
-            <a href="">
+            <button
+              onClick={() => {
+                setCol((col + 5));
+              }}
+            >
               Ещё
               <img className="icon" src={next} alt="button" />
-            </a>
+            </button>
           </div>
         </div>
         <menu className="menu">
