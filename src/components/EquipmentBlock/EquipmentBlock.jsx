@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import arrowBlack from "./../../assets/svg/home/arrow_black.svg";
 import arrowOrange from "./../../assets/svg/arrowOrange.svg";
+import styled from "styled-components";
+
 import img1 from "./../../assets/img/Products/Equipment/01.png";
 import img2 from "./../../assets/img/Products/Equipment/02.png";
 import img3 from "./../../assets/img/Products/Equipment/03.png";
@@ -11,14 +13,12 @@ import img7 from "./../../assets/img/Products/Equipment/07.png";
 import img8 from "./../../assets/img/Products/Equipment/08.png";
 import img9 from "./../../assets/img/Products/Equipment/09.png";
 import img10 from "./../../assets/img/Products/Equipment/10.png";
-import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const EquipmentBlockStyles = styled.div`
   .eight {
     position: relative;
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
@@ -74,12 +74,9 @@ const EquipmentBlockStyles = styled.div`
 
   .eight__block_list {
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: grid;
     grid-gap: 20px;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(2, 1fr);
 
     @media (max-width: 1199.98px) {
       grid-template-columns: repeat(4, 1fr);
@@ -355,6 +352,7 @@ const EquipmentBlockStyles = styled.div`
 `;
 
 export default function EquipmentBlock(props) {
+
   const [categories, setCategories] = useState(0);
 
   const products = [
@@ -401,11 +399,9 @@ export default function EquipmentBlock(props) {
   ];
 
   useEffect(() => {
-    if (categories == 0 && props.categories != 0) {
+    if (categories == 0) {
       setCategories(props.categories);
     }
-
-    // console.log(categories);
   }, []);
 
   return (
@@ -418,14 +414,14 @@ export default function EquipmentBlock(props) {
             </div>
             <div className="eight__block_list">
               {categories != 0
-                ? categories.map((product, index) => (
+                ? categories.slice(0, 5).map((category, index) => (
                     <div className="card" key={index}>
                       <div className="card__info">
                         <a href="" className="card__info_img">
-                          <img src="" alt="" />
+                          <img src={category.img} alt="" />
                         </a>
                         <div className="card__info_bottom">
-                          <h3>{product.name}</h3>
+                          <h3>{category.name}</h3>
                           <a href="">
                             Подробнее
                             <img className="icon" src={arrowOrange} alt="" />
@@ -434,13 +430,28 @@ export default function EquipmentBlock(props) {
                       </div>
                     </div>
                   ))
-                : ""}
+                : products.map((category, index) => (
+                    <div className="card" key={index}>
+                      <div className="card__info">
+                        <a href="" className="card__info_img">
+                          <img src={category.img} alt="" />
+                        </a>
+                        <div className="card__info_bottom">
+                          <h3>{category.name}</h3>
+                          <a href="">
+                            Подробнее
+                            <img className="icon" src={arrowOrange} alt="" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
             </div>
             <div className="eight__block_button">
-              <a href="">
+              <NavLink to="/products">
                 Ещё
                 <img className="icon" src={arrowBlack} alt="" />
-              </a>
+              </NavLink>
             </div>
           </div>
         </div>

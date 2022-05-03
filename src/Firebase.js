@@ -31,29 +31,28 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 
-// export let categories = [];
-
 export const db = getFirestore();
 export const auth = getAuth();
 
-export async function getAllCategories() {
+export async function getCategories(skip) {
   let categories = [];
+
   const productsQuery = query(
     collection(db, "categories"),
-    where('subcollectionID', '==', 0),
+    orderBy("collectionID"),
+    startAt(skip),
     limit(5)
   );
-  // const result = await getDocs(productsQuery);
-  // const colRef = collection(db, "categories", where('subcollectionID', '==', ''));
 
   await getDocs(productsQuery)
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
-        categories.push({ id: doc.id, name: doc.data().name });
+        categories.push({ id: doc.id, name: doc.data().name, img: doc.data().img });
       });
     })
     .catch((err) => {
       console.log(err.message);
     });
+
   return categories;
 }

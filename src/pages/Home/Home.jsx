@@ -12,9 +12,6 @@ import NewsBlock from "../../components/NewsBlock/NewsBlock";
 import ServicesBlock from "../../components/ServicesBlock/ServicesBlock";
 import Preloader from "../../components/Preloader/Preloader";
 import SideNav from "../../components/SideNav/SideNav";
-import store from "../../redux/store";
-import { AddData, fetchData } from "../../redux/actions";
-import { getAllCategories } from "../../Firebase";
 
 const HomeStyled = styled.div`
   .container {
@@ -3327,15 +3324,10 @@ const HomeStyled = styled.div`
   /*# sourceMappingURL=index.css.map */
 `;
 
-export default function Home() {
+export default function Home(props) {
   let preloader = sessionStorage.getItem("preloader");
 
-  const [categories, setCategories] = useState(0);
   const [isLoading, setLoading] = useState(preloader == null ? true : false);
-
-  function scrollToTop() {
-    window.scrollTo(0, 0);
-  }
 
   const videoIsLoaded = () => {
     setLoading(false);
@@ -3344,41 +3336,25 @@ export default function Home() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (categories == 0) {
-      getAllCategories().then((e) => {
-        setCategories(e);
-      });
-    }
-
-    console.log(categories);
   }, []);
-
-  // const newData = "dcp";
-
-  // const addNewData = (newData) => {
-  //   AddData(newData);
-  // }
-  // addNewData(newData);
 
   return (
     <HomeStyled>
       {isLoading ? (
         <Preloader loaded={videoIsLoaded}></Preloader>
-      ) : categories != 0 ? (
+      ) : (
         <div>
-          <SideNav scrollToTop={scrollToTop} />
+          <SideNav />
           <LobbyBlock />
           <NewsBlock />
           <AboutBlock />
           <CarrierBlock />
           <ChoiceBlock />
           <MapBlock />
-          <EquipmentBlock categories={categories} />
+          <EquipmentBlock categories={props.categories} />
           <ServicesBlock />
           <CertificatesBlock />
         </div>
-      ) : (
-        ""
       )}
     </HomeStyled>
   );

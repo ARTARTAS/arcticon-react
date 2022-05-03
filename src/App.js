@@ -17,20 +17,18 @@ import Projects from "./pages/Projects/Projects";
 import Project from "./pages/Project/Project";
 import News from "./pages/News/News";
 import Products from "./pages/Products/Products";
-import { getAllCategories } from "./Firebase";
 
-// Get 5 products
-
-function App() {
+function App(props) {
   let location = useLocation();
   if (location.pathname === "/") $("body").css("overflow", "hidden");
   else $("body").css("overflow", "visible");
 
+  console.log(props.categories);
   return (
     <>
       <Header />
       <Routes>
-        <Route exact path="" element={<Home />} />
+        <Route exact path="" element={<Home categories={props.categories} />} />
         <Route exact path="/about" element={<AboutUs />} />
         <Route exact path="/services" element={<Services />} />
         <Route exact path="/service-page" element={<ServicesPage />} />
@@ -41,7 +39,7 @@ function App() {
         <Route exact path="/projects" element={<Projects />} />
         <Route exact path="/project" element={<Project />} />
         <Route exact path="/news" element={<News />} />
-        <Route exact path="/products" element={<Products />} />
+        <Route exact path="/products" element={<Products categories={props.categories} />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />

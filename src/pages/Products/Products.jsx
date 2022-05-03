@@ -16,6 +16,7 @@ import next from "./../../assets/svg/home/details_black.svg";
 import loupBlack from "./../../assets/svg/home/loup_black.svg";
 import arrowOrange from "./../../assets/svg/arrowOrange.svg";
 import DropDownList from "../../components/DropDownList/DropDownList";
+import { getCategories } from "../../Firebase";
 
 const ProductsStyles = styled.div`
   width: 100%;
@@ -361,11 +362,11 @@ const ProductsStyles = styled.div`
   }
 `;
 
-export default function Products() {
+export default function Products(props) {
   const [productsObject, changeProductsObject] = useState(null);
-  const [col, setCol] = useState(5);
+  const [col, setCol] = useState(props.categories.length);
 
-  const products = [
+  const categories = [
     {
       img: img1,
       title: "Трансформаторы",
@@ -436,27 +437,34 @@ export default function Products() {
   let productsState = {
     type: productsObject != null ? productsObject.type : "",
     creator: productsObject != null ? productsObject.creator : "",
-    products: products,
+    categories: props.categories,
     equipmentType: equipmentType,
     manufacturers: manufacturers,
   };
 
+  function addMoreCategories() {
+    getCategories(col + 1).then((result) => {
+      result.forEach((item) => props.categories.push(item));
+      setCol(col + 5);
+    });
+  }
+
   function makeSort() {
     if (productsState.type != "" && productsState.creator != "") {
-      productsState.products = productsState.products.filter(
+      productsState.categories = productsState.categories.filter(
         (x) =>
           x.creator == productsState.creator && x.type == productsState.type
       );
     } else if (productsState.type != "") {
-      productsState.products = productsState.products.filter(
+      productsState.categories = productsState.categories.filter(
         (x) => x.type == productsState.type
       );
     } else if (productsState.creator != "") {
-      productsState.products = productsState.products.filter(
+      productsState.categories = productsState.categories.filter(
         (x) => x.creator == productsState.creator
       );
     } else {
-      productsState.products = products;
+      productsState.categories = categories;
     }
 
     changeProductsObject(productsState);
@@ -482,6 +490,7 @@ export default function Products() {
   }
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (productsObject == null) changeProductsObject(productsState);
   }, []);
 
@@ -524,28 +533,30 @@ export default function Products() {
         <div className="products">
           <div className="list">
             {productsObject != null
-              ? productsObject.products.slice(0, col).map((product, index) => (
-                  <div className="card" key={index}>
-                    <div className="card__info">
-                      <a href="" className="card__info_img">
-                        <img src={product.img} alt="" />
-                      </a>
-                      <div className="card__info_bottom">
-                        <h3>{product.title}</h3>
-                        <a href="">
-                          Подробнее
-                          <img className="icon" src={arrowOrange} alt="" />
+              ? productsObject.categories
+                  .slice(0, col)
+                  .map((product, index) => (
+                    <div className="card" key={index}>
+                      <div className="card__info">
+                        <a href="" className="card__info_img">
+                          <img src={product.img} alt="" />
                         </a>
+                        <div className="card__info_bottom">
+                          <h3>{product.name}</h3>
+                          <a href="">
+                            Подробнее
+                            <img className="icon" src={arrowOrange} alt="" />
+                          </a>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))
+                  ))
               : ""}
           </div>
           <div className="button">
             <button
               onClick={() => {
-                setCol((col + 5));
+                addMoreCategories();
               }}
             >
               Ещё
