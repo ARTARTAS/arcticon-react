@@ -407,7 +407,7 @@ export default function Header() {
         >
           <div className="header__menu">
             <menu className="menu__main">
-              <NavLink className="logo" to={"/"}>
+              <NavLink className="logo" to={"/"} >
                 {location.pathname === "/" ? (
                   <img src={img1} alt="" />
                 ) : (

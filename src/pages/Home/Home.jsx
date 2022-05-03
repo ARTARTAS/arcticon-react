@@ -3340,7 +3340,8 @@ export default function Home() {
   };
 
   useEffect(() => {
-    fetchData();
+    window.scrollTo(0, 0);
+    // fetchData();
   }, []);
 
   // const newData = "dcp";

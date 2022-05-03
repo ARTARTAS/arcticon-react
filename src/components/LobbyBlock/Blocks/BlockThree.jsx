@@ -32,6 +32,9 @@ export default function BlockThree(props) {
         $(".wrapper").css("overflow", "hidden");
       });
       props.scrollSetting();
+      $("body").css({
+        overflowY: "visible",
+      });
     });
     $(".one__three").css("display", "flex");
     // Show info block
