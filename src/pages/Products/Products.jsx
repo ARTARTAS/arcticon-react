@@ -17,6 +17,8 @@ import loupBlack from "./../../assets/svg/home/loup_black.svg";
 import arrowOrange from "./../../assets/svg/arrowOrange.svg";
 import DropDownList from "../../components/DropDownList/DropDownList";
 import { getCategories } from "../../Firebase";
+import { NavLink } from "react-router-dom";
+import Link from "react-scroll/modules/components/Link";
 
 const ProductsStyles = styled.div`
   width: 100%;
@@ -543,10 +545,10 @@ export default function Products(props) {
                         </a>
                         <div className="card__info_bottom">
                           <h3>{product.name}</h3>
-                          <a href="">
+                          <NavLink to={`/products-list/${product.name}`}>
                             Подробнее
                             <img className="icon" src={arrowOrange} alt="" />
-                          </a>
+                          </NavLink>
                         </div>
                       </div>
                     </div>

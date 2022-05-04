@@ -37,17 +37,17 @@ export const auth = getAuth();
 export async function getCategories(skip) {
   let categories = [];
 
-  const productsQuery = query(
+  const categoriesQuery = query(
     collection(db, "categories"),
     orderBy("collectionID"),
     startAt(skip),
     limit(5)
   );
 
-  await getDocs(productsQuery)
+  await getDocs(categoriesQuery)
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
-        categories.push({ id: doc.id, name: doc.data().name, img: doc.data().img });
+        categories.push({ id: doc.id, ...doc.data() });
       });
     })
     .catch((err) => {
@@ -55,4 +55,66 @@ export async function getCategories(skip) {
     });
 
   return categories;
+}
+
+export async function isSubcategory(name) {
+  const categoriesQuery = query(
+    collection(db, "subcategories"),
+    where("category", "==", name),
+    limit(1)
+  );
+
+  await getDocs(categoriesQuery)
+    .then((snapshot) => {
+      return snapshot.docs.length > 0 ? true : false;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+}
+
+export async function getSubCategories(skip) {
+  let categories = [];
+
+  const categoriesQuery = query(
+    collection(db, "subcategories"),
+    orderBy("collectionID"),
+    startAt(skip),
+    limit(5)
+  );
+
+  await getDocs(categoriesQuery)
+    .then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        categories.push({ id: doc.id, ...doc.data() });
+      });
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+
+  return categories;
+}
+
+export async function  getProducts(category, from, skip) {
+  let products = [];
+
+  const productsQuery = query(
+    collection(db, "products"),
+    where('category', '==', category),
+    where('productID', '>', from),
+    where('productID', '<', skip)
+  );
+
+  await getDocs(productsQuery)
+    .then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        products.push({ id: doc.id, ...doc.data() });
+      });
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+
+  return products;
 }

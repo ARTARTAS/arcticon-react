@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -17,13 +17,13 @@ import Projects from "./pages/Projects/Projects";
 import Project from "./pages/Project/Project";
 import News from "./pages/News/News";
 import Products from "./pages/Products/Products";
+import ProductsList from "./pages/Products/ProductsList";
 
 function App(props) {
   let location = useLocation();
   if (location.pathname === "/") $("body").css("overflow", "hidden");
   else $("body").css("overflow", "visible");
 
-  console.log(props.categories);
   return (
     <>
       <Header />
@@ -38,8 +38,14 @@ function App(props) {
         <Route exact path="/feedback" element={<Feedback />} />
         <Route exact path="/projects" element={<Projects />} />
         <Route exact path="/project" element={<Project />} />
+        <Route exact path="/products-list/:id" element={<ProductsList />} />
         <Route exact path="/news" element={<News />} />
-        <Route exact path="/products" element={<Products categories={props.categories} />} />
+        <Route
+          exact
+          path="/products"
+          element={<Products categories={props.categories} />}
+        />
+        {/* <Route exact path="/products" element={<ProductsList />} /> */}
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
