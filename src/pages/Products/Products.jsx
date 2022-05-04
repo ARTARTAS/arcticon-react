@@ -18,7 +18,6 @@ import arrowOrange from "./../../assets/svg/arrowOrange.svg";
 import DropDownList from "../../components/DropDownList/DropDownList";
 import { getCategories } from "../../Firebase";
 import { NavLink } from "react-router-dom";
-import Link from "react-scroll/modules/components/Link";
 
 const ProductsStyles = styled.div`
   width: 100%;

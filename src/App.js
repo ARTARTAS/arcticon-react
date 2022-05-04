@@ -38,7 +38,7 @@ function App(props) {
         <Route exact path="/feedback" element={<Feedback />} />
         <Route exact path="/projects" element={<Projects />} />
         <Route exact path="/project" element={<Project />} />
-        <Route exact path="/products-list/:id" element={<ProductsList />} />
+        <Route exact path="/products-list/:data" element={<ProductsList />} />
         <Route exact path="/news" element={<News />} />
         <Route
           exact

@@ -310,6 +310,7 @@ export default function MobileMenu({ setMenu, visibleScroll }) {
                 className="close-button"
                 id="close-button"
                 onClick={() => {
+                  visibleScroll();
                   setMenu(false);
                 }}
               >

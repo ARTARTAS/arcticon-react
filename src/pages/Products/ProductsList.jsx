@@ -34,9 +34,9 @@ export default function ProductsList(props) {
   // let location = useLocation();
   // console.log(location)
 
-  let { id } = useParams();
+  let { data } = useParams();
 
-  console.log(id)
+  console.log(data)
 
   const products = [
     {
