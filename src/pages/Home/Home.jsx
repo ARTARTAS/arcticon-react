@@ -3351,7 +3351,7 @@ export default function Home(props) {
           <CarrierBlock />
           <ChoiceBlock />
           <MapBlock />
-          <EquipmentBlock categories={props.categories} />
+          <EquipmentBlock equipments={props.equipments} />
           <ServicesBlock />
           <CertificatesBlock />
         </div>

@@ -13,6 +13,7 @@ import img7 from "./../../assets/img/Products/Equipment/07.png";
 import img8 from "./../../assets/img/Products/Equipment/08.png";
 import img9 from "./../../assets/img/Products/Equipment/09.png";
 import img10 from "./../../assets/img/Products/Equipment/10.png";
+
 import { NavLink } from "react-router-dom";
 
 const EquipmentBlockStyles = styled.div`
@@ -352,55 +353,54 @@ const EquipmentBlockStyles = styled.div`
 `;
 
 export default function EquipmentBlock(props) {
+  const [equipments, setEquipments] = useState(0);
 
-  const [categories, setCategories] = useState(0);
-
-  const products = [
-    {
-      img: img1,
-      title: "Тренсформаторы",
-    },
-    {
-      img: img2,
-      title: "Сетевое и коммутационное оборудование",
-    },
-    {
-      img: img3,
-      title: "Кабели и провода",
-    },
-    {
-      img: img4,
-      title: "Емкостное и теплообменное оборудование",
-    },
-    {
-      img: img5,
-      title: "Высоковольтное оборудование",
-    },
-    {
-      img: img6,
-      title: "Щитовое оборудование",
-    },
-    {
-      img: img7,
-      title: "Системы бесперебойного питания",
-    },
-    {
-      img: img8,
-      title: "Контрольно-измерительные приборы и автоматика",
-    },
-    {
-      img: img9,
-      title: "Осветительное оборудование",
-    },
-    {
-      img: img10,
-      title: "Кабеленесущие системы",
-    },
-  ];
+  // const equipments = [
+  //   {
+  //     img: img1,
+  //     title: "Тренсформаторы",
+  //   },
+  //   {
+  //     img: img2,
+  //     title: "Сетевое и коммутационное оборудование",
+  //   },
+  //   {
+  //     img: img3,
+  //     title: "Кабели и провода",
+  //   },
+  //   {
+  //     img: img4,
+  //     title: "Емкостное и теплообменное оборудование",
+  //   },
+  //   {
+  //     img: img5,
+  //     title: "Высоковольтное оборудование",
+  //   },
+  //   {
+  //     img: img6,
+  //     title: "Щитовое оборудование",
+  //   },
+  //   {
+  //     img: img7,
+  //     title: "Системы бесперебойного питания",
+  //   },
+  //   {
+  //     img: img8,
+  //     title: "Контрольно-измерительные приборы и автоматика",
+  //   },
+  //   {
+  //     img: img9,
+  //     title: "Осветительное оборудование",
+  //   },
+  //   {
+  //     img: img10,
+  //     title: "Кабеленесущие системы",
+  //   },
+  // ];
 
   useEffect(() => {
-    if (categories == 0) {
-      setCategories(props.categories);
+    if (equipments == 0) {
+      setEquipments(props.equipments);
     }
   }, []);
 
@@ -413,42 +413,27 @@ export default function EquipmentBlock(props) {
               <h1>Оборудование</h1>
             </div>
             <div className="eight__block_list">
-              {categories != 0
-                ? categories.slice(0, 5).map((category, index) => (
+              {equipments != 0
+                ? equipments.slice(0, 5).map((equipment, index) => (
                     <div className="card" key={index}>
                       <div className="card__info">
                         <a href="" className="card__info_img">
-                          <img src={category.img} alt="" />
+                          <img src={equipment.img} alt="" />
                         </a>
                         <div className="card__info_bottom">
-                          <h3>{category.name}</h3>
-                          <a href="">
+                          <h3>{equipment.name}</h3>
+                          <NavLink to={`/products/${equipment.name}`}>
                             Подробнее
                             <img className="icon" src={arrowOrange} alt="" />
-                          </a>
+                          </NavLink>
                         </div>
                       </div>
                     </div>
                   ))
-                : products.map((category, index) => (
-                    <div className="card" key={index}>
-                      <div className="card__info">
-                        <a href="" className="card__info_img">
-                          <img src={category.img} alt="" />
-                        </a>
-                        <div className="card__info_bottom">
-                          <h3>{category.name}</h3>
-                          <a href="">
-                            Подробнее
-                            <img className="icon" src={arrowOrange} alt="" />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                : ""}
             </div>
             <div className="eight__block_button">
-              <NavLink to="/products">
+              <NavLink to="/equipments">
                 Ещё
                 <img className="icon" src={arrowBlack} alt="" />
               </NavLink>

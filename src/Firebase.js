@@ -73,14 +73,12 @@ export async function isSubcategory(name) {
     });
 }
 
-export async function getSubCategories(skip) {
+export async function getSubCategories(name) {
   let categories = [];
 
   const categoriesQuery = query(
     collection(db, "subcategories"),
-    orderBy("collectionID"),
-    startAt(skip),
-    limit(5)
+    where("category", "==", name)
   );
 
   await getDocs(categoriesQuery)
@@ -96,14 +94,12 @@ export async function getSubCategories(skip) {
   return categories;
 }
 
-export async function  getProducts(category, from, skip) {
+export async function getProducts(category) {
   let products = [];
 
   const productsQuery = query(
     collection(db, "products"),
-    where('category', '==', category),
-    where('productID', '>', from),
-    where('productID', '<', skip)
+    where("category", "==", category)
   );
 
   await getDocs(productsQuery)
@@ -117,4 +113,12 @@ export async function  getProducts(category, from, skip) {
     });
 
   return products;
+}
+
+export async function getProduct(id) {
+  const docRef = doc(db, "products", id);
+
+  getDoc(docRef).then((doc) => {
+    return { id: doc.id, ...doc.data() };
+  });
 }

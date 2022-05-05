@@ -1,26 +1,29 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
+import $ from "jquery";
+
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import AboutUs from "./pages/AboutUs/AboutUs";
-import Contacts from "./pages/Contacts/Contacts";
-import Customers from "./pages/Customers/Customers";
-import Feedback from "./pages/Feedback/Feedback";
 
 import Home from "./pages/Home/Home";
-import Partners from "./pages/Partners/Partners";
+import AboutUs from "./pages/AboutUs/AboutUs";
 import Services from "./pages/Services/Services";
 import ServicesPage from "./pages/ServicesPage/ServicesPage";
-
-import $ from "jquery";
+import Customers from "./pages/Customers/Customers";
+import Partners from "./pages/Partners/Partners";
+import Contacts from "./pages/Contacts/Contacts";
+import Feedback from "./pages/Feedback/Feedback";
 import Projects from "./pages/Projects/Projects";
 import Project from "./pages/Project/Project";
 import News from "./pages/News/News";
+import Equipments from "./pages/Products/Equipments";
+import EquipmentsList from "./pages/Products/EquipmentsList";
 import Products from "./pages/Products/Products";
-import ProductsList from "./pages/Products/ProductsList";
+import Product from "./pages/Products/Product";
 
 function App(props) {
   let location = useLocation();
+
   if (location.pathname === "/") $("body").css("overflow", "hidden");
   else $("body").css("overflow", "visible");
 
@@ -28,7 +31,7 @@ function App(props) {
     <>
       <Header />
       <Routes>
-        <Route exact path="" element={<Home categories={props.categories} />} />
+        <Route exact path="" element={<Home equipments={props.equipments} />} />
         <Route exact path="/about" element={<AboutUs />} />
         <Route exact path="/services" element={<Services />} />
         <Route exact path="/service-page" element={<ServicesPage />} />
@@ -38,14 +41,15 @@ function App(props) {
         <Route exact path="/feedback" element={<Feedback />} />
         <Route exact path="/projects" element={<Projects />} />
         <Route exact path="/project" element={<Project />} />
-        <Route exact path="/products-list/:data" element={<ProductsList />} />
         <Route exact path="/news" element={<News />} />
         <Route
           exact
-          path="/products"
-          element={<Products categories={props.categories} />}
+          path="/equipments"
+          element={<Equipments equipments={props.equipments} />}
         />
-        {/* <Route exact path="/products" element={<ProductsList />} /> */}
+        <Route exact path="/equipment-list/:category" element={<Products />} />
+        <Route exact path="/products/:category" element={<Products />} />
+        <Route exact path="/product/:id" element={<Product />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
