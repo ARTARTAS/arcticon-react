@@ -51,6 +51,7 @@ const EquipnetsStyles = styled.div`
       font-size: 35px;
     }
   }
+
   .search {
     width: 100%;
     margin-bottom: 30px;
@@ -294,21 +295,20 @@ const EquipnetsStyles = styled.div`
 
     .nav {
       width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
       -webkit-box-pack: justify;
       -ms-flex-pack: justify;
       justify-content: space-between;
       gap: 20px;
-
       @media (max-width: 991.98px) {
         gap: 10px;
       }
-
       @media (max-width: 767.98px) {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
       }
-
       @media (max-width: 479.98px) {
         display: flex;
         -webkit-box-orient: vertical;
@@ -316,50 +316,48 @@ const EquipnetsStyles = styled.div`
         -ms-flex-direction: column;
         flex-direction: column;
       }
+
+      &__column {
+        @media (max-width: 767.98px) {
+          margin-bottom: 30px;
+        }
+        @media (max-width: 479.98px) {
+          margin-bottom: 10px;
+        }
+        &:hover {
+          .nav__column_title a {
+            color: #ffd600;
+          }
+        }
+
+        &_title {
+          margin-bottom: 20px;
+          a {
+            font-weight: 400;
+            font-size: 18px;
+            color: #3a3c41;
+          }
+        }
+        &_list {
+          @media (max-width: 479.98px) {
+            display: none;
+          }
+
+          li {
+            a {
+              font-weight: 300;
+              font-size: 12px;
+              line-height: 200%;
+              color: #3a3c41;
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
     }
-  }
-
-  @media (max-width: 767.98px) {
-    .menu .nav__column {
-      margin-bottom: 30px;
-    }
-  }
-
-  @media (max-width: 479.98px) {
-    .menu .nav__column {
-      margin-bottom: 10px;
-    }
-  }
-
-  .menu .nav__column:hover .nav__column_title a {
-    color: #ffd600;
-  }
-
-  .menu .nav__column_title {
-    margin-bottom: 20px;
-  }
-
-  .menu .nav__column_title a {
-    font-weight: 400;
-    font-size: 18px;
-    color: #3a3c41;
-  }
-
-  @media (max-width: 479.98px) {
-    section .menu .nav__column_list {
-      display: none;
-    }
-  }
-
-  .menu .nav__column_list li a {
-    font-weight: 300;
-    font-size: 12px;
-    line-height: 200%;
-    color: #3a3c41;
-  }
-
-  .menu .nav__column_list li a:hover {
-    text-decoration: underline;
   }
 `;
 
@@ -542,7 +540,7 @@ export default function Equipments(props) {
                       </a>
                       <div className="card__info_bottom">
                         <h3>{equipment.name}</h3>
-                        <NavLink to={`/equipments-list/${equipment.name}`}>
+                        <NavLink to={`/equipment-list/${equipment.name}`}>
                           Подробнее
                           <img className="icon" src={arrowOrange} alt="" />
                         </NavLink>

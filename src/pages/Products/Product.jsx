@@ -25,13 +25,15 @@ const ProductStyles = styled.div`
   }
 `;
 
-export default function Product() {
+export default function Product(props) {
   const [product, setProduct] = useState(null);
 
-  let { id } = useParams();
+  console.log("show product")
+  // let { id } = useParams();
 
   useEffect(() => {
-    if (product == null) getProduct(id).then((snap) => setProduct(snap));
+    console.log("get product: " + props.product.name)
+    if (product == null) setProduct(props.product);
   }, []);
 
   return <ProductStyles>{product != null ? product.name : ""}</ProductStyles>;

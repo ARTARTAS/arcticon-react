@@ -17,7 +17,7 @@ import Projects from "./pages/Projects/Projects";
 import Project from "./pages/Project/Project";
 import News from "./pages/News/News";
 import Equipments from "./pages/Products/Equipments";
-import EquipmentsList from "./pages/Products/EquipmentsList";
+import EquipmentList from "./pages/Products/EquipmentsList";
 import Products from "./pages/Products/Products";
 import Product from "./pages/Products/Product";
 
@@ -31,7 +31,11 @@ function App(props) {
     <>
       <Header />
       <Routes>
-        <Route exact path="" element={<Home equipments={props.equipments} />} />
+        <Route
+          exact
+          path=""
+          element={<Home equipments={props.state.equipments} />}
+        />
         <Route exact path="/about" element={<AboutUs />} />
         <Route exact path="/services" element={<Services />} />
         <Route exact path="/service-page" element={<ServicesPage />} />
@@ -45,11 +49,23 @@ function App(props) {
         <Route
           exact
           path="/equipments"
-          element={<Equipments equipments={props.equipments} />}
+          element={<Equipments equipments={props.state.equipments} />}
         />
-        <Route exact path="/equipment-list/:category" element={<Products />} />
-        <Route exact path="/products/:category" element={<Products />} />
-        <Route exact path="/product/:id" element={<Product />} />
+        <Route
+          exact
+          path="/equipment-list/:category"
+          element={<EquipmentList state={props.state} />}
+        />
+        <Route
+          exact
+          path="/products/:category"
+          element={<Products state={props.state} />}
+        />
+        <Route
+          exact
+          path="/product/:name"
+          element={<Product product={props.state.product} />}
+        />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />

@@ -8,17 +8,24 @@ import { getCategories } from "./Firebase";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-function RenderApp(list) {
+const state = {
+  equipments: null,
+  products: null,
+  product: null
+};
+
+function RenderApp(state) {
   root.render(
     <BrowserRouter>
-      <App equipments={list} />
+      <App state={state} />
     </BrowserRouter>
   );
 }
 
 try {
   getCategories(0).then((list) => {
-    RenderApp(list);
+    state.equipments = list;
+    RenderApp(state);
   });
 } catch (error) {
   RenderApp([]);
