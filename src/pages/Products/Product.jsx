@@ -226,6 +226,20 @@ const ProductStyles = styled.div`
           }
         }
       }
+
+      .conditions {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        h2 {
+          font-weight: 600;
+          font-size: 24px;
+        }
+        p {
+          font-size: 18px;
+          line-height: 130%;
+        }
+      }
     }
   }
   .menu {
@@ -427,8 +441,8 @@ export default function Product(props) {
                 </ul>
               </div>
               <div className="conditions">
-                <h2></h2>
-                <p></p>
+                <h2>Условия эксплуатации:</h2>
+                <p>{product.conditions}</p>
               </div>
               <div className="download">
                 <button>
