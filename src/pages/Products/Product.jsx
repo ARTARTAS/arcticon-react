@@ -3,6 +3,8 @@ import { NavLink, useLocation, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 import arrow from "./../../assets/svg/services/arrow.svg";
+import download from "./../../assets/svg/product/arrowDownload.svg";
+import pdf from "./../../assets/img/Products/PDF.jpg";
 
 const ProductStyles = styled.div`
   width: 100%;
@@ -141,6 +143,9 @@ const ProductStyles = styled.div`
               font-weight: 600;
               background: #ffd600;
             }
+            li.remove-border button {
+              border: none;
+            }
           }
         }
       }
@@ -240,6 +245,59 @@ const ProductStyles = styled.div`
           line-height: 130%;
         }
       }
+
+      .download {
+        button {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          font-family: "Montserrat", sans-serif;
+          font-size: 14px;
+          background: none;
+          .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 600;
+
+            .icon {
+              padding-top: 2px;
+              /* height: 10px;
+              width: 20px; */
+            }
+          }
+          h4 {
+            font-weight: 300;
+          }
+        }
+      }
+
+      .projects {
+        font-family: "Montserrat", sans-serif;
+        p {
+          font-size: 16px;
+          span {
+            font-weight: 600;
+          }
+        }
+      }
+
+      .manufacturer {
+        font-family: "Montserrat", sans-serif;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .key {
+          font-size: 30px;
+          font-weight: 700;
+        }
+        .value {
+          font-size: 16px;
+        }
+      }
     }
   }
   .menu {
@@ -318,12 +376,168 @@ const ProductStyles = styled.div`
 export default function Product(props) {
   const [product, setProduct] = useState(null);
   const [characters, setCharacters] = useState(null);
+  const [navigation, setNavigation] = useState("Обзор");
+  const [manufacturer, setManufacturer] = useState(null);
 
   let { subcategory, category, name } = useParams();
 
+  function getProduct() {
+    switch (navigation) {
+      case "Обзор":
+        return (
+          <div className="product">
+            <div className="top">
+              <div className="title">
+                <h1>{product.name}</h1>
+                <p>{product.description}</p>
+                <div className="product_navigation">
+                  <ul>
+                    <li className="active">
+                      <button>Обзор</button>
+                    </li>
+                    <li>
+                      <button onClick={() => setNavigation("Проэкты")}>
+                        Проэкты
+                      </button>
+                    </li>
+                    <li>
+                      <button onClick={() => setNavigation("Производитель")}>
+                        Производитель
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="image">
+                <img src={product.img} alt="изображение продукта" />
+              </div>
+            </div>
+            <div className="bottom">
+              <div className="purpose">
+                <h2>Назначение:</h2>
+                <p>{product.purpose}</p>
+              </div>
+              <div className="characters">
+                <h2>Основные технические характеристики:</h2>
+                <ul>
+                  {characters.length != 0
+                    ? characters.map((character, index) => (
+                        <li key={index}>
+                          <div className="key">{character.key}</div>
+                          <div className="line"></div>
+                          <div className="value">{character.value}</div>
+                        </li>
+                      ))
+                    : ""}
+                </ul>
+              </div>
+              <div className="conditions">
+                <h2>Условия эксплуатации:</h2>
+                <p>{product.conditions}</p>
+              </div>
+              <div className="download">
+                <button>
+                  <img src={pdf} alt="скачать каталог" />
+                  <div className="title">
+                    Скачать каталог{" "}
+                    <img className="icon" src={download} alt="" />
+                  </div>
+                  <h4>(20мб)</h4>
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      case "Проэкты":
+        return (
+          <div className="product">
+            <div className="top">
+              <div className="title">
+                <h1>{product.name}</h1>
+                <p>{product.description}</p>
+                <div className="product_navigation">
+                  <ul>
+                    <li className="remove-border">
+                      <button onClick={() => setNavigation("Обзор")}>
+                        Обзор
+                      </button>
+                    </li>
+                    <li className="active">
+                      <button>Проэкты</button>
+                    </li>
+                    <li>
+                      <button onClick={() => setNavigation("Производитель")}>
+                        Производитель
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="image">
+                <img src={product.img} alt="изображение продукта" />
+              </div>
+            </div>
+            <div className="bottom">
+              {product.projects.map((project) => (
+                <div className="projects">
+                  <p>
+                    {project
+                      .split("*")
+                      .map((text, index) =>
+                        index == 1 ? <span>{text}</span> : text
+                      )}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      case "Производитель":
+        return (
+          <div className="product">
+            <div className="top">
+              <div className="title">
+                <h1>{product.name}</h1>
+                <p>{product.description}</p>
+                <div className="product_navigation">
+                  <ul>
+                    <li>
+                      <button onClick={() => setNavigation("Обзор")}>
+                        Обзор
+                      </button>
+                    </li>
+                    <li className="remove-border">
+                      <button onClick={() => setNavigation("Проэкты")}>
+                        Проэкты
+                      </button>
+                    </li>
+                    <li className="active">
+                      <button>Производитель</button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="image">
+                <img src={product.img} alt="изображение продукта" />
+              </div>
+            </div>
+            <div className="bottom">
+              {manufacturer.length != 0
+                ? manufacturer.map((character, index) => (
+                    <div className="manufacturer" key={index}>
+                      <div className="key">{character.key}</div>
+                      <div className="value">{character.value}</div>
+                    </div>
+                  ))
+                : ""}
+            </div>
+          </div>
+        );
+    }
+  }
+
   useEffect(() => {
-    if (product == null) {
-      setProduct(props.product);
+    if (characters == null) {
       const list = [];
 
       for (const [key, value] of Object.entries(props.product.characters)) {
@@ -332,6 +546,18 @@ export default function Product(props) {
       }
 
       setCharacters(list);
+    }
+    if (manufacturer == null) {
+      const manList = [];
+
+      for (const [key, value] of Object.entries(props.product.manufacturer)) {
+        manList.push({ key: key, value: value });
+      }
+
+      setManufacturer(manList);
+    }
+    if (product == null) {
+      setProduct(props.product);
     }
   }, []);
 
@@ -397,63 +623,7 @@ export default function Product(props) {
             </div>
           </div>
         </div>
-        {product != null ? (
-          <div className="product">
-            <div className="top">
-              <div className="title">
-                <h1>{product.name}</h1>
-                <p>{product.description}</p>
-                <div className="product_navigation">
-                  <ul>
-                    <li className="active">
-                      <button>Обзор</button>
-                    </li>
-                    <li>
-                      <button>Проэкты</button>
-                    </li>
-                    <li>
-                      <button>Производитель</button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="image">
-                <img src={product.img} alt="изображение продукта" />
-              </div>
-            </div>
-            <div className="bottom">
-              <div className="purpose">
-                <h2>Назначение:</h2>
-                <p>{product.purpose}</p>
-              </div>
-              <div className="characters">
-                <h2>Основные технические характеристики:</h2>
-                <ul>
-                  {characters.length != 0
-                    ? characters.map((character, index) => (
-                        <li key={index}>
-                          <div className="key">{character.key}</div>
-                          <div className="line"></div>
-                          <div className="value">{character.value}</div>
-                        </li>
-                      ))
-                    : ""}
-                </ul>
-              </div>
-              <div className="conditions">
-                <h2>Условия эксплуатации:</h2>
-                <p>{product.conditions}</p>
-              </div>
-              <div className="download">
-                <button>
-                  <img src="" alt="скачать каталог" />
-                </button>
-              </div>
-            </div>
-          </div>
-        ) : (
-          ""
-        )}
+        {product != null ? getProduct() : ""}
         <menu className="menu">
           <nav className="nav">
             <div className="nav__column">
