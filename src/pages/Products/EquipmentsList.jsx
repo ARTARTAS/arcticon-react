@@ -3,6 +3,8 @@ import { NavLink, useLocation, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { getSubCategories } from "../../Firebase";
 
+import arrow from "./../../assets/svg/services/arrow.svg";
+import loupBlack from "./../../assets/svg/home/loup_black.svg";
 import buttonArrow from "./../../assets/svg/arrowBlack.svg";
 
 const EquipmentsListStyles = styled.div`
@@ -28,11 +30,93 @@ const EquipmentsListStyles = styled.div`
   }
 
   .navigation {
+    width: 100%;
+    display: flex;
+    gap: 50px;
+    margin-bottom: 40px;
     .path {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      font-family: "Montserrat", sans-serif;
+
+      ul {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        li {
+          width: fit-content;
+          .button {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            font-size: 16px;
+
+            img {
+              height: 40%;
+              width: 25px;
+            }
+          }
+          .active {
+            background: none;
+            font-weight: 600;
+          }
+        }
+      }
+      .back {
+        &_button {
+          font-size: 16px;
+          background: none;
+          display: flex;
+          color: black;
+          align-items: center;
+          gap: 15px;
+
+          .icon {
+            transform: rotate(180deg);
+            height: 40%;
+            width: 25px;
+          }
+        }
+      }
     }
     .search {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 30px;
+
+      &__block {
+        width: 50%;
+        border-bottom: 1px solid black;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+
+        input {
+          font-family: "Montserrat", sans-serif;
+          font-size: 18px;
+          font-weight: 300;
+          width: 100%;
+        }
+        button {
+          background: none;
+          cursor: pointer;
+
+          img {
+            width: 15px;
+          }
+        }
+      }
     }
   }
+
   .equipments {
     .title {
       margin-bottom: 50px;
@@ -82,7 +166,7 @@ const EquipmentsListStyles = styled.div`
             font-style: normal;
           }
         }
-        &_button {
+        .button {
           display: flex;
           justify-content: center;
           width: fit-content;
@@ -181,6 +265,15 @@ export default function EquipmentList(props) {
 
   let { category } = useParams();
 
+  function makeSearch(event) {
+    if (event.type == "click") {
+      console.log("click");
+    }
+    if (event.key === "Enter") {
+      console.log("press enter");
+    }
+  }
+
   useEffect(() => {
     if (equipments == null) {
       getSubCategories(category).then((snap) => setEquipments(snap));
@@ -191,8 +284,41 @@ export default function EquipmentList(props) {
     <EquipmentsListStyles>
       <div className="container">
         <div className="navigation">
-          <div className="path"></div>
-          <div className="search"></div>
+          <div className="path">
+            <ul>
+              <li>
+                <NavLink className="button" to="/">
+                  Главная <img className="icon" src={arrow} alt="" />
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="button" to="/equipments">
+                  Оборудование <img className="icon" src={arrow} alt="" />
+                </NavLink>
+              </li>
+              <li>
+                <button className="button active">{category}</button>
+              </li>
+            </ul>
+            <div className="back">
+              <NavLink className="back_button" to="/equipments" >
+                <img className="icon" src={arrow} alt="" />
+                Назад
+              </NavLink>
+            </div>
+          </div>
+          <div className="search">
+            <div className="search__block">
+              <input
+                type="text"
+                placeholder="Найти в каталоге"
+                onKeyDown={makeSearch}
+              />
+              <button onClick={makeSearch}>
+                <img src={loupBlack} alt="лупа" />
+              </button>
+            </div>
+          </div>
         </div>
         <div className="equipments">
           <div className="title">
@@ -206,7 +332,7 @@ export default function EquipmentList(props) {
                       {equipment.isSubcategory ? (
                         <NavLink
                           onClick={() => (props.state.product = equipment)}
-                          to={`/product/${equipment.name}`}
+                          to={`/product/${category}/${equipment.name}`}
                         >
                           Show Product
                         </NavLink>
@@ -220,11 +346,18 @@ export default function EquipmentList(props) {
                       <h2>{equipment.name}</h2>
                     </div>
                     {equipment.isSubcategory ? (
-                      <button className="equipment_button">change list</button>
+                      <NavLink
+                        className="button"
+                        onClick={() => (props.state.product = equipment)}
+                        to={`/product/${equipment.name}`}
+                      >
+                        Подробнее
+                        <img className="icon" src={buttonArrow} alt="" />
+                      </NavLink>
                     ) : (
                       <NavLink
-                        className="equipment_button"
-                        to={`/products/${equipment.name}`}
+                        className="button"
+                        to={`/products/${category}/${equipment.name}`}
                       >
                         Подробнее
                         <img className="icon" src={buttonArrow} alt="" />

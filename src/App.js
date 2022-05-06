@@ -58,7 +58,7 @@ function App(props) {
         />
         <Route
           exact
-          path="/products/:category"
+          path="/products/:subcategory/:category"
           element={<Products state={props.state} />}
         />
         <Route
