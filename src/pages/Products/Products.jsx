@@ -359,7 +359,7 @@ export default function Products(props) {
                     <NavLink
                       className="button"
                       onClick={() => (props.state.product = product)}
-                      to={`/product/${product.name}`}
+                      to={`/product/${subcategory}/${category}/${product.name}`}
                     >
                       Подробнее
                       <img className="icon" src={buttonArrow} alt="" />
