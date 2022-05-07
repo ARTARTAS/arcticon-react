@@ -1,11 +1,227 @@
 import React, { useEffect } from "react";
 import $ from "jquery";
+import styled from "styled-components";
 import button from "./../../../assets/svg/arrowOrangeWithCircle.svg";
 import backImg from "./../../../assets/img/MainPage/BlockOne/FirstSection/back.png";
 import frontImg from "./../../../assets/img/MainPage/BlockOne/FirstSection/front.png";
-import modalBackgroundImg from "./../../../assets/img/MainPage/ModalOne/background.png";
-import modalFrontImg from "./../../../assets/img/MainPage/ModalOne/front.png";
-import modalBackImg from "./../../../assets/img/MainPage/ModalOne/back.svg";
+import ModalOne from "../Modals/ModalOne";
+
+const BlockOneStyles = styled.div`
+  .one__one {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #0c0c0c;
+
+    @media (max-width: 767.98px) {
+      flex-direction: column;
+    }
+
+    .container {
+      @media (max-width: 767.98px) {
+        height: fit-content;
+      }
+    }
+
+    &_block {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      @media (max-width: 767.98px) {
+        height: fit-content;
+        padding: 0px 20px;
+        margin-top: 60px;
+        padding-top: 50px;
+      }
+
+      .info {
+        height: fit-content;
+        width: 40%;
+        font-family: "Montserrat", sans-serif;
+        z-index: 3;
+
+        @media (max-width: 991.98px) {
+          width: 45%;
+        }
+        @media (max-width: 767.98px) {
+          width: 100%;
+        }
+
+        h1 {
+          color: #ffd600;
+          font-weight: 800;
+          text-transform: uppercase;
+          line-height: 125%;
+          font-size: 48px;
+          padding-bottom: 50px;
+          padding-left: 50px;
+          opacity: 0;
+
+          @media (max-width: 1199.98px) {
+            font-size: 40px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 30px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 27px;
+            padding-left: 20px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 20px;
+          }
+        }
+
+        h2 {
+          font-size: 25px;
+          line-height: 125%;
+          color: #ffffff;
+          padding-bottom: 50px;
+          text-transform: uppercase;
+          opacity: 0;
+
+          @media (max-width: 1199.98px) {
+            font-size: 20px;
+            line-height: 24px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 16px;
+            line-height: 20px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 14px;
+            line-height: 17px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 12px;
+            line-height: 15px;
+          }
+        }
+
+        a {
+          width: fit-content;
+          font-weight: 600;
+          color: #ffc729;
+          font-size: 18px;
+          padding-left: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: 0.2s ease-in-out;
+          opacity: 0;
+
+          &:hover {
+            color: white;
+            margin-left: 10px;
+
+            img {
+              margin-left: 10px;
+            }
+          }
+
+          @media (max-width: 1199.98px) {
+            font-size: 16px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 14px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 13px;
+            padding-left: 20px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 12px;
+          }
+
+          .icon {
+            fill: none;
+            width: 51px;
+            height: 54px;
+
+            @media (max-width: 1199.98px) {
+              width: 48px;
+              height: 51px;
+            }
+            @media (max-width: 991.98px) {
+              width: 45px;
+              height: 48px;
+            }
+            @media (max-width: 767.98px) {
+              width: 42px;
+              height: 45px;
+            }
+          }
+
+          img {
+            margin-left: 5px;
+            transition: 0.2s ease-in-out;
+          }
+        }
+      }
+    }
+
+    .images {
+      overflow: hidden;
+
+      @media (max-width: 767.98px) {
+        position: relative;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+      .back {
+        position: absolute;
+        top: 70px;
+        height: calc(100% - 70px);
+        right: -100%;
+        max-width: none;
+
+        @media (max-width: 991.98px) {
+          height: calc(90% - 50px);
+          top: calc(5% + 50px);
+          right: -60px;
+        }
+        @media (max-width: 767.98px) {
+          top: -100px;
+          height: calc(100% + 100px);
+        }
+      }
+      .front {
+        position: absolute;
+        height: 56%;
+        top: 32%;
+        right: -100%;
+        max-width: none;
+
+        @media (max-width: 991.98px) {
+          height: 50%;
+          top: 34%;
+          right: 70px;
+        }
+        @media (max-width: 767.98px) {
+          top: 0;
+          height: 90%;
+          right: 20px;
+        }
+        @media (max-width: 479.98px) {
+          height: auto;
+          right: 0;
+          width: 100%;
+          min-width: 400px;
+        }
+      }
+    }
+  }
+`;
 
 export default function BlockOne(props) {
   const animationTime = props.animationTime;
@@ -19,24 +235,28 @@ export default function BlockOne(props) {
   function show() {
     props.scrollSetting();
     $(".one__one_block .info a").on("click", function () {
+      console.log("show modal");
       $(".modal__one").css("z-index", "100");
       $(".modal__one").animate({ opacity: 1 }, 500);
       $(".modal__one").css("display", "flex");
       $(".wrapper").css("overflow", "visible");
       $("body").css("overflow", "hidden");
       window.onwheel = () => {};
+      window.ontouchstart = () => {};
+      window.ontouchend = () => {};
     });
     // Modal close button
     $(".modal__one .modal_close-button").on("click", function () {
       $(".modal__one").animate({ opacity: 0 }, 500, function () {
         $(".modal__one").css("display", "none");
         $(".wrapper").css("overflow", "hidden");
-
+        $(".one").css("height", "100%");
+        $(".one__one").css("position", "relative");
         props.scrollSetting();
       });
     });
-    // Show section
 
+    // Show section
     $(".one__one").css("display", "flex");
     // Show info block
     $(".one__one_block .info")
@@ -53,12 +273,9 @@ export default function BlockOne(props) {
     // Show images
     // Front
     if (windowWidth < md4) {
-      $(".one__one .images .front").animate(
-        {
-          right: "0px",
-        },
-        animationTime
-      );
+      $(".one__one .images .front")
+        .delay(100)
+        .animate({ right: 0 }, animationTime);
     } else if (windowWidth < md3) {
       $(".one__one .images .front").animate(
         {
@@ -104,7 +321,7 @@ export default function BlockOne(props) {
   }, []);
 
   return (
-    <>
+    <BlockOneStyles>
       <section className="one__one">
         <div className="container">
           <div className="one__one_block">
@@ -129,64 +346,7 @@ export default function BlockOne(props) {
         </div>
       </section>
 
-      <section className="modal__one">
-        <div className="modal_close-button"></div>
-        <div className="line"></div>
-        <div className="container">
-          <div className="block">
-            <div className="block__image">
-              <img
-                className="modal__one_front"
-                src={modalFrontImg}
-                alt="front image"
-              />
-              <img
-                className="modal__one_background"
-                src={modalBackgroundImg}
-                alt="background iamge"
-              />
-              <img className="back" src={modalBackImg} alt="svg" />
-            </div>
-            <div className="block__info">
-              <div className="block__info_title">
-                <h1>ООО «Артик Энергострой» </h1>
-              </div>
-              <div className="block__info_text">
-                <p>
-                  Предоставляет полный комплекс услуг по проектированию, сборке,
-                  поставке, внедрению и сопровождению автоматизированных систем
-                  управления технологическими процессами (АСУТП) любой
-                  сложности, включая подсистемы противоаварийной и
-                  противопожарной защиты, системы управления энергообеспечением,
-                  системы телемеханики, локальные системы управления блочным
-                  оборудованием, производственно-диспетчерские службы и пр.
-                </p>
-                <p>
-                  Компания является официальным поставщиком таких компаний как
-                  Cisco, Lenovo, Emerson и др., а так же имеет опыт реализации
-                  крупных проектов для таки Заказчиков как ООО ИК «СИБИНТЕК»
-                  (Изготовление и поставка программно-технического комплекса
-                  автоматизированной системы управления с проведением
-                  шеф-монтажных и пусконаладочных работ для центрального пункта
-                  сбора нефти Куюмбинского нефтегазоконденсатного
-                  месторождения), АО «Мурманский морской торговый порт»
-                  (Поставка коммутационного оборудования) и др.
-                </p>
-                <p>
-                  С более подробной информацией об опыте Компании, оборудовании
-                  предоставляемых услугах Вы сможете ознакомится в разделах
-                  сайта (идет активная ссылка на разделы):
-                </p>
-              </div>
-              <div className="buttons">
-                <a href="">ПРОДУКЦИЯ</a>
-                <a href="">УСЛУГИ И СЕРВИС</a>
-                <a href="">Проекты</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+      <ModalOne></ModalOne>
+    </BlockOneStyles>
   );
 }

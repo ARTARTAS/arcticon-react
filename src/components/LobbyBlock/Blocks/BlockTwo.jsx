@@ -17,6 +17,8 @@ export default function BlockTwo(props) {
       $(".wrapper").css("overflow", "visible");
       $("body").css("overflow", "hidden");
       window.onwheel = () => {};
+      window.ontouchstart = () => {};
+      window.ontouchend = () => {};
     });
     // Modal close button
     $(".modal__two .modal_close-button").on("click", function () {

@@ -24,6 +24,8 @@ export default function BlockThree(props) {
       $(".wrapper").css("overflow", "visible");
       $("body").css("overflow", "hidden");
       window.onwheel = () => {};
+      window.ontouchstart = () => {};
+      window.ontouchend = () => {};
     });
     // Modal close button
     $(".modal__three .modal_close-button").on("click", function () {
