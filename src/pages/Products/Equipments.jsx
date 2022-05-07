@@ -545,9 +545,14 @@ export default function Equipments(props) {
               ? equipments.categories.slice(0, col).map((equipment, index) => (
                   <div className="card" key={index}>
                     <div className="card__info">
-                      <a href="" className="card__info_img">
+                      <NavLink
+                        className="card__info_img"
+                        to={`/equipment-list/${translitRusEng(equipment.name, {
+                          slug: true,
+                        })}`}
+                      >
                         <img src={equipment.img} alt="" />
-                      </a>
+                      </NavLink>
                       <div className="card__info_bottom">
                         <h3>{equipment.name}</h3>
                         <NavLink
