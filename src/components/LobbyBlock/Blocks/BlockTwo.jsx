@@ -1,10 +1,206 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import $ from "jquery";
+import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+
 import button from "./../../../assets/svg/arrowOrangeWithCircle.svg";
 import backImg from "./../../../assets/img/MainPage/BlockOne/SecondSection/back.png";
 import frontImg from "./../../../assets/img/MainPage/BlockOne/SecondSection/front.png";
 import modalBackImg from "./../../../assets/img/MainPage/ModalTwo/back.svg";
 import modalFrontImg from "./../../../assets/img/MainPage/ModalTwo/front.png";
+
+const BlockTwoStyles = styled.div`
+  .one__two {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #0c0c0c;
+
+    @media (max-width: 767.98px) {
+      flex-direction: column;
+    }
+
+    .container {
+      @media (max-width: 767.98px) {
+        height: fit-content;
+      }
+    }
+
+    &_block {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      @media (max-width: 767.98px) {
+        height: fit-content;
+        padding: 0px 20px;
+        margin-top: 60px;
+        padding-top: 50px;
+      }
+
+      .info {
+        height: fit-content;
+        width: 50%;
+        font-family: "Montserrat", sans-serif;
+        z-index: 3;
+
+        @media (max-width: 767.98px) {
+          width: 100%;
+        }
+
+        h2 {
+          font-size: 25px;
+          line-height: 125%;
+          color: #ffffff;
+          padding-bottom: 50px;
+          padding-left: 50px;
+          text-transform: uppercase;
+          opacity: 0;
+
+          @media (max-width: 1199.98px) {
+            font-size: 20px;
+            line-height: 24px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 16px;
+            line-height: 20px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 14px;
+            line-height: 17px;
+            padding-left: 20px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 12px;
+            line-height: 15px;
+          }
+        }
+
+        h1 {
+          color: #ffd600;
+          font-weight: 800;
+          text-transform: uppercase;
+          line-height: 125%;
+          font-size: 48px;
+          padding-bottom: 50px;
+          opacity: 0;
+
+          @media (max-width: 1199.98px) {
+            font-size: 40px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 30px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 27px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 20px;
+          }
+        }
+
+        a {
+          width: fit-content;
+          font-weight: 600;
+          color: #ffc729;
+          font-size: 18px;
+          padding-left: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: 0.2s ease-in-out;
+          opacity: 0;
+
+          &:hover {
+            color: white;
+            margin-left: 10px;
+
+            svg {
+              margin-left: 10px;
+            }
+          }
+
+          @media (max-width: 1199.98px) {
+            font-size: 16px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 14px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 13px;
+            padding-left: 20px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 12px;
+          }
+
+          .icon {
+            fill: none;
+            width: 51px;
+            height: 54px;
+
+            @media (max-width: 1199.98px) {
+              width: 48px;
+              height: 51px;
+            }
+            @media (max-width: 991.98px) {
+              width: 45px;
+              height: 48px;
+            }
+            @media (max-width: 767.98px) {
+              width: 42px;
+              height: 45px;
+            }
+          }
+
+          svg {
+            margin-left: 5px;
+            transition: 0.2s ease-in-out;
+          }
+        }
+      }
+    }
+
+    .images {
+      @media (max-width: 767.98px) {
+        position: relative;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+      .back {
+        position: absolute;
+        top: calc(5% + 70px);
+        height: calc(90% - 70px);
+        right: -100%;
+        max-width: none;
+
+        @media (max-width: 991.98px) {
+          height: calc(90% - 50px);
+          top: calc(5% + 50px);
+        }
+        @media (max-width: 767.98px) {
+          top: -100px;
+          height: calc(100% + 100px);
+        }
+      }
+      .front {
+        position: absolute;
+        height: 80%;
+        right: -100%;
+        bottom: 0;
+      }
+    }
+  }
+`;
 
 export default function BlockTwo(props) {
   const animationTime = props.animationTime;
@@ -57,7 +253,7 @@ export default function BlockTwo(props) {
   }, []);
 
   return (
-    <>
+    <BlockTwoStyles>
       <section className="one__two">
         <div className="container">
           <div className="one__two_block">
@@ -139,17 +335,27 @@ export default function BlockTwo(props) {
               </p>
             </div>
             <div className="buttons">
-              <a href="">ПРОДУКЦИЯ</a>
-              <a href="">УСЛУГИ И СЕРВИС</a>
-              <a href="">Проекты</a>
+              <NavLink className="button" to="/equipments">
+                ПРОДУКЦИЯ
+              </NavLink>
+              <NavLink className="button" to="/services">
+                УСЛУГИ И СЕРВИС
+              </NavLink>
+              <NavLink className="button" to="/projects">
+                Проекты
+              </NavLink>
             </div>
             <div className="block__image">
-              <img className="modal__two_front" src={modalFrontImg} alt="front image" />
-              <img  className="back" src={modalBackImg} alt="back image" />
+              <img
+                className="modal__two_front"
+                src={modalFrontImg}
+                alt="front image"
+              />
+              <img className="back" src={modalBackImg} alt="back image" />
             </div>
           </div>
         </div>
       </section>
-    </>
+    </BlockTwoStyles>
   );
 }

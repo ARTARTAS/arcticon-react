@@ -250,10 +250,8 @@ export default function BlockOne(props) {
       $(".modal__one").animate({ opacity: 0 }, 500, function () {
         $(".modal__one").css("display", "none");
         $(".wrapper").css("overflow", "hidden");
-        $(".one").css("height", "100%");
-        $(".one__one").css("position", "relative");
-        props.scrollSetting();
       });
+      props.scrollSetting();
     });
 
     // Show section

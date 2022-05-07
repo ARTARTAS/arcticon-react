@@ -1,10 +1,225 @@
 import React, { useEffect } from "react";
 import $ from "jquery";
+import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+
 import button from "./../../../assets/svg/arrowOrangeWithCircle.svg";
 import backImg from "./../../../assets/img/MainPage/BlockOne/ThreeSection/back.png";
 import frontImg from "./../../../assets/img/MainPage/BlockOne/ThreeSection/front.png";
 import modalBackImg from "./../../../assets/img/MainPage/ModalThree/back.svg";
 import modalFrontImg from "./../../../assets/img/MainPage/ModalThree/front.png";
+
+const BlockTwoStyles = styled.div`
+  .one__three {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #0c0c0c;
+
+    @media (max-width: 767.98px) {
+      flex-direction: column;
+    }
+
+    .container {
+      @media (max-width: 767.98px) {
+        height: fit-content;
+      }
+    }
+
+    &_block {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      @media (max-width: 767.98px) {
+        height: fit-content;
+        padding: 0px 20px;
+        margin-top: 60px;
+        padding-top: 50px;
+      }
+
+      .info {
+        height: fit-content;
+        width: 40%;
+        font-family: "Montserrat", sans-serif;
+        z-index: 3;
+
+        @media (max-width: 991.98px) {
+          width: 45%;
+        }
+        @media (max-width: 767.98px) {
+          width: 100%;
+        }
+
+        h1 {
+          color: #ffd600;
+          font-weight: 800;
+          text-transform: uppercase;
+          line-height: 125%;
+          font-size: 48px;
+          padding-bottom: 50px;
+          padding-left: 50px;
+          opacity: 0;
+
+          @media (max-width: 1199.98px) {
+            font-size: 40px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 30px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 27px;
+            padding-left: 20px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 20px;
+          }
+        }
+
+        h2 {
+          font-size: 25px;
+          line-height: 125%;
+          color: #ffffff;
+          padding-bottom: 50px;
+          text-transform: uppercase;
+          opacity: 0;
+
+          @media (max-width: 1199.98px) {
+            font-size: 20px;
+            line-height: 24px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 16px;
+            line-height: 20px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 14px;
+            line-height: 17px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 12px;
+            line-height: 15px;
+          }
+        }
+
+        a {
+          width: fit-content;
+          font-weight: 600;
+          color: #ffc729;
+          font-size: 18px;
+          padding-left: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: 0.2s ease-in-out;
+          opacity: 0;
+
+          &:hover {
+            color: white;
+            margin-left: 10px;
+
+            svg {
+              margin-left: 10px;
+            }
+          }
+
+          @media (max-width: 1199.98px) {
+            font-size: 16px;
+          }
+          @media (max-width: 991.98px) {
+            font-size: 14px;
+          }
+          @media (max-width: 767.98px) {
+            font-size: 13px;
+            padding-left: 20px;
+          }
+          @media (max-width: 479.98px) {
+            font-size: 12px;
+          }
+
+          .icon {
+            fill: none;
+            width: 51px;
+            height: 54px;
+
+            @media (max-width: 1199.98px) {
+              width: 48px;
+              height: 51px;
+            }
+            @media (max-width: 991.98px) {
+              width: 45px;
+              height: 48px;
+            }
+            @media (max-width: 767.98px) {
+              width: 42px;
+              height: 45px;
+            }
+          }
+
+          svg {
+            margin-left: 5px;
+            transition: 0.2s ease-in-out;
+          }
+        }
+      }
+    }
+
+    .images {
+      @media (max-width: 991.98px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      @media (max-width: 767.98px) {
+        position: relative;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+      .back {
+        position: absolute;
+        top: 120px;
+        width: 100%;
+        right: -100%;
+        max-width: none;
+
+        @media (max-width: 991.98px) {
+          top: auto;
+          // height: 100%;
+          width: auto;
+        }
+      }
+      .front {
+        position: absolute;
+        height: 70%;
+        top: 25%;
+        right: -100%;
+        max-width: none;
+
+        @media (max-width: 1199.98px) {
+          right: 0px;
+        }
+
+        @media (max-width: 991.98px) {
+          height: 50%;
+          top: 34%;
+        }
+        @media (max-width: 767.98px) {
+          top: 0;
+          height: 90%;
+        }
+      }
+    }
+  }
+`;
 
 export default function BlockThree(props) {
   const animationTime = props.animationTime;
@@ -67,7 +282,7 @@ export default function BlockThree(props) {
   }, []);
 
   return (
-    <>
+    <BlockTwoStyles>
       <section className="one__three">
         <div className="container">
           <div className="one__three_block">
@@ -144,14 +359,20 @@ export default function BlockThree(props) {
                 </p>
               </div>
               <div className="buttons">
-                <a href="">ПРОДУКЦИЯ</a>
-                <a href="">УСЛУГИ И СЕРВИС</a>
-                <a href="">Проекты</a>
+                <NavLink className="button" to="/equipments">
+                  ПРОДУКЦИЯ
+                </NavLink>
+                <NavLink className="button" to="/services">
+                  УСЛУГИ И СЕРВИС
+                </NavLink>
+                <NavLink className="button" to="/projects">
+                  Проекты
+                </NavLink>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </>
+    </BlockTwoStyles>
   );
 }
