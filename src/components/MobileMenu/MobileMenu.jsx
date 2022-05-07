@@ -326,6 +326,17 @@ export default function MobileMenu({ setMenu, visibleScroll }) {
             </li>
             <li>
               <NavLink
+                to={"/"}
+                onClick={() => {
+                  setMenu(false);
+                  visibleScroll();
+                }}
+              >
+                Главная
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to={"/about"}
                 onClick={() => {
                   setMenu(false);
