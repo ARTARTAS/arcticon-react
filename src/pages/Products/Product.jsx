@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import styled from "styled-components";
+import translitRusEng from "translit-rus-eng";
+import { getProduct } from "../../Firebase";
 
 import arrow from "./../../assets/svg/services/arrow.svg";
 import download from "./../../assets/svg/product/arrowDownload.svg";
@@ -381,7 +383,17 @@ export default function Product(props) {
 
   let { subcategory, category, name } = useParams();
 
-  function getProduct() {
+  const ruSubcategory = translitRusEng(subcategory, { engToRus: true }).replace(
+    "_",
+    " "
+  );
+  const ruCategory = translitRusEng(category, { engToRus: true }).replace(
+    "_",
+    " "
+  );
+  const ruName = translitRusEng(name, { engToRus: true }).replace("_", " ");
+
+  function getProductData() {
     switch (navigation) {
       case "Обзор":
         return (
@@ -420,7 +432,7 @@ export default function Product(props) {
               <div className="characters">
                 <h2>Основные технические характеристики:</h2>
                 <ul>
-                  {characters.length != 0
+                  {characters != null
                     ? characters.map((character, index) => (
                         <li key={index}>
                           <div className="key">{character.key}</div>
@@ -480,13 +492,9 @@ export default function Product(props) {
             <div className="bottom">
               {product.projects.map((project) => (
                 <div className="projects">
-                  <p>
-                    {project
-                      .split("*")
-                      .map((text, index) =>
-                        index == 1 ? <span>{text}</span> : text
-                      )}
-                  </p>
+                  {project.split("*").map((text, index) => (
+                    <p key={index}>{index == 1 ? <span key={index}>{text}</span> : text}</p>
+                  ))}
                 </div>
               ))}
             </div>
@@ -522,7 +530,7 @@ export default function Product(props) {
               </div>
             </div>
             <div className="bottom">
-              {manufacturer.length != 0
+              {manufacturer != null
                 ? manufacturer.map((character, index) => (
                     <div className="manufacturer" key={index}>
                       <div className="key">{character.key}</div>
@@ -537,27 +545,72 @@ export default function Product(props) {
   }
 
   useEffect(() => {
-    if (characters == null) {
-      const list = [];
+    if (product != null) {
+      if (characters == null) {
+        const list = [];
 
-      for (const [key, value] of Object.entries(props.product.characters)) {
-        console.log(key, value);
-        list.push({ key: key, value: value });
+        for (const [key, value] of Object.entries(product.characters)) {
+          list.push({ key: key, value: value });
+        }
+
+        setCharacters(list);
       }
+      if (manufacturer == null) {
+        const manList = [];
 
-      setCharacters(list);
-    }
-    if (manufacturer == null) {
-      const manList = [];
+        for (const [key, value] of Object.entries(product.manufacturer)) {
+          manList.push({ key: key, value: value });
+        }
 
-      for (const [key, value] of Object.entries(props.product.manufacturer)) {
-        manList.push({ key: key, value: value });
+        setManufacturer(manList);
       }
-
-      setManufacturer(manList);
     }
     if (product == null) {
-      setProduct(props.product);
+      if (props.product == null) {
+        getProduct(ruCategory, ruName).then((snap) => {
+          setProduct(snap);
+          if (characters == null) {
+            const list = [];
+
+            for (const [key, value] of Object.entries(snap.characters)) {
+              list.push({ key: key, value: value });
+            }
+
+            setCharacters(list);
+          }
+          if (manufacturer == null) {
+            const manList = [];
+
+            for (const [key, value] of Object.entries(snap.manufacturer)) {
+              manList.push({ key: key, value: value });
+            }
+
+            setManufacturer(manList);
+          }
+        });
+      } else {
+        setProduct(props.product);
+        if (characters == null) {
+          const list = [];
+
+          for (const [key, value] of Object.entries(props.product.characters)) {
+            list.push({ key: key, value: value });
+          }
+
+          setCharacters(list);
+        }
+        if (manufacturer == null) {
+          const manList = [];
+
+          for (const [key, value] of Object.entries(
+            props.product.manufacturer
+          )) {
+            manList.push({ key: key, value: value });
+          }
+
+          setManufacturer(manList);
+        }
+      }
     }
   }, []);
 
@@ -583,7 +636,7 @@ export default function Product(props) {
                     className="button"
                     to={`/equipment-list/${subcategory}`}
                   >
-                    {subcategory} <img className="icon" src={arrow} alt="" />
+                    {ruSubcategory} <img className="icon" src={arrow} alt="" />
                   </NavLink>
                 </li>
               ) : (
@@ -595,14 +648,14 @@ export default function Product(props) {
                     className="button"
                     to={`/products/${subcategory}/${category}`}
                   >
-                    {category} <img className="icon" src={arrow} alt="" />
+                    {ruCategory} <img className="icon" src={arrow} alt="" />
                   </NavLink>
                 </li>
               ) : (
                 ""
               )}
               <li>
-                <button className="button active">{name}</button>
+                <button className="button active">{ruName}</button>
               </li>
             </ul>
             <div className="back">
@@ -623,7 +676,7 @@ export default function Product(props) {
             </div>
           </div>
         </div>
-        {product != null ? getProduct() : ""}
+        {product != null ? getProductData() : ""}
         <menu className="menu">
           <nav className="nav">
             <div className="nav__column">

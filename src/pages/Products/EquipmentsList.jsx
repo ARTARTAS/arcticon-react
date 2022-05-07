@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useLocation, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { getSubCategories } from "../../Firebase";
+import translitRusEng from "translit-rus-eng";
 
 import arrow from "./../../assets/svg/services/arrow.svg";
 import loupBlack from "./../../assets/svg/home/loup_black.svg";
@@ -265,6 +266,8 @@ export default function EquipmentList(props) {
 
   let { category } = useParams();
 
+  const ruCategory = translitRusEng(category, { engToRus: true });
+
   function makeSearch(event) {
     if (event.type == "click") {
       console.log("click");
@@ -276,7 +279,7 @@ export default function EquipmentList(props) {
 
   useEffect(() => {
     if (equipments == null) {
-      getSubCategories(category).then((snap) => setEquipments(snap));
+      getSubCategories(ruCategory).then((snap) => setEquipments(snap));
     }
   }, []);
 
@@ -297,7 +300,7 @@ export default function EquipmentList(props) {
                 </NavLink>
               </li>
               <li>
-                <button className="button active">{category}</button>
+                <button className="button active">{ruCategory}</button>
               </li>
             </ul>
             <div className="back">
@@ -322,7 +325,7 @@ export default function EquipmentList(props) {
         </div>
         <div className="equipments">
           <div className="title">
-            <h1>{category}</h1>
+            <h1>{ruCategory}</h1>
           </div>
           <div className="equipments__list">
             {equipments != null
@@ -337,7 +340,7 @@ export default function EquipmentList(props) {
                           Show Product
                         </NavLink>
                       ) : (
-                        <NavLink to={`/products/${equipment.name}`}>
+                        <NavLink to={`/products/${translitRusEng(equipment.name, { slug: true })}`}>
                           <img src={equipment.img} alt="" />
                         </NavLink>
                       )}
@@ -349,7 +352,7 @@ export default function EquipmentList(props) {
                       <NavLink
                         className="button"
                         onClick={() => (props.state.product = equipment)}
-                        to={`/product/${equipment.name}`}
+                        to={`/product/${translitRusEng(equipment.name, { slug: true })}`}
                       >
                         Подробнее
                         <img className="icon" src={buttonArrow} alt="" />
@@ -357,7 +360,7 @@ export default function EquipmentList(props) {
                     ) : (
                       <NavLink
                         className="button"
-                        to={`/products/${category}/${equipment.name}`}
+                        to={`/products/${category}/${translitRusEng(equipment.name, { slug: true })}`}
                       >
                         Подробнее
                         <img className="icon" src={buttonArrow} alt="" />

@@ -115,10 +115,24 @@ export async function getProducts(category) {
   return products;
 }
 
-export async function getProduct(id) {
-  const docRef = doc(db, "products", id);
+export async function getProduct(category, name) {
+  const product = [];
 
-  getDoc(docRef).then((doc) => {
-    return { id: doc.id, ...doc.data() };
-  });
+  const productsQuery = query(
+    collection(db, "products"),
+    where("category", "==", category),
+    where("name", "==", name)
+  );
+
+  await getDocs(productsQuery)
+    .then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        product.push({ id: doc.id, ...doc.data() });
+      });
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+
+  return product[0];
 }

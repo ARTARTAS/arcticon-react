@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { getProducts } from "../../Firebase";
+import translitRusEng from "translit-rus-eng";
 
 import arrow from "./../../assets/svg/services/arrow.svg";
 import loupBlack from "./../../assets/svg/home/loup_black.svg";
@@ -264,6 +265,15 @@ export default function Products(props) {
 
   let { subcategory, category } = useParams();
 
+  const ruSubcategory = translitRusEng(subcategory, { engToRus: true }).replace(
+    "_",
+    " "
+  );
+  const ruCategory = translitRusEng(category, { engToRus: true }).replace(
+    "_",
+    " "
+  );
+
   function makeSearch(event) {
     if (event.type == "click") {
       console.log("click");
@@ -274,8 +284,10 @@ export default function Products(props) {
   }
 
   useEffect(() => {
-    if (products == null)
-      getProducts(category).then((snap) => setProducts(snap));
+    if (products == null) {
+      console.log(ruCategory)
+      getProducts(ruCategory).then((snap) => setProducts(snap));
+    }
   }, []);
 
   return (
@@ -296,15 +308,18 @@ export default function Products(props) {
               </li>
               {subcategory != undefined ? (
                 <li>
-                  <NavLink className="button" to={`/equipment-list/${subcategory}`}>
-                    {subcategory} <img className="icon" src={arrow} alt="" />
+                  <NavLink
+                    className="button"
+                    to={`/equipment-list/${subcategory}`}
+                  >
+                    {ruSubcategory} <img className="icon" src={arrow} alt="" />
                   </NavLink>
                 </li>
               ) : (
                 ""
               )}
               <li>
-                <button className="button active">{category}</button>
+                <button className="button active">{ruCategory}</button>
               </li>
             </ul>
             <div className="back">
@@ -339,7 +354,7 @@ export default function Products(props) {
         </div>
         <div className="equipments">
           <div className="title">
-            <h1>{category}</h1>
+            <h1>{ruCategory}</h1>
           </div>
           <div className="equipments__list">
             {products != null
@@ -348,7 +363,7 @@ export default function Products(props) {
                     <button className="equipment_img">
                       <NavLink
                         onClick={() => (props.state.product = product)}
-                        to={`/product/${product.name}`}
+                        to={`/product/${translitRusEng(product.name, { slug: true })}`}
                       >
                         <img src={product.img} alt="" />
                       </NavLink>
@@ -359,7 +374,7 @@ export default function Products(props) {
                     <NavLink
                       className="button"
                       onClick={() => (props.state.product = product)}
-                      to={`/product/${subcategory}/${category}/${product.name}`}
+                      to={`/product/${subcategory}/${category}/${translitRusEng(product.name, { slug: true })}`}
                     >
                       Подробнее
                       <img className="icon" src={buttonArrow} alt="" />

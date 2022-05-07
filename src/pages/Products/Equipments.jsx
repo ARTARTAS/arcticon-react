@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import translitRusEng from "translit-rus-eng";
 
 import img1 from "./../../assets/img/Products/Equipment/01.png";
 import img2 from "./../../assets/img/Products/Equipment/02.png";
@@ -540,7 +541,7 @@ export default function Equipments(props) {
                       </a>
                       <div className="card__info_bottom">
                         <h3>{equipment.name}</h3>
-                        <NavLink to={`/equipment-list/${equipment.name}`}>
+                        <NavLink to={`/equipment-list/${translitRusEng(equipment.name, { slug: true })}`}>
                           Подробнее
                           <img className="icon" src={arrowOrange} alt="" />
                         </NavLink>
