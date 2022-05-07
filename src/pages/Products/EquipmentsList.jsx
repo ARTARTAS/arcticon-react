@@ -99,6 +99,7 @@ const EquipmentsListStyles = styled.div`
         display: flex;
         justify-content: space-between;
         gap: 20px;
+        min-width: 240px;
 
         input {
           font-family: "Montserrat", sans-serif;

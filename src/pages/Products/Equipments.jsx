@@ -64,6 +64,15 @@ const EquipnetsStyles = styled.div`
       display: flex;
       justify-content: space-between;
       gap: 20px;
+      min-width: 240px;
+
+      @media (max-width: 767.98px) {
+        width: 55%;
+      }
+
+      @media (max-width: 479.98px) {
+        width: 90%;
+      }
 
       input {
         font-family: "Montserrat", sans-serif;
@@ -541,7 +550,12 @@ export default function Equipments(props) {
                       </a>
                       <div className="card__info_bottom">
                         <h3>{equipment.name}</h3>
-                        <NavLink to={`/equipment-list/${translitRusEng(equipment.name, { slug: true })}`}>
+                        <NavLink
+                          to={`/equipment-list/${translitRusEng(
+                            equipment.name,
+                            { slug: true }
+                          )}`}
+                        >
                           Подробнее
                           <img className="icon" src={arrowOrange} alt="" />
                         </NavLink>
