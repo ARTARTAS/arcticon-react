@@ -279,10 +279,18 @@ const ProductStyles = styled.div`
 
       .projects {
         font-family: "Montserrat", sans-serif;
-        p {
-          font-size: 16px;
-          span {
-            font-weight: 600;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .project {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          p {
+            font-size: 16px;
+            span {
+              font-weight: 600;
+            }
           }
         }
       }
@@ -490,13 +498,21 @@ export default function Product(props) {
               </div>
             </div>
             <div className="bottom">
-              {product.projects.map((project) => (
-                <div className="projects">
-                  {project.split("*").map((text, index) => (
-                    <p key={index}>{index == 1 ? <span key={index}>{text}</span> : text}</p>
-                  ))}
-                </div>
-              ))}
+              <div className="projects">
+                {product.projects.map((project, index) => (
+                  <div key={index} className="project">
+                    {project.split("*").map((text, textIndex) => (
+                      <p>
+                        {textIndex == 1 ? (
+                          <span key={textIndex}>{text}</span>
+                        ) : (
+                          text
+                        )}
+                      </p>
+                    ))}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         );
