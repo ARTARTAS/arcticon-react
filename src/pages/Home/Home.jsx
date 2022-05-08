@@ -2058,18 +2058,6 @@ const HomeStyled = styled.div`
     display: none;
   }
 
-  @media (max-width: 767.98px) {
-    .six__block {
-      margin: 0px 30px;
-    }
-  }
-
-  @media (max-width: 479.98px) {
-    .six__block {
-      margin: 0px 20px;
-    }
-  }
-
   .six__block_title {
     padding: 100px 0px;
   }
@@ -2645,7 +2633,7 @@ const HomeStyled = styled.div`
       left: 0px;
       margin-left: 30px;
       position: relative;
-      padding: 30px 0px;
+      padding-top: 40px;
       font-size: 40px;
       margin-right: auto;
     }

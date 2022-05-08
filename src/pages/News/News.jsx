@@ -326,7 +326,7 @@ const NewsStyled = styled.div`
 export default function News() {
   return (
     <NewsStyled>
-      <section class="two">
+      <section className="two">
         <div className="head__block">
           <div className="container">
             <h1>ПРЕСС-ЦЕНТР</h1>

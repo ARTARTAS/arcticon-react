@@ -363,7 +363,9 @@ export default function Products(props) {
                     <button className="equipment_img">
                       <NavLink
                         onClick={() => (props.state.product = product)}
-                        to={`/product/${translitRusEng(product.name, { slug: true })}`}
+                        to={`/product/${translitRusEng(product.name, {
+                          slug: true,
+                        })}`}
                       >
                         <img src={product.img} alt="" />
                       </NavLink>
@@ -374,7 +376,10 @@ export default function Products(props) {
                     <NavLink
                       className="button"
                       onClick={() => (props.state.product = product)}
-                      to={`/product/${subcategory}/${category}/${translitRusEng(product.name, { slug: true })}`}
+                      to={`/product/${subcategory}/${category}/${translitRusEng(
+                        product.name,
+                        { slug: true }
+                      )}`}
                     >
                       Подробнее
                       <img className="icon" src={buttonArrow} alt="" />

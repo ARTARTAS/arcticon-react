@@ -29,10 +29,22 @@ const StyledCarousel = styled.div`
   }
   .item {
     width: 100px;
-    height: auto;
+    height: fit-content;
+    @media (max-width: 767.98px) {
+      width: 80px;
+    }
+    @media (max-width: 479.98px) {
+      width: 60px;
+    }
     img {
-      width: 100%;
+      width: 100px;
       height: auto;
+      @media (max-width: 767.98px) {
+        width: 80px;
+      }
+      @media (max-width: 479.98px) {
+        width: 60px;
+      }
     }
   }
   .button_next {
