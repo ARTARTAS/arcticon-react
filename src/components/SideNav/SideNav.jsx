@@ -62,7 +62,7 @@ export default function SideNav() {
     <SideNavStyles>
       <div className="side-navigation">
         <div className="top">
-          <button className="block">
+          <button className="block" onClick={() => window.scrollTo(0, 0)}>
             <div className="block__info">
               <img src={home} alt="home" />
             </div>
