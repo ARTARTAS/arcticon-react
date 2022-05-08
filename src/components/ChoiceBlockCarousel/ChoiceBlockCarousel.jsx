@@ -31,7 +31,7 @@ const StyledCarousel = styled.div`
     width: 100px;
     height: auto;
     img {
-      width: 100px;
+      width: 100%;
       height: auto;
     }
   }
