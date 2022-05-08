@@ -151,7 +151,7 @@ const HeaderStyles = styled.div`
 
   @media (max-width: 1199.98px) {
     .header__menu .menu__main .logo img {
-      padding: 10px 0px;
+      padding-top: 10px;
       height: 100%;
     }
   }
