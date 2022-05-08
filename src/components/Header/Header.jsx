@@ -313,6 +313,8 @@ const HeaderStyles = styled.div`
 
   .header__menu .menu__sub .open-main-nav {
     cursor: pointer;
+    width: 40px;
+    height: 40px;
   }
 
   .header__menu .menu__sub .icon a {
@@ -320,26 +322,26 @@ const HeaderStyles = styled.div`
   }
 
   .header__menu .menu__sub .search {
-    width: 19px;
-    height: 19px;
+    width: 20px;
+    height: 20px;
   }
 
   @media (max-width: 1199.98px) {
     .header__menu .menu__sub .search {
-      height: 14px;
-      width: 14px;
+      width: 20px;
+      height: 20px;
     }
   }
 
   .header__menu .menu__sub .dots {
-    width: 23px;
-    height: 43px;
+    width: 40px;
+    height: 40px;
   }
 
   @media (max-width: 1199.98px) {
     .header__menu .menu__sub .dots {
-      width: 13px;
-      height: 23px;
+      width: 40px;
+      height: 40px;
     }
   }
 
@@ -407,7 +409,7 @@ export default function Header() {
         >
           <div className="header__menu">
             <menu className="menu__main">
-              <NavLink className="logo" to={"/"} >
+              <NavLink className="logo" to={"/"}>
                 {location.pathname === "/" ? (
                   <img src={img1} alt="" />
                 ) : (
