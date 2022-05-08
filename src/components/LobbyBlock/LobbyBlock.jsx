@@ -18,6 +18,10 @@ export default function LobbyBlock() {
   const animationTime = 500;
 
   function hideBlock(name) {
+    if (name == sections[sections.length - 1]) {
+      $(".side-navigation").css("display", "none");
+    }
+
     const block = ".one__" + name;
     $(block + "_block .info")
       .children()
@@ -151,6 +155,7 @@ export default function LobbyBlock() {
   useEffect(() => {
     setScrollSettings();
     if (window.scrollY > 0) {
+      $(".side-navigation").css("display", "flex");
       scrollPosition = 2;
       setSection(2);
       $("body").css("overflowY", "visible");

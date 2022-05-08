@@ -51,7 +51,10 @@ const BlockOneStyles = styled.div`
           width: 45%;
         }
         @media (max-width: 767.98px) {
-          width: 100%;
+          width: 60%;
+        }
+        @media (max-width: 479.98px) {
+          width: 80%;
         }
 
         h1 {

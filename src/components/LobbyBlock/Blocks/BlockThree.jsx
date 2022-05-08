@@ -232,6 +232,7 @@ export default function BlockThree(props) {
     $("body").css({
       overflowY: "visible",
     });
+    $(".side-navigation").css("display", "flex");
     $(".one__three_block .info a").on("click", function () {
       $(".modal__three").css("z-index", "100");
       $(".modal__three").animate({ opacity: 1 }, 500);
