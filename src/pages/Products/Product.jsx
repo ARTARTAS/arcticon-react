@@ -561,6 +561,7 @@ export default function Product(props) {
   }
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (product != null) {
       if (characters == null) {
         const list = [];

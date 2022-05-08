@@ -284,8 +284,8 @@ export default function Products(props) {
   }
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (products == null) {
-      console.log(ruCategory)
       getProducts(ruCategory).then((snap) => setProducts(snap));
     }
   }, []);

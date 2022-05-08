@@ -380,6 +380,7 @@ export default function EquipmentList(props) {
   }
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (equipments == null) {
       getSubCategories(ruCategory).then((snap) => setEquipments(snap));
     }

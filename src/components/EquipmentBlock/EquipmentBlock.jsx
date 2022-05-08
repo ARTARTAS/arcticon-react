@@ -2,17 +2,7 @@ import React, { useState, useEffect } from "react";
 import arrowBlack from "./../../assets/svg/home/arrow_black.svg";
 import arrowOrange from "./../../assets/svg/arrowOrange.svg";
 import styled from "styled-components";
-
-import img1 from "./../../assets/img/Products/Equipment/01.png";
-import img2 from "./../../assets/img/Products/Equipment/02.png";
-import img3 from "./../../assets/img/Products/Equipment/03.png";
-import img4 from "./../../assets/img/Products/Equipment/04.png";
-import img5 from "./../../assets/img/Products/Equipment/05.png";
-import img6 from "./../../assets/img/Products/Equipment/06.png";
-import img7 from "./../../assets/img/Products/Equipment/07.png";
-import img8 from "./../../assets/img/Products/Equipment/08.png";
-import img9 from "./../../assets/img/Products/Equipment/09.png";
-import img10 from "./../../assets/img/Products/Equipment/10.png";
+import translitRusEng from "translit-rus-eng";
 
 import { NavLink } from "react-router-dom";
 
@@ -355,49 +345,6 @@ const EquipmentBlockStyles = styled.div`
 export default function EquipmentBlock(props) {
   const [equipments, setEquipments] = useState(0);
 
-  // const equipments = [
-  //   {
-  //     img: img1,
-  //     title: "Тренсформаторы",
-  //   },
-  //   {
-  //     img: img2,
-  //     title: "Сетевое и коммутационное оборудование",
-  //   },
-  //   {
-  //     img: img3,
-  //     title: "Кабели и провода",
-  //   },
-  //   {
-  //     img: img4,
-  //     title: "Емкостное и теплообменное оборудование",
-  //   },
-  //   {
-  //     img: img5,
-  //     title: "Высоковольтное оборудование",
-  //   },
-  //   {
-  //     img: img6,
-  //     title: "Щитовое оборудование",
-  //   },
-  //   {
-  //     img: img7,
-  //     title: "Системы бесперебойного питания",
-  //   },
-  //   {
-  //     img: img8,
-  //     title: "Контрольно-измерительные приборы и автоматика",
-  //   },
-  //   {
-  //     img: img9,
-  //     title: "Осветительное оборудование",
-  //   },
-  //   {
-  //     img: img10,
-  //     title: "Кабеленесущие системы",
-  //   },
-  // ];
-
   useEffect(() => {
     if (equipments == 0) {
       setEquipments(props.equipments);
@@ -417,12 +364,25 @@ export default function EquipmentBlock(props) {
                 ? equipments.slice(0, 5).map((equipment, index) => (
                     <div className="card" key={index}>
                       <div className="card__info">
-                        <a href="" className="card__info_img">
+                        <NavLink
+                          className="card__info_img"
+                          to={`/equipment-list/${translitRusEng(
+                            equipment.name,
+                            {
+                              slug: true,
+                            }
+                          )}`}
+                        >
                           <img src={equipment.img} alt="" />
-                        </a>
+                        </NavLink>
                         <div className="card__info_bottom">
                           <h3>{equipment.name}</h3>
-                          <NavLink to={`/products/${equipment.name}`}>
+                          <NavLink
+                            to={`/equipment-list/${translitRusEng(
+                              equipment.name,
+                              { slug: true }
+                            )}`}
+                          >
                             Подробнее
                             <img className="icon" src={arrowOrange} alt="" />
                           </NavLink>

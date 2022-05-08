@@ -60,32 +60,32 @@ export default function SideNav() {
   return (
     <SideNavStyles>
       <div className="top">
-        <div className="block">
-          <button onClick={() => window.scrollTo(0, 0)} className="block__info">
+        <button className="block">
+          <div className="block__info">
             <img src={home} alt="home" />
-          </button>
-        </div>
-        <div className="block">
-          <button className="block__info">
-            <img src={mail} alt="home" />
-          </button>
-        </div>
-        <div className="block">
+          </div>
+        </button>
+        <button className="block">
+          <div className="block__info">
+            <img src={mail} alt="email" />
+          </div>
+        </button>
+        <button className="block">
           <div className="block__info">
             <a href="tel:+74954093214">
-              <img src={phone} alt="home" />
+              <img src={phone} alt="phone" />
             </a>
           </div>
-        </div>
+        </button>
       </div>
       <div className="line">
         <span></span>
       </div>
-      <div className="bottom">
-        <div className="block">
-          <img src={loup} alt="home" />
+      <button className="block">
+        <div className="block__info">
+          <img src={loup} alt="search" />
         </div>
-      </div>
+      </button>
     </SideNavStyles>
   );
 }
