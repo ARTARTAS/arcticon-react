@@ -35,8 +35,6 @@ const AboutUsStyles = styled.div`
     position: relative;
     height: 100%;
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
@@ -76,7 +74,6 @@ const AboutUsStyles = styled.div`
   .about_one .block {
     width: 100%;
     height: 100%;
-    display: -ms-grid;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     font-family: "Montserrat", sans-serif;
@@ -99,8 +96,6 @@ const AboutUsStyles = styled.div`
   @media (max-width: 767.98px) {
     .about_one .block {
       padding-top: 55px;
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex;
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
@@ -170,6 +165,10 @@ const AboutUsStyles = styled.div`
     -ms-grid-row: 1;
     -ms-grid-row-span: 2;
     grid-row: 1/3;
+
+    img {
+      max-width: 100%;
+    }
   }
 
   @media (max-width: 1199.98px) {
@@ -203,8 +202,6 @@ const AboutUsStyles = styled.div`
     -ms-grid-row: 1;
     -ms-grid-row-span: 2;
     grid-row: 1/3;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -253,17 +250,11 @@ const AboutUsStyles = styled.div`
     -ms-grid-column: 1;
     -ms-grid-column-span: 1;
     grid-column: 1/2;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
     height: fit-content;
     font-weight: 600;
     color: black;
     font-size: 18px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
@@ -300,7 +291,6 @@ const AboutUsStyles = styled.div`
   @media (max-width: 767.98px) {
     .about_one .block a {
       font-size: 12px;
-      margin-left: 20px;
       -ms-grid-column: 1;
       -ms-grid-column-span: 2;
       grid-column: 1/3;
@@ -350,8 +340,6 @@ const AboutUsStyles = styled.div`
     width: 100%;
     position: relative;
     background: #e5e5e5;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
@@ -395,14 +383,11 @@ const AboutUsStyles = styled.div`
   }
 
   .about_two .block {
-    display: -ms-grid;
     display: grid;
     width: 100%;
     grid-template-columns: 250px 250px repeat(2, 1fr);
     margin-bottom: 100px;
     font-family: "Montserrat", sans-serif;
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
     height: fit-content;
   }
 
@@ -430,8 +415,6 @@ const AboutUsStyles = styled.div`
     z-index: 3;
     height: 250px;
     width: 250px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -607,6 +590,7 @@ const AboutUsStyles = styled.div`
       -ms-grid-row: 2;
       -ms-grid-row-span: 1;
       grid-row: 2/3;
+      text-align: center;
     }
   }
 
@@ -642,8 +626,6 @@ const AboutUsStyles = styled.div`
     -ms-flex-item-align: end;
     align-self: flex-end;
     overflow: hidden;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
@@ -685,8 +667,6 @@ const AboutUsStyles = styled.div`
     -ms-grid-row-span: 1;
     grid-row: 3/4;
     padding: 50px 0px 0px 30px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -716,7 +696,7 @@ const AboutUsStyles = styled.div`
       -ms-grid-row: 4;
       -ms-grid-row-span: 1;
       grid-row: 4/5;
-      padding: 20px 20px 10px 20px;
+      padding: 40px 20px 10px 20px;
     }
   }
 
@@ -826,17 +806,11 @@ const AboutUsStyles = styled.div`
     -ms-grid-column: 2;
     -ms-grid-column-span: 1;
     grid-column: 2/3;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
     height: fit-content;
     font-weight: 600;
     color: black;
     font-size: 18px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
@@ -851,7 +825,7 @@ const AboutUsStyles = styled.div`
 
   .about_two .block a:hover {
     color: gray;
-    margin-left: 10px;
+    margin-left: 30px;
   }
 
   .about_two .block a:hover svg {
@@ -960,8 +934,6 @@ const AboutUsStyles = styled.div`
   .about_four {
     position: relative;
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
@@ -978,8 +950,6 @@ const AboutUsStyles = styled.div`
     width: 50%;
     top: 0;
     left: 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -1012,6 +982,17 @@ const AboutUsStyles = styled.div`
     -ms-grid-column-span: 1;
     grid-column: 2/3;
     padding: 50px 0px 50px 50px;
+
+    @media (max-width: 991.98px) {
+      padding: 40px 0px 40px 40px;
+    }
+
+    @media (max-width: 767.98px) {
+      padding: 30px 0px 30px 30px;
+    }
+    @media (max-width: 479.98px) {
+      padding: 20px 0px 20px 20px;
+    }
   }
 
   .about_four .block__info h1 {
@@ -1074,14 +1055,10 @@ const AboutUsStyles = styled.div`
   }
 
   .about_four .block__info a {
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
     font-weight: 600;
     color: black;
     font-size: 18px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
