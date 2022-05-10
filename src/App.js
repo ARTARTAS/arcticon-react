@@ -37,8 +37,16 @@ function App(props) {
           element={<Home equipments={props.state.equipments} />}
         />
         <Route exact path="/about" element={<AboutUs />} />
-        <Route exact path="/services" element={<Services />} />
-        <Route exact path="/service-page" element={<ServicesPage />} />
+        <Route
+          exact
+          path="/services"
+          element={<Services services={props.state.services} />}
+        />
+        <Route
+          exact
+          path="/services/:name"
+          element={<ServicesPage services={props.state.services} />}
+        />
         <Route exact path="/customers" element={<Customers />} />
         <Route exact path="/partners" element={<Partners />} />
         <Route exact path="/contacts" element={<Contacts />} />

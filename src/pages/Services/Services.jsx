@@ -1,7 +1,8 @@
 import React from "react";
 import img1 from "./../../assets/svg/home/details_black.svg";
-
+import translitRusEng from "translit-rus-eng";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const ServicesStyles = styled.div`
   .container {
@@ -52,24 +53,24 @@ const ServicesStyles = styled.div`
 
   section .title {
     width: 100%;
-    padding: 100px 0px 60px 0px;
+    padding-top: 100px;
   }
 
   @media (max-width: 1199.98px) {
     section .title {
-      padding: 80px 0px 50px 0px;
+      padding-top: 80px;
     }
   }
 
   @media (max-width: 991.98px) {
     section .title {
-      padding: 70px 0px 40px 0px;
+      padding-top: 70px;
     }
   }
 
-  @media (max-width: 991.98px) {
+  @media (max-width: 767.98px) {
     section .title {
-      padding: 50px 0px 30px 0px;
+      padding-top: 50px;
     }
   }
 
@@ -92,12 +93,14 @@ const ServicesStyles = styled.div`
 
   section .pallet {
     width: 100%;
+    padding: 50px 0px;
   }
 
   section .pallet__grid {
     width: 100%;
     display: -ms-grid;
     display: grid;
+    position: relative;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 30px;
     grid-auto-rows: -webkit-min-content;
@@ -120,10 +123,50 @@ const ServicesStyles = styled.div`
   section .pallet__grid_section {
     position: relative;
     background: #ffffff;
-    padding: 30px;
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
+    margin: 2px;
+    z-index: 4;
     min-height: 200px;
+    transition: all 0.1s ease-in-out;
+
+    &::before {
+      content: "";
+      z-index: 2;
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      height: 50px;
+      width: 50px;
+      background: #ffd600;
+    }
+
+    &::after {
+      content: "";
+      z-index: 2;
+      position: absolute;
+      right: -2px;
+      bottom: -2px;
+      height: 50px;
+      width: 50px;
+      background: #ffd600;
+    }
+
+    .block {
+      position: relative;
+      padding: 30px;
+      background: #ffffff;
+      z-index: 10;
+      min-height: 200px;
+      transition: all 0.2s ease-in-out;
+
+      @media (max-width: 1199.98px) {
+        padding: 25px;
+      }
+      @media (max-width: 991.98px) {
+        padding: 20px;
+      }
+    }
   }
 
   @media (max-width: 1199.98px) {
@@ -152,7 +195,6 @@ const ServicesStyles = styled.div`
     width: 100%;
     min-height: 200px;
     height: fit-content;
-    padding: 30px;
     background: #ffd600;
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
@@ -185,15 +227,9 @@ const ServicesStyles = styled.div`
 
   section .pallet__grid_section .block__title {
     position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
+    align-items: center;
     max-width: 100%;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
@@ -386,7 +422,7 @@ const ServicesStyles = styled.div`
   }
 `;
 
-export default function Services() {
+export default function Services(props) {
   window.scrollTo(0, 0);
   return (
     <ServicesStyles>
@@ -397,23 +433,29 @@ export default function Services() {
           </div>
           <div className="pallet">
             <div className="pallet__grid">
-              <div className="pallet__grid_section">
-                <div className="block">
-                  <div className="block__title">
-                    <h1>ШМР и ПНР</h1>
-                    <a href="/service-page/">
-                      <img className="icon" src={img1} alt="" />
-                    </a>
-                    <div className="block__title_line"></div>
-                  </div>
-                  <div className="block__info">
-                    <p>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    </p>
+              {props.services.map((service, index) => (
+                <div className="pallet__grid_section" key={index}>
+                  <div className="block">
+                    <div className="block__title">
+                      <h1>{service.name}</h1>
+                      <NavLink
+                        to={`/services/${translitRusEng(service.name, {
+                          slug: true,
+                        })}`}
+                        service={service}
+                      >
+                        <img className="icon" src={img1} alt="" />
+                      </NavLink>
+                      <div className="block__title_line"></div>
+                    </div>
+                    <div className="block__info">
+                      <p>{service.title}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="pallet__grid_section">
+              ))}
+
+              {/* <div className="pallet__grid_section">
                 <div className="block">
                   <div className="block__title">
                     <h1>Проектирование</h1>
@@ -441,8 +483,9 @@ export default function Services() {
                   </div>
                   <div className="block__info">
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Nemo, est!
+                      ООО «Арктик Энергострой» выступает в качестве генерального
+                      подрядчика, результатом работы которого является
+                      функционирующий объект или система на условиях «под ключ».
                     </p>
                   </div>
                 </div>
@@ -535,7 +578,7 @@ export default function Services() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <menu className="menu">

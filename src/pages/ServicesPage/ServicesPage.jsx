@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import arrow from "./../../assets/svg/services/arrow.svg";
 
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
+import translitRusEng from "translit-rus-eng";
 
 const ServicesPageStyles = styled.div`
   .container {
@@ -22,6 +23,68 @@ const ServicesPageStyles = styled.div`
   @media (max-width: 479.98px) {
     .container {
       margin: 0px 20px;
+    }
+  }
+
+  .navigation {
+    width: 100%;
+    display: flex;
+    gap: 50px;
+    margin-bottom: 40px;
+    .path {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      font-family: "Montserrat", sans-serif;
+
+      ul {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        li {
+          display: flex;
+          align-items: center;
+          width: fit-content;
+
+          .button {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            font-size: 16px;
+
+            img {
+              height: 40%;
+              width: 25px;
+            }
+          }
+          .active {
+            background: none;
+            font-weight: 600;
+          }
+        }
+      }
+      .back {
+        width: fit-content;
+        &_button {
+          font-size: 16px;
+          background: none;
+          display: flex;
+          color: black;
+          align-items: center;
+          gap: 15px;
+
+          .icon {
+            transform: rotate(180deg);
+            height: 40%;
+            width: 25px;
+          }
+        }
+      }
     }
   }
 
@@ -49,7 +112,7 @@ const ServicesPageStyles = styled.div`
   }
 
   section .block__title {
-    padding: 100px 0px 50px 0px;
+    padding: 80px 0px 50px 0px;
   }
 
   section .block__title h1 {
@@ -140,8 +203,31 @@ const ServicesPageStyles = styled.div`
     transform: rotate(180deg);
   }
 
+  section .block__info {
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        li {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 130%;
+        }
+      }
+      ul.inside {
+        li {
+          list-style: circle;
+          list-style-position: inside;
+        }
+      }
+    }
+  }
+
   section .block__info p {
-    padding-bottom: 20px;
     font-size: 20px;
     font-weight: 400;
     line-height: 130%;
@@ -252,64 +338,57 @@ const ServicesPageStyles = styled.div`
   }
 `;
 
-export default function ServicesPage() {
-  window.scrollTo(0, 0);
+export default function ServicesPage(props) {
+  const [service, setService] = useState(null);
+
+  let { name } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (service == null) {
+      const data = props.services.find((x) => x.link == name);
+      setService(data);
+    }
+  }, []);
+
   return (
     <ServicesPageStyles>
       <section>
         <div className="container">
           <div className="block">
             <div className="block__title">
-              <h1>ерсм</h1>
+              <h1>{service != null ? service.name : ""}</h1>
             </div>
-            <div className="block__page-nav">
-              <nav>
+            <div className="navigation">
+              <div className="path">
                 <ul>
                   <li>
-                    <NavLink to="/">Главная</NavLink>
+                    <NavLink className="button" to="/">
+                      Главная <img className="icon" src={arrow} alt="" />
+                    </NavLink>
                   </li>
                   <li>
-                    <img className="icon" src={arrow} alt="" />
+                    <NavLink className="button" to="/services">
+                      Сервисы <img className="icon" src={arrow} alt="" />
+                    </NavLink>
                   </li>
                   <li>
-                    <a href="/services/">Услуги и сервис</a>
-                  </li>
-                  <li>
-                    <img className="icon" src={arrow} alt="" />
-                  </li>
-                  <li>
-                    <a href="">ЕРСМ</a>
+                    <button className="button active">
+                      {service != null ? service.name : ""}
+                    </button>
                   </li>
                 </ul>
-                <ul>
-                  <li className="to-left">
+                <div className="back">
+                  <NavLink className="back_button" to="/services">
                     <img className="icon" src={arrow} alt="" />
-                  </li>
-                  <li>
-                    <a href="/services/">Назад</a>
-                  </li>
-                </ul>
-              </nav>
+                    Назад
+                  </NavLink>
+                </div>
+              </div>
             </div>
+
             <div className="block__info">
-              <p>
-                ООО «Арктик Энергострой» выступает в качестве генерального
-                подрядчика, результатом работы которого является функционирующий
-                объект или система на условиях «под ключ».
-              </p>
-              <p>
-                Ключевыми компетенциями на данных проектах выступают
-                квалифицированное управление процессами проектирования, закупки,
-                логистики, таможенная очистка оборудования (при необходимости),
-                а также разработка ключевых технических решений и
-                профессиональное управление работами на строительных площадках.
-              </p>
-              <p>
-                Для каждого проекта формируется команда необходимых
-                квалифицированных специалистов, возглавляемая Руководителем
-                проекта, ответственная за достижение ключевых показателей и
-                общий риск-менеджмент проекта.
-              </p>
+              {service != null ? service.data : ""}
             </div>
 
             <menu className="menu">
