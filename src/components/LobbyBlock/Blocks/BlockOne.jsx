@@ -238,7 +238,6 @@ export default function BlockOne(props) {
   function show() {
     props.scrollSetting();
     $(".one__one_block .info a").on("click", function () {
-      console.log("show modal");
       $(".modal__one").css("z-index", "100");
       $(".modal__one").animate({ opacity: 1 }, 500);
       $(".modal__one").css("display", "flex");

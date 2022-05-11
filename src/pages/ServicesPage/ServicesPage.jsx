@@ -3,7 +3,6 @@ import arrow from "./../../assets/svg/services/arrow.svg";
 
 import styled from "styled-components";
 import { NavLink, useParams } from "react-router-dom";
-import translitRusEng from "translit-rus-eng";
 
 const ServicesPageStyles = styled.div`
   .container {
@@ -369,7 +368,8 @@ export default function ServicesPage(props) {
                   </li>
                   <li>
                     <NavLink className="button" to="/services">
-                      Сервисы <img className="icon" src={arrow} alt="" />
+                      Услуги и сервис
+                      <img className="icon" src={arrow} alt="" />
                     </NavLink>
                   </li>
                   <li>

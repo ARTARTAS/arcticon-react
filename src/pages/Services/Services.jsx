@@ -185,10 +185,11 @@ const ServicesStyles = styled.div`
 
   section .pallet__grid_section:hover {
     background: #ffd600;
+    z-index: 12;
   }
 
   section .pallet__grid_section:hover .block {
-    z-index: 2;
+    z-index: 12;
     position: absolute;
     top: 0;
     left: 0;

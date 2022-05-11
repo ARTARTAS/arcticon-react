@@ -261,7 +261,9 @@ const HeaderStyles = styled.div`
     -ms-flex-pack: justify;
     justify-content: space-between;
   }
-
+  .header__menu .menu__main .menu nav ul li a.active {
+    color: #ffd600;
+  }
   .header__menu .menu__main .menu nav ul li a {
     cursor: auto;
     color: gray;

@@ -229,16 +229,13 @@ export default function BlockThree(props) {
   const md1 = 1199.98;
 
   function show() {
-    $("body").css({
-      overflowY: "visible",
-    });
     $(".side-navigation").css("display", "flex");
+    // Open modal window
     $(".one__three_block .info a").on("click", function () {
       $(".modal__three").css("z-index", "100");
       $(".modal__three").animate({ opacity: 1 }, 500);
       $(".modal__three").css("display", "flex");
       $(".wrapper").css("overflow", "visible");
-      $("body").css("overflow", "hidden");
       window.onwheel = () => {};
       window.ontouchstart = () => {};
       window.ontouchend = () => {};
@@ -251,7 +248,7 @@ export default function BlockThree(props) {
       });
       props.scrollSetting();
       $("body").css({
-        overflowY: "visible",
+        overflow: "overlay",
       });
     });
     $(".one__three").css("display", "flex");
@@ -276,6 +273,9 @@ export default function BlockThree(props) {
     }
     // Back
     $(".one__three .images .back").animate({ right: 0 }, 500);
+    setTimeout(() => {
+      $("body").css("overflow", "overlay");
+    }, animationTime);
   }
 
   useEffect(() => {

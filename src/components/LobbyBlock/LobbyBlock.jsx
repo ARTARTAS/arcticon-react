@@ -22,6 +22,8 @@ export default function LobbyBlock() {
       $(".side-navigation").css("display", "none");
     }
 
+    $("body").css("overflow", "hidden");
+
     const block = ".one__" + name;
     $(block + "_block .info")
       .children()
@@ -158,7 +160,7 @@ export default function LobbyBlock() {
       $(".side-navigation").css("display", "flex");
       scrollPosition = 2;
       setSection(2);
-      $("body").css("overflowY", "visible");
+      $("body").css("overflow", "overlay");
     }
   }, []);
 
