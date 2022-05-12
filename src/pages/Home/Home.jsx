@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-
+import $ from "jquery";
 import AboutBlock from "../../components/AboutBlock/AboutBlock";
 import CarrierBlock from "../../components/CarrierBlock/CarrierBlock";
 import CertificatesBlock from "../../components/CertificatesBlock/CertificatesBlock";
@@ -2865,6 +2865,8 @@ const HomeStyled = styled.div`
 export default function Home(props) {
   let preloader = sessionStorage.getItem("preloader");
 
+  $("body").css("overflow", "hidden");
+
   const [isLoading, setLoading] = useState(preloader == null ? true : false);
 
   const videoIsLoaded = () => {
@@ -2890,7 +2892,7 @@ export default function Home(props) {
           <ChoiceBlock />
           <MapBlock />
           <EquipmentBlock equipments={props.equipments} />
-          <ServicesBlock />
+          <ServicesBlock services={props.services} />
           <CertificatesBlock />
         </div>
       )}

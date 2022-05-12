@@ -236,7 +236,6 @@ export default function BlockOne(props) {
   const md4 = 479.98;
 
   function show() {
-    props.scrollSetting();
     $(".one__one_block .info a").on("click", function () {
       $(".modal__one").css("z-index", "100");
       $(".modal__one").animate({ opacity: 1 }, 500);

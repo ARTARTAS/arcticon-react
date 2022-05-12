@@ -103,7 +103,8 @@ export default function LobbyBlock() {
   }
 
   function setScrollSettings() {
-    window.onwheel = function (e) {
+    $("#lobby-block")[0].onwheel = function (e) {
+      console.log("whell");
       if (scroll == false && $(document).scrollTop() == 0) {
         if (e.wheelDelta >= 0) {
           ScrollTop();
@@ -112,10 +113,10 @@ export default function LobbyBlock() {
         }
       }
     };
-    window.ontouchstart = function (e) {
+    $("#lobby-block")[0].ontouchstart = function (e) {
       startPosition = e.touches[0].pageY;
     };
-    window.ontouchend = function (e) {
+    $("#lobby-block")[0].ontouchend = function (e) {
       endPosition = e.changedTouches[0].pageY;
       if (startPosition < endPosition && startPosition < endPosition - 70) {
         ScrollTop();
@@ -164,5 +165,5 @@ export default function LobbyBlock() {
     }
   }, []);
 
-  return <LobbyBlockStyles>{getSection()}</LobbyBlockStyles>;
+  return <LobbyBlockStyles id="lobby-block">{getSection()}</LobbyBlockStyles>;
 }

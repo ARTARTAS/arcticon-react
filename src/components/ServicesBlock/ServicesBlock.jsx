@@ -1,15 +1,41 @@
 import React from "react";
 import arrowBlack from "./../../assets/svg/home/arrow_black.svg";
+import translitRusEng from "translit-rus-eng";
 import img1 from "./../../assets/img/MainPage/BlockNine/01.jpg";
+import { NavLink } from "react-router-dom";
 
-export default function ServicesBlock() {
+export default function ServicesBlock(props) {
   return (
     <section className="nine">
       <div className="container">
         <div className="nine__block">
           <h1>УСЛУГИ И СЕРВИС</h1>
           <div className="nine__block_table">
-            <div className="block">
+            {props.services.slice(0, 6).map((service, index) => (
+              <div className="block" key={index}>
+                <NavLink
+                  className="title"
+                  to={`/services/${translitRusEng(service.name, {
+                    slug: true,
+                  })}`}
+                  service={service}
+                >
+                  <h2>{service.name}</h2>
+                </NavLink>
+                <p>{service.title}</p>
+                <NavLink
+                  className="more"
+                  to={`/services/${translitRusEng(service.name, {
+                    slug: true,
+                  })}`}
+                  service={service}
+                >
+                  Ещё
+                  <img className="icon" src={arrowBlack} alt="" />
+                </NavLink>
+              </div>
+            ))}
+            {/* <div className="block">
               <a href="#" className="title">
                 <h2>EPCM</h2>
               </a>
@@ -87,7 +113,7 @@ export default function ServicesBlock() {
                 Ещё
                 <img className="icon" src={arrowBlack} alt="" />
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

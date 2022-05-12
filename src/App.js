@@ -25,7 +25,7 @@ function App(props) {
   let location = useLocation();
 
   if (location.pathname === "/") $("body").css("overflow", "hidden");
-  else $("body").css("overflow", "visible");
+  else $("body").css("overflow", "overlay");
 
   return (
     <>
@@ -34,7 +34,7 @@ function App(props) {
         <Route
           exact
           path=""
-          element={<Home equipments={props.state.equipments} />}
+          element={<Home equipments={props.state.equipments} services={props.state.services} />}
         />
         <Route exact path="/about" element={<AboutUs />} />
         <Route

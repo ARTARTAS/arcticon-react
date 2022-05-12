@@ -76,6 +76,10 @@ const EquipmentsListStyles = styled.div`
               gap: 10px;
             }
 
+            &:visited {
+              color: black;
+            }
+
             img {
               height: 40%;
               width: 25px;

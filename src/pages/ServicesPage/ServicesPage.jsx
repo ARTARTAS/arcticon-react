@@ -56,12 +56,16 @@ const ServicesPageStyles = styled.div`
             gap: 15px;
             font-size: 16px;
 
+            &:visited {
+              color: black;
+            }
+
             img {
               height: 40%;
               width: 25px;
             }
           }
-          .active {
+          .this {
             background: none;
             font-weight: 600;
           }
@@ -373,7 +377,7 @@ export default function ServicesPage(props) {
                     </NavLink>
                   </li>
                   <li>
-                    <button className="button active">
+                    <button className="button this">
                       {service != null ? service.name : ""}
                     </button>
                   </li>

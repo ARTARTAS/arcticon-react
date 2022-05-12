@@ -58,6 +58,10 @@ const ProductsStyles = styled.div`
             gap: 15px;
             font-size: 16px;
 
+            &:visited {
+              color: black;
+            }
+
             img {
               height: 40%;
               width: 25px;

@@ -236,6 +236,7 @@ export default function BlockThree(props) {
       $(".modal__three").animate({ opacity: 1 }, 500);
       $(".modal__three").css("display", "flex");
       $(".wrapper").css("overflow", "visible");
+      $("body").css("overflow", "hidden");
       window.onwheel = () => {};
       window.ontouchstart = () => {};
       window.ontouchend = () => {};
@@ -245,11 +246,9 @@ export default function BlockThree(props) {
       $(".modal__three").animate({ opacity: 0 }, 500, function () {
         $(".modal__three").css("display", "none");
         $(".wrapper").css("overflow", "hidden");
+        $("body").css("overflow", "visible");
       });
       props.scrollSetting();
-      $("body").css({
-        overflow: "overlay",
-      });
     });
     $(".one__three").css("display", "flex");
     // Show info block
@@ -274,7 +273,7 @@ export default function BlockThree(props) {
     // Back
     $(".one__three .images .back").animate({ right: 0 }, 500);
     setTimeout(() => {
-      $("body").css("overflow", "overlay");
+      $("body").css("overflow", "visible");
     }, animationTime);
   }
 
