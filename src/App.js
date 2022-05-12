@@ -20,6 +20,8 @@ import Equipments from "./pages/Products/Equipments";
 import EquipmentList from "./pages/Products/EquipmentsList";
 import Products from "./pages/Products/Products";
 import Product from "./pages/Products/Product";
+import AdminPane from "./pages/AdminPanel/AdminPanel";
+import AdminPanel from "./pages/AdminPanel/AdminPanel";
 
 function App(props) {
   let location = useLocation();
@@ -34,7 +36,12 @@ function App(props) {
         <Route
           exact
           path=""
-          element={<Home equipments={props.state.equipments} services={props.state.services} />}
+          element={
+            <Home
+              equipments={props.state.equipments}
+              services={props.state.services}
+            />
+          }
         />
         <Route exact path="/about" element={<AboutUs />} />
         <Route
@@ -74,6 +81,7 @@ function App(props) {
           path="/product/:subcategory/:category/:name"
           element={<Product product={props.state.product} />}
         />
+        <Route exact path="/admin-panel" element={<AdminPanel />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
