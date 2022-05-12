@@ -104,7 +104,6 @@ export default function LobbyBlock() {
 
   function setScrollSettings() {
     $("#lobby-block")[0].onwheel = function (e) {
-      console.log("whell");
       if (scroll == false && $(document).scrollTop() == 0) {
         if (e.wheelDelta >= 0) {
           ScrollTop();
