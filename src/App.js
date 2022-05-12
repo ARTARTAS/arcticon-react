@@ -25,7 +25,7 @@ function App(props) {
   let location = useLocation();
 
   if (location.pathname === "/") $("body").css("overflow", "hidden");
-  else $("body").css("overflow", "overlay");
+  else $("body").css("overflow", "visible");
 
   return (
     <>
