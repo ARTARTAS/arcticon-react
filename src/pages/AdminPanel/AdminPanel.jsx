@@ -9,7 +9,6 @@ const AdminPanelStyles = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
   min-height: 100vh;
   padding: 50px 0px;
 
@@ -53,10 +52,8 @@ const AdminPanelStyles = styled.div`
       }
 
       .categories {
-
       }
       .products {
-
       }
     }
   }
@@ -93,8 +90,20 @@ export default function AdminPanel() {
             <h1>Привет, дорогой администратор!</h1>
             <div className="navigation">
               <Stack direction="row" spacing={2}>
-                <Button variant="contained">Категории</Button>
-                <Button variant="outlined">Продукты</Button>
+                <Button
+                  variant={section === "Категории" ? "contained" : "outlined"}
+                  onClick={() => {
+                    setSection("Категории");
+                  }}
+                >
+                  Категории
+                </Button>
+                <Button
+                  variant={section === "Продукты" ? "contained" : "outlined"}
+                  onClick={() => setSection("Продукты")}
+                >
+                  Продукты
+                </Button>
               </Stack>
             </div>
             <div className="block">{getSection()}</div>
