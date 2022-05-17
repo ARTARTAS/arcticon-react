@@ -9,6 +9,7 @@ const AdminPanelStyles = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   min-height: 100vh;
   padding: 50px 0px;
 
@@ -77,7 +78,6 @@ export default function AdminPanel() {
         return (
           <div className="products">
             <h1>Продукты</h1>
-            
           </div>
         );
     }

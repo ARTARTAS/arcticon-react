@@ -303,6 +303,7 @@ const EquipnetsStyles = styled.div`
 export default function Equipments(props) {
   const [equipments, setEquipments] = useState(null);
   const [col, setCol] = useState(props.equipments.length);
+  const [input, setInput] = useState("");
 
   const categories = [
     {
@@ -418,13 +419,24 @@ export default function Equipments(props) {
     makeSort();
   }
 
-  function makeSearch(event) {
-    if (event.type == "click") {
-      console.log("click");
+  function buttonClick(event) {
+    if (event.type == "click" || event.key === "Enter") {
+      makeSearch();
+    } else if (event.key === "Backspace" && input.length == 1) {
+      equipmentState.categories = props.equipments;
+      setEquipments(equipmentState);
     }
-    if (event.key === "Enter") {
-      console.log("press enter");
-    }
+  }
+
+  function mouseClick() {
+    makeSearch();
+  }
+
+  function makeSearch() {
+    equipmentState.categories = props.equipments.filter((x) =>
+      x.name.includes(input)
+    );
+    setEquipments(equipmentState);
   }
 
   useEffect(() => {
@@ -443,9 +455,10 @@ export default function Equipments(props) {
             <input
               type="text"
               placeholder="Найти в каталоге"
-              onKeyDown={makeSearch}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={buttonClick}
             />
-            <button onClick={makeSearch}>
+            <button onClick={mouseClick}>
               <img src={loupBlack} alt="лупа" />
             </button>
           </div>
