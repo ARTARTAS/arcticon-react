@@ -370,9 +370,10 @@ export default function EquipmentList(props) {
                     <div className="equipment_img">
                       <NavLink
                         className="image"
-                        to={`/products/${translitRusEng(equipment.name, {
-                          slug: true,
-                        })}`}
+                        to={`/products/${category}/${translitRusEng(
+                          equipment.name,
+                          { slug: true }
+                        )}`}
                       >
                         <img src={equipment.img} alt="" />
                       </NavLink>

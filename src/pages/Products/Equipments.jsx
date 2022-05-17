@@ -390,20 +390,20 @@ export default function Equipments(props) {
 
   function makeSort() {
     if (equipmentState.type != "" && equipmentState.creator != "") {
-      equipmentState.categories = equipmentState.categories.filter(
+      equipmentState.categories = props.equipments.filter(
         (x) =>
           x.creator == equipmentState.creator && x.type == equipmentState.type
       );
     } else if (equipmentState.type != "") {
-      equipmentState.categories = equipmentState.categories.filter(
+      equipmentState.categories = props.equipments.filter(
         (x) => x.type == equipmentState.type
       );
     } else if (equipmentState.creator != "") {
-      equipmentState.categories = equipmentState.categories.filter(
+      equipmentState.categories = props.equipments.filter(
         (x) => x.creator == equipmentState.creator
       );
     } else {
-      equipmentState.categories = categories;
+      equipmentState.categories = props.equipments;
     }
 
     setEquipments(equipmentState);
