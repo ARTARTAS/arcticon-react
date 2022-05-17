@@ -4,6 +4,10 @@ import Stack from "@mui/material/Stack";
 
 import styled from "styled-components";
 import LoginForm from "./LoginForm";
+import Categories from "./Sections/Categories/Categories";
+import Products from "./Sections/Products/Products";
+import AddCategory from "./Sections/Categories/AddCategory";
+import AddProduct from "./Sections/Products/AddProduct";
 
 const AdminPanelStyles = styled.div`
   width: 100%;
@@ -43,19 +47,6 @@ const AdminPanelStyles = styled.div`
         background: #d3d3e2;
       }
     }
-
-    .block {
-      width: 100%;
-
-      h1 {
-        padding-bottom: 20px;
-      }
-
-      .categories {
-      }
-      .products {
-      }
-    }
   }
 `;
 
@@ -66,17 +57,13 @@ export default function AdminPanel() {
   function getSection() {
     switch (section) {
       case "Категории":
-        return (
-          <div className="categories">
-            <h1>Категории</h1>
-          </div>
-        );
+        return <Categories AddCategory={setSection} />;
+      case "Добавление категории":
+        return <AddCategory />;
       case "Продукты":
-        return (
-          <div className="products">
-            <h1>Продукты</h1>
-          </div>
-        );
+        return <Products AddProduct={setSection} />;
+        case "Добавление продукта":
+        return <AddProduct />
     }
   }
 
@@ -91,7 +78,12 @@ export default function AdminPanel() {
             <div className="navigation">
               <Stack direction="row" spacing={2}>
                 <Button
-                  variant={section === "Категории" ? "contained" : "outlined"}
+                  variant={
+                    section === "Категории" ||
+                    section === "Добавление категории"
+                      ? "contained"
+                      : "outlined"
+                  }
                   onClick={() => {
                     setSection("Категории");
                   }}
