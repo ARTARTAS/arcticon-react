@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
-import { getAllCategories } from "../../../../Firebase";
+import { getAllCategories, getSubCategories } from "../../../../Firebase";
 
 const CategoriesStyles = styled.div`
   .categories {
@@ -78,10 +78,31 @@ export default function Categories(props) {
 
   function addSubcategoryList(e) {
     var category = "";
+    var subcategories = null;
+
     if (e.target.localName == "h2") {
       category = e.target.innerHTML;
+      subcategories = e.target
+        .closest(".category")
+        .querySelector(".subcategories");
     } else if (e.target.className == "main") {
       category = e.target.querySelector("h2").innerHTML;
+      subcategories = e.target
+        .closest(".category")
+        .querySelector(".subcategories");
+    }
+
+    if (subcategories != null && category.length > 0) {
+      getSubCategories(category).then((result) => {
+        var html = `${result.map((subcategory, index) => {
+          return `<div key=${index}>${subcategory.name}</div>`;
+        })}`.replaceAll(",", "");
+
+        subcategories.innerHTML = html;
+      });
+    }
+
+    if (category.length != 0) {
     }
   }
 
