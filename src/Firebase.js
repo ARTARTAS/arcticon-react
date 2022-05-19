@@ -57,6 +57,24 @@ export async function getCategories(skip) {
   return categories;
 }
 
+export async function getAllCategories() {
+  let categories = [];
+
+  const categoriesQuery = query(collection(db, "categories"));
+
+  await getDocs(categoriesQuery)
+    .then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        categories.push({ id: doc.id, ...doc.data() });
+      });
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+
+  return categories;
+}
+
 export async function isSubcategory(name) {
   const categoriesQuery = query(
     collection(db, "subcategories"),
