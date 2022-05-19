@@ -72,7 +72,7 @@ export default function Categories(props) {
   const [subcategories, setSubcategories] = useState([]);
 
   function addCategory() {
-    props.AddCategory("Добавление категории");
+    // props.AddCategory("Добавление категории");
     console.log("add category");
   }
 
@@ -80,13 +80,14 @@ export default function Categories(props) {
     var category = "";
     if (e.target.localName == "h2") {
       category = e.target.innerHTML;
-    } else category = e.target.querySelector("h2").innerHTML;
+    } else if (e.target.className == "main") {
+      category = e.target.querySelector("h2").innerHTML;
+    }
   }
 
   useEffect(() => {
     if (categories == null)
       getAllCategories().then((result) => {
-        console.log(result);
         setCategories(result);
       });
   }, []);
