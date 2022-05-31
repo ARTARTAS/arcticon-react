@@ -36,9 +36,7 @@ export default function Products(props) {
           <div className="add-product">
             <Fab color="primary" variant="extended" onClick={addProduct}>
               <AddIcon />
-              <h2>
-                Новый продукт
-              </h2>
+              <h2>Новый продукт</h2>
             </Fab>
           </div>
         </div>
