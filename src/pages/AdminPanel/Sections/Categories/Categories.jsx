@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
-import EditIcon from "@mui/icons-material/Edit";
 import { getAllCategories, getSubCategories } from "../../../../Firebase";
+import Category from "./Category";
 
 const CategoriesStyles = styled.div`
   .categories {
@@ -133,37 +133,7 @@ export default function Categories(props) {
         <div className="category-list">
           {categories != null
             ? categories.map((category, index) => (
-                <div
-                  className="category"
-                  key={index}
-                  onClick={addSubcategoryList}
-                >
-                  <div className="main">
-                    <div className="data">
-                      <h2>{category.name}</h2>
-                    </div>
-                    <div className="buttons">
-                      <Fab
-                        size="small"
-                        className="button add-category-button"
-                        color="primary"
-                        variant="extended"
-                        onClick={addCategory}
-                      >
-                        <AddIcon />
-                      </Fab>
-                      <Fab
-                        size="small"
-                        className="button edit-category-button"
-                        color="secondary"
-                        aria-label="edit"
-                      >
-                        <EditIcon />
-                      </Fab>
-                    </div>
-                  </div>
-                  <div className="subcategories"></div>
-                </div>
+                <Category padding={0} key={index} category={category} />
               ))
             : ""}
         </div>
