@@ -372,11 +372,11 @@ export default function Products(props) {
 
   let { subcategory, category } = useParams();
 
-  const ruSubcategory = translitRusEng(subcategory, { engToRus: true }).replace(
+  const ruSubcategory = translitRusEng(subcategory, { engToRus: true }).replaceAll(
     "_",
     " "
   );
-  const ruCategory = translitRusEng(category, { engToRus: true }).replace(
+  const ruCategory = translitRusEng(category, { engToRus: true }).replaceAll(
     "_",
     " "
   );

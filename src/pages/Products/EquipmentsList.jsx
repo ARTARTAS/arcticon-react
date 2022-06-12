@@ -301,7 +301,10 @@ export default function EquipmentList(props) {
 
   let { category } = useParams();
 
-  const ruCategory = translitRusEng(category, { engToRus: true });
+  const ruCategory = translitRusEng(category, { engToRus: true }).replaceAll(
+    "_",
+    " "
+  );
 
   function makeSearch(event) {
     if (event.type == "click") {
