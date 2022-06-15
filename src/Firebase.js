@@ -20,13 +20,12 @@ import {
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBaoyH2iXkJGfGDC4kOQt7YQTULTBhKHO4",
-  authDomain: "arctic-e5b30.firebaseapp.com",
-  projectId: "arctic-e5b30",
-  storageBucket: "arctic-e5b30.appspot.com",
-  messagingSenderId: "503767848175",
-  appId: "1:503767848175:web:da30e8fa16cdb1b9d5371a",
-  measurementId: "G-J9M6N8VVCR",
+  apiKey: "AIzaSyAUFKAA2MEBwQmdhSMZAdEoIbMMVOQOvoQ",
+  authDomain: "arcticconreact.firebaseapp.com",
+  projectId: "arcticconreact",
+  storageBucket: "arcticconreact.appspot.com",
+  messagingSenderId: "536305878922",
+  appId: "1:536305878922:web:5b5d92578ca0b6e693ea73"
 };
 
 initializeApp(firebaseConfig);
