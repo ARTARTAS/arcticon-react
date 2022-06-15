@@ -114,12 +114,12 @@ const StyledInfo = styled.div`
   }
 `;
 
-function HoveredInfo({ text1, facility, top, shown }) {
+function HoveredInfo({ text, facility, top, shown }) {
   return (
     <StyledInfo top={top} shown={shown}>
       <img src={facility} alt="" />
       <div className="texBlock">
-        <p>{text1}</p>
+        <p>{text}</p>
       </div>
     </StyledInfo>
   );
@@ -144,7 +144,7 @@ export default function MapBlock() {
           >
             <HoveredInfo
               shown={info1}
-              text1={text1}
+              text={text1}
               facility={facility}
               top={true} // positioning
             />
@@ -156,7 +156,7 @@ export default function MapBlock() {
           >
             <HoveredInfo
               shown={info2}
-              text1={text2}
+              text={text2}
               facility={facility2}
               top={false} // positioning
             />
