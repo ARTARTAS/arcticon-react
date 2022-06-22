@@ -325,15 +325,47 @@ export default function Product(props) {
 
   let { subcategory, category, name } = useParams();
 
-  const ruSubcategory = translitRusEng(subcategory, { engToRus: true }).replace(
+  const ruSubcategory = translitRusEng(subcategory, { engToRus: true }).replaceAll(
     "_",
     " "
   );
-  const ruCategory = translitRusEng(category, { engToRus: true }).replace(
+  const ruCategory = translitRusEng(category, { engToRus: true }).replaceAll(
     "_",
     " "
   );
-  const ruName = translitRusEng(name, { engToRus: true }).replace("_", " ");
+
+  const ruName = translitRusEng(name, { engToRus: true }).replaceAll("_", " ");
+
+  function getManufacturerView(key, value, index) {
+    console.log(`key: ${key}, value: ${value}, index: ${index}`);
+
+    switch (key) {
+      case "map":
+        return (
+          <div className="map" key={index}>
+            {value != null
+              ? createMap(value).map((item, innerIndex) =>
+                  getManufacturerView(item.key, item.value, innerIndex)
+                )
+              : ""}
+          </div>
+        );
+      case "array":
+        return (
+          <div className="array" key={index}>
+            {value != null
+              ? createMap(value).map((item, innerIndex) => (
+                  <div key={innerIndex}>{item.value}</div>
+                ))
+              : ""}
+          </div>
+        );
+      case "title":
+        return <div className="title">{value}</div>;
+      default:
+        return "";
+    }
+  }
 
   function getProductData() {
     switch (navigation) {
@@ -374,7 +406,7 @@ export default function Product(props) {
               <div className="characters">
                 <h2>Основные технические характеристики:</h2>
                 <ul>
-                  {characters != null
+                  {characters != null && characters.length > 0
                     ? characters.map((character, index) => (
                         <li key={index}>
                           <div className="key">{character.key}</div>
@@ -433,19 +465,21 @@ export default function Product(props) {
             </div>
             <div className="bottom">
               <div className="projects">
-                {product.projects.map((project, index) => (
-                  <div key={index} className="project">
-                    {project.split("*").map((text, textIndex) => (
-                      <p>
-                        {textIndex == 1 ? (
-                          <span key={textIndex}>{text}</span>
-                        ) : (
-                          text
-                        )}
-                      </p>
-                    ))}
-                  </div>
-                ))}
+                {product.projects != null && product.projects.length > 0
+                  ? product.projects.map((project, index) => (
+                      <div key={index} className="project">
+                        {project.split("*").map((text, textIndex) => (
+                          <p>
+                            {textIndex == 1 ? (
+                              <span key={textIndex}>{text}</span>
+                            ) : (
+                              text
+                            )}
+                          </p>
+                        ))}
+                      </div>
+                    ))
+                  : ""}
               </div>
             </div>
           </div>
@@ -483,8 +517,11 @@ export default function Product(props) {
               {manufacturer != null
                 ? manufacturer.map((character, index) => (
                     <div className="manufacturer" key={index}>
-                      <div className="key">{character.key}</div>
-                      <div className="value">{character.value}</div>
+                      {getManufacturerView(
+                        character.key,
+                        character.value,
+                        index
+                      )}
                     </div>
                   ))
                 : ""}
@@ -494,72 +531,46 @@ export default function Product(props) {
     }
   }
 
+  function createMap(obj) {
+    const list = [];
+
+    for (const [key, value] of Object.entries(obj)) {
+      list.push({ key: key, value: value });
+    }
+
+    return list;
+  }
+
   useEffect(() => {
     window.scrollTo(0, 0);
     if (product != null) {
       if (characters == null) {
-        const list = [];
-
-        for (const [key, value] of Object.entries(product.characters)) {
-          list.push({ key: key, value: value });
-        }
-
-        setCharacters(list);
+        setCharacters(createMap(product.characters));
       }
       if (manufacturer == null) {
-        const manList = [];
-
-        for (const [key, value] of Object.entries(product.manufacturer)) {
-          manList.push({ key: key, value: value });
-        }
-
-        setManufacturer(manList);
+        setManufacturer(createMap(product.manufacturer));
       }
     }
     if (product == null) {
       if (props.product == null) {
-        getProduct(ruCategory, ruName).then((snap) => {
+        let productName = ruName[0].toUpperCase() + ruName.substring(1, ruName.length);
+        getProduct(ruCategory, productName).then((snap) => {
           setProduct(snap);
           if (characters == null) {
-            const list = [];
-
-            for (const [key, value] of Object.entries(snap.characters)) {
-              list.push({ key: key, value: value });
-            }
-
-            setCharacters(list);
+            console.log(characters)
+            setCharacters(createMap(snap.characters));
           }
           if (manufacturer == null) {
-            const manList = [];
-
-            for (const [key, value] of Object.entries(snap.manufacturer)) {
-              manList.push({ key: key, value: value });
-            }
-
-            setManufacturer(manList);
+            setManufacturer(createMap(snap.manufacturer));
           }
         });
       } else {
         setProduct(props.product);
         if (characters == null) {
-          const list = [];
-
-          for (const [key, value] of Object.entries(props.product.characters)) {
-            list.push({ key: key, value: value });
-          }
-
-          setCharacters(list);
+          setCharacters(createMap(props.product.characters));
         }
         if (manufacturer == null) {
-          const manList = [];
-
-          for (const [key, value] of Object.entries(
-            props.product.manufacturer
-          )) {
-            manList.push({ key: key, value: value });
-          }
-
-          setManufacturer(manList);
+          setManufacturer(createMap(props.product.manufacturer));
         }
       }
     }
@@ -606,7 +617,9 @@ export default function Product(props) {
                 ""
               )}
               <li>
-                <button className="button active">{ruName}</button>
+                <button className="button active">
+                  {product != null ? product.name : ""}
+                </button>
               </li>
             </ul>
             <div className="back">

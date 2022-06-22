@@ -347,7 +347,7 @@ export default function EquipmentBlock(props) {
 
   useEffect(() => {
     if (equipments == 0) {
-      setEquipments(props.equipments);
+      if (props.equipments != undefined) setEquipments(props.equipments);
     }
   }, []);
 

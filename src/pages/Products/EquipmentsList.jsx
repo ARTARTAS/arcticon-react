@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { getSubCategories } from "../../Firebase";
+import { getSubCategories, getProducts } from "../../Firebase";
 import translitRusEng from "translit-rus-eng";
 
 import arrow from "./../../assets/svg/services/arrow.svg";
@@ -306,6 +306,8 @@ export default function EquipmentList(props) {
     " "
   );
 
+  console.log(ruCategory)
+
   function makeSearch(event) {
     if (event.type == "click") {
       console.log("click");
@@ -318,7 +320,9 @@ export default function EquipmentList(props) {
   useEffect(() => {
     window.scrollTo(0, 0);
     if (equipments == null) {
-      getSubCategories(ruCategory).then((snap) => setEquipments(snap));
+      getSubCategories(ruCategory).then((snap) => {
+        setEquipments(snap);
+      });
     }
   }, []);
 

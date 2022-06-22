@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 import styled from "styled-components";
 
@@ -59,15 +60,26 @@ const ExtraMenuStyles = styled.div`
           }
 
           li {
-            a {
+            a,
+            .link {
               font-weight: 300;
               font-size: 12px;
               line-height: 200%;
               color: #3a3c41;
 
-              &:hover {
+              &:hover,
+              .link:hover {
                 text-decoration: underline;
               }
+            }
+            a.disable,
+            .link.disable {
+              color: #a5a59360;
+            }
+            a.disable:hover,
+            .link.disable:hover {
+              cursor: default;
+              text-decoration: none;
             }
           }
         }
@@ -87,19 +99,29 @@ export default function ExtraMenu() {
             </div>
             <ul className="nav__column_list">
               <li>
-                <a href="#">Руководство</a>
+                <a href="#" className="disable">
+                  Руководство
+                </a>
               </li>
               <li>
-                <a href="#">Отдел снабжения</a>
+                <a href="#" className="disable">
+                  Отдел снабжения
+                </a>
               </li>
               <li>
-                <a href="#">Отдел проектных продаж</a>
+                <a href="#" className="disable">
+                  Отдел проектных продаж
+                </a>
               </li>
               <li>
-                <a href="#">Финансовый отдел</a>
+                <a href="#" className="disable">
+                  Финансовый отдел
+                </a>
               </li>
               <li>
-                <a href="#">Административный отдел</a>
+                <a href="#" className="disable">
+                  Административный отдел
+                </a>
               </li>
             </ul>
           </div>
@@ -121,21 +143,29 @@ export default function ExtraMenu() {
                 <a href="#">Емкостное и теплообменное оборудование</a>
               </li>
               <li>
-                <a href="#">
+                <a href="#" className="disable">
                   Частотные преобразователи и устройства плавного пуска
                 </a>
               </li>
               <li>
-                <a href="#">Металлоконструкции</a>
+                <a href="#" className="disable">
+                  Металлоконструкции
+                </a>
               </li>
               <li>
-                <a href="#">Терминалы мобильной связи</a>
+                <a href="#" className="disable">
+                  Терминалы мобильной связи
+                </a>
               </li>
               <li>
-                <a href="#">Контрольно-измерительные приборы и автоматика</a>
+                <a href="#" className="disable">
+                  Контрольно-измерительные приборы и автоматика
+                </a>
               </li>
               <li>
-                <a href="#">Дизельные электростанции</a>
+                <a href="#" className="disable">
+                  Дизельные электростанции
+                </a>
               </li>
               <li>
                 <a href="#">Высоковольтное оборудование</a>
@@ -144,27 +174,42 @@ export default function ExtraMenu() {
                 <a href="#">Системы бесперебойного питания</a>
               </li>
               <li>
-                <a href="#">Оборудование для крепления скважин</a>
+                <a href="#" className="disable">
+                  Оборудование для крепления скважин
+                </a>
               </li>
               <li>
-                <a href="#">Осветительное оборудование</a>
+                <a href="#" className="disable">
+                  Осветительное оборудование
+                </a>
               </li>
               <li>
-                <a href="#">Низковольтное комплектное устройство</a>
+                <a href="#" className="disable">
+                  Низковольтное комплектное устройство
+                </a>
               </li>
               <li>
-                <a href="#">Системы видеонаблюдения</a>
+                <a href="#">Щитовое оборудование</a>
               </li>
               <li>
-                <a href="#">
+                <a href="#" className="disable">
+                  Системы видеонаблюдения
+                </a>
+              </li>
+              <li>
+                <a href="#" className="disable">
                   Блочно-модульные здания и энергетические комплексы
                 </a>
               </li>
               <li>
-                <a href="#">Водоснабжение и канализация</a>
+                <a href="#" className="disable">
+                  Водоснабжение и канализация
+                </a>
               </li>
               <li>
-                <a href="#">Сэндвич-панели</a>
+                <a href="#" className="disable">
+                  Сэндвич-панели
+                </a>
               </li>
             </ul>
           </div>
@@ -174,7 +219,7 @@ export default function ExtraMenu() {
             </div>
             <ul className="nav__column_list">
               <li>
-                <a href="#">ЕРСМ</a>
+                <NavLink className="link" to={`/services/ЕРСМ`}>ЕРСМ</NavLink>
               </li>
               <li>
                 <a href="#">Проектирование</a>
@@ -195,7 +240,9 @@ export default function ExtraMenu() {
                 <a href="#">Комплексные поставки</a>
               </li>
               <li>
-                <a href="#">Автоматизация объектов</a>
+                <a href="#" className="disable">
+                  Автоматизация объектов
+                </a>
               </li>
             </ul>
           </div>

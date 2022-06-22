@@ -487,25 +487,55 @@ export default function Equipments(props) {
               ? equipments.categories.slice(0, col).map((equipment, index) => (
                   <div className="card" key={index}>
                     <div className="card__info">
-                      <NavLink
-                        className="card__info_img"
-                        to={`/equipment-list/${translitRusEng(equipment.name, {
-                          slug: true,
-                        })}`}
-                      >
-                        <img src={equipment.img} alt="" />
-                      </NavLink>
-                      <div className="card__info_bottom">
-                        <h3>{equipment.name}</h3>
+                      {equipment.isSubcategory ? (
                         <NavLink
+                          className="card__info_img"
                           to={`/equipment-list/${translitRusEng(
                             equipment.name,
-                            { slug: true }
+                            {
+                              slug: true,
+                            }
                           )}`}
                         >
-                          Подробнее
-                          <img className="icon" src={arrowOrange} alt="" />
+                          <img src={equipment.img} alt="" />
                         </NavLink>
+                      ) : (
+                        <NavLink
+                          onClick={() =>
+                            console.log(
+                              translitRusEng(equipment.name, { slug: true })
+                            )
+                          }
+                          className="card__info_img"
+                          to={`/products/${translitRusEng(equipment.name, {
+                            slug: true,
+                          })}`}
+                        >
+                          <img src={equipment.img} alt="" />
+                        </NavLink>
+                      )}
+                      <div className="card__info_bottom">
+                        <h3>{equipment.name}</h3>
+                        {equipment.isSubcategory ? (
+                          <NavLink
+                            to={`/equipment-list/${translitRusEng(
+                              equipment.name,
+                              { slug: true }
+                            )}`}
+                          >
+                            Подробнее
+                            <img className="icon" src={arrowOrange} alt="" />
+                          </NavLink>
+                        ) : (
+                          <NavLink
+                            to={`/products/${translitRusEng(equipment.name, {
+                              slug: true,
+                            })}`}
+                          >
+                            Подробнее
+                            <img className="icon" src={arrowOrange} alt="" />
+                          </NavLink>
+                        )}
                       </div>
                     </div>
                   </div>

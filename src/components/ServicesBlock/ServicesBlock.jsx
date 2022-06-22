@@ -11,7 +11,7 @@ export default function ServicesBlock(props) {
         <div className="nine__block">
           <h1>УСЛУГИ И СЕРВИС</h1>
           <div className="nine__block_table">
-            {props.services.slice(0, 6).map((service, index) => (
+            {props.services ? props.services.slice(0, 6).map((service, index) => (
               <div className="block" key={index}>
                 <NavLink
                   className="title"
@@ -34,7 +34,7 @@ export default function ServicesBlock(props) {
                   <img className="icon" src={arrowBlack} alt="" />
                 </NavLink>
               </div>
-            ))}
+            )) : ""}
             {/* <div className="block">
               <a href="#" className="title">
                 <h2>EPCM</h2>

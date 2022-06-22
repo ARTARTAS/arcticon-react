@@ -372,14 +372,13 @@ export default function Products(props) {
 
   let { subcategory, category } = useParams();
 
-  const ruSubcategory = translitRusEng(subcategory, { engToRus: true }).replaceAll(
-    "_",
-    " "
-  );
-  const ruCategory = translitRusEng(category, { engToRus: true }).replaceAll(
-    "_",
-    " "
-  );
+  const ruSubcategory = translitRusEng(subcategory, {
+    engToRus: true,
+  }).replaceAll("_", " ");
+
+  const ruCategory = translitRusEng(category, {
+    engToRus: true,
+  }).replaceAll("_", " ");
 
   function makeSearch(event) {
     if (event.type == "click") {
@@ -393,7 +392,10 @@ export default function Products(props) {
   useEffect(() => {
     window.scrollTo(0, 0);
     if (products == null) {
-      getProducts(ruCategory).then((snap) => setProducts(snap));
+      getProducts(ruCategory).then((snap) => {
+        console.log(snap);
+        setProducts(snap);
+      });
     }
   }, []);
 
