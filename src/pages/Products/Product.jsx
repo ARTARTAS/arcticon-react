@@ -10,6 +10,8 @@ import download from "./../../assets/svg/product/arrowDownload.svg";
 import pdf from "./../../assets/img/Products/PDF.jpg";
 import ExtraMenu from "../../components/ExtraMenu/ExtraMenu";
 
+import { md1, md2, md3, md4 } from "./../../assets/media-points";
+
 const ProductStyles = styled.div`
   width: 100%;
   display: flex;
@@ -36,6 +38,11 @@ const ProductStyles = styled.div`
     display: flex;
     gap: 50px;
     margin-bottom: 50px;
+
+    @media (max-width: ${md4}) {
+      display: none;
+    }
+
     .path {
       width: 100%;
       display: flex;
@@ -121,10 +128,20 @@ const ProductStyles = styled.div`
         h1 {
           font-weight: 600;
           font-size: 36px;
+          line-height: 130%;
+
+          @media (max-width: 767.98px) {
+            font-size: 24px;
+          }
         }
+
         p {
           font-size: 18px;
-          line-height: 140%;
+          line-height: 130%;
+
+          @media (max-width: 767.98px) {
+            font-size: 16px;
+          }
         }
         .product_navigation {
           width: 100%;
@@ -138,6 +155,10 @@ const ProductStyles = styled.div`
               background: #efefef;
               padding: 10px 0px;
 
+              @media (max-width: 767.98px) {
+                padding: 0px;
+              }
+
               button {
                 width: 100%;
                 height: 100%;
@@ -147,6 +168,11 @@ const ProductStyles = styled.div`
                 font-size: 16px;
                 background: none;
                 padding: 10px;
+
+                @media (max-width: 767.98px) {
+                  font-size: 14px;
+                  padding: 5px 8px;
+                }
               }
             }
             li:not(:last-child) button {
@@ -191,13 +217,25 @@ const ProductStyles = styled.div`
         display: flex;
         flex-direction: column;
         gap: 30px;
+
+        @media (max-width: 767.98px) {
+          gap: 20px;
+        }
         h2 {
           font-weight: 600;
           font-size: 24px;
+
+          @media (max-width: 767.98px) {
+            font-size: 19px;
+          }
         }
         p {
           font-size: 18px;
           line-height: 130%;
+
+          @media (max-width: 767.98px) {
+            font-size: 16px;
+          }
         }
       }
 
@@ -206,14 +244,26 @@ const ProductStyles = styled.div`
         flex-direction: column;
         gap: 30px;
 
+        @media (max-width: 767.98px) {
+          gap: 20px;
+        }
+
         h2 {
           font-weight: 600;
           font-size: 24px;
+
+          @media (max-width: 767.98px) {
+            font-size: 19px;
+          }
         }
         ul {
           width: 70%;
           background: #efefef;
           padding: 20px 30px;
+          @media (max-width: 767.98px) {
+            width: 100%;
+            padding: 10px 15px;
+          }
           li {
             display: grid;
             justify-content: center;
@@ -257,13 +307,25 @@ const ProductStyles = styled.div`
         display: flex;
         flex-direction: column;
         gap: 30px;
+
+        @media (max-width: 767.98px) {
+          gap: 20px;
+        }
         h2 {
           font-weight: 600;
           font-size: 24px;
+
+          @media (max-width: 767.98px) {
+            font-size: 19px;
+          }
         }
         p {
           font-size: 18px;
           line-height: 130%;
+
+          @media (max-width: 767.98px) {
+            font-size: 16px;
+          }
         }
       }
 
@@ -277,6 +339,12 @@ const ProductStyles = styled.div`
           font-family: "Montserrat", sans-serif;
           font-size: 14px;
           background: none;
+
+          img {
+            @media (max-width: 767.98px) {
+              height: 60px;
+            }
+          }
           .title {
             display: flex;
             align-items: center;
@@ -286,8 +354,7 @@ const ProductStyles = styled.div`
 
             .icon {
               padding-top: 2px;
-              /* height: 10px;
-              width: 20px; */
+              height: auto;
             }
           }
           h4 {

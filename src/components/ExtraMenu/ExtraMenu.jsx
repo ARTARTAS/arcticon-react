@@ -51,7 +51,7 @@ const ExtraMenuStyles = styled.div`
           a {
             font-weight: 400;
             font-size: 18px;
-            color: #3a3c41;
+            color: #2a2b2e;
           }
         }
         &_list {
@@ -62,10 +62,10 @@ const ExtraMenuStyles = styled.div`
           li {
             a,
             .link {
-              font-weight: 300;
+              font-weight: 400;
               font-size: 12px;
               line-height: 200%;
-              color: #3a3c41;
+              color: #4b4c52;
 
               &:hover,
               .link:hover {
@@ -127,20 +127,28 @@ export default function ExtraMenu() {
           </div>
           <div className="nav__column">
             <div className="nav__column_title">
-              <a href="#">Оборудование</a>
+              <NavLink to="/equipments">Оборудование</NavLink>
             </div>
             <ul className="nav__column_list">
               <li>
-                <a href="#">Трансформаторы</a>
+                <NavLink to="/equipment-list/Transformatory">
+                  Трансформаторы
+                </NavLink>
               </li>
               <li>
-                <a href="#">Сетевое и коммутационное оборудование</a>
+                <NavLink to="/equipment-list/Setevoe_i_kommutaczionnoe_oborudovanie">
+                  Сетевое и коммутационное оборудование
+                </NavLink>
               </li>
               <li>
-                <a href="#">Кабели и провода</a>
+                <NavLink to="/equipment-list/Kabeli_i_provoda">
+                  Кабели и провода
+                </NavLink>
               </li>
               <li>
-                <a href="#">Емкостное и теплообменное оборудование</a>
+                <NavLink to="/equipment-list/Emkostnoe_i_teploobmennoe_oborudovanie">
+                  Емкостное и теплообменное оборудование
+                </NavLink>
               </li>
               <li>
                 <a href="#" className="disable">
@@ -168,10 +176,14 @@ export default function ExtraMenu() {
                 </a>
               </li>
               <li>
-                <a href="#">Высоковольтное оборудование</a>
+                <NavLink to="/equipment-list/Vysokovoltnoe_oborudovanie">
+                  Высоковольтное оборудование
+                </NavLink>
               </li>
               <li>
-                <a href="#">Системы бесперебойного питания</a>
+                <NavLink to="/equipment-list/Sistemy_besperebojnogo_pitaniya">
+                  Системы бесперебойного питания
+                </NavLink>
               </li>
               <li>
                 <a href="#" className="disable">
@@ -189,7 +201,9 @@ export default function ExtraMenu() {
                 </a>
               </li>
               <li>
-                <a href="#">Щитовое оборудование</a>
+                <NavLink to="/equipment-list/Shhitovoe_oborudovanie">
+                  Щитовое оборудование
+                </NavLink>
               </li>
               <li>
                 <a href="#" className="disable">
@@ -215,11 +229,13 @@ export default function ExtraMenu() {
           </div>
           <div className="nav__column">
             <div className="nav__column_title">
-              <a href="#">Услуги и сервис</a>
+              <NavLink to="/services">Услуги и сервис</NavLink>
             </div>
             <ul className="nav__column_list">
               <li>
-                <NavLink className="link" to={`/services/ЕРСМ`}>ЕРСМ</NavLink>
+                <NavLink className="link" to={`/services/ЕРСМ`}>
+                  ЕРСМ
+                </NavLink>
               </li>
               <li>
                 <a href="#">Проектирование</a>
@@ -248,23 +264,33 @@ export default function ExtraMenu() {
           </div>
           <div className="nav__column">
             <div className="nav__column_title">
-              <a href="#">О нас</a>
+              <NavLink to="/about">О нас</NavLink>
             </div>
             <ul className="nav__column_list">
               <li>
-                <a href="#">Ключевые проекты</a>
+                <a href="#" className="disable">
+                  Ключевые проекты
+                </a>
               </li>
               <li>
-                <a href="#">Вакансии</a>
+                <a href="#" className="disable">
+                  Вакансии
+                </a>
               </li>
               <li>
-                <a href="#">Стажировка</a>
+                <a href="#" className="disable">
+                  Стажировка
+                </a>
               </li>
               <li>
-                <a href="#">Лицензия и сертификаты</a>
+                <a href="#" className="disable">
+                  Лицензия и сертификаты
+                </a>
               </li>
               <li>
-                <a href="#">Отзывы</a>
+                <a href="#" className="disable">
+                  Отзывы
+                </a>
               </li>
             </ul>
           </div>
@@ -274,10 +300,14 @@ export default function ExtraMenu() {
             </div>
             <ul className="nav__column_list">
               <li>
-                <a href="#">Пресс-центр</a>
+                <a href="#" className="disable">
+                  Пресс-центр
+                </a>
               </li>
               <li>
-                <a href="#">Мероприятия</a>
+                <a href="#" className="disable">
+                  Мероприятия
+                </a>
               </li>
             </ul>
           </div>

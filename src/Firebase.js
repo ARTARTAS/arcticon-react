@@ -90,6 +90,27 @@ export async function isSubcategory(name) {
     });
 }
 
+export async function getCategory(link) {
+  let categories = [];
+
+  const categoriesQuery = query(
+    collection(db, "categories"),
+    where("link", "==", link)
+  );
+
+  await getDocs(categoriesQuery)
+    .then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        categories.push({ id: doc.id, ...doc.data() });
+      });
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+
+  return categories[0];
+}
+
 export async function getSubCategories(name) {
   let categories = [];
 

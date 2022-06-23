@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { getSubCategories, getProducts } from "../../Firebase";
+import { getSubCategories, getProducts, getCategory } from "../../Firebase";
 import translitRusEng from "translit-rus-eng";
 
 import arrow from "./../../assets/svg/services/arrow.svg";
@@ -298,13 +298,9 @@ const EquipmentsListStyles = styled.div`
 
 export default function EquipmentList(props) {
   const [equipments, setEquipments] = useState(null);
+  const [thisCategory, setCategory] = useState(null);
 
   let { category } = useParams();
-
-  const ruCategory = translitRusEng(category, { engToRus: true }).replaceAll(
-    "_",
-    " "
-  );
 
   function makeSearch(event) {
     if (event.type == "click") {
@@ -317,8 +313,13 @@ export default function EquipmentList(props) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (equipments == null) {
-      getSubCategories(ruCategory).then((snap) => {
+    if (thisCategory == null) {
+      getCategory(category).then((snap) => {
+        setCategory(snap);
+      });
+    }
+    if (equipments == null && thisCategory != null) {
+      getSubCategories(thisCategory.name).then((snap) => {
         setEquipments(snap);
       });
     }
@@ -341,7 +342,7 @@ export default function EquipmentList(props) {
                 </NavLink>
               </li>
               <li>
-                <button className="button active">{ruCategory}</button>
+                <button className="button active">{thisCategory != null ? thisCategory.name : ""}</button>
               </li>
             </ul>
             <div className="back">
@@ -366,7 +367,7 @@ export default function EquipmentList(props) {
         </div>
         <div className="equipments">
           <div className="title">
-            <h1>{ruCategory}</h1>
+            <h1>{thisCategory != null ? thisCategory.name : ""}</h1>
           </div>
           <div className="equipments__list">
             {equipments != null
