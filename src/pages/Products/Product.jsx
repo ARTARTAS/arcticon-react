@@ -102,11 +102,13 @@ const ProductStyles = styled.div`
 
     .top {
       width: 100%;
-      display: flex;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
       gap: 40px;
       overflow: hidden;
 
       @media (max-width: 767.98px) {
+        display: flex;
         flex-direction: column-reverse;
       }
 
@@ -321,6 +323,8 @@ const ProductStyles = styled.div`
 
         h2 {
           margin-bottom: 10px;
+          font-size: 16px;
+          line-height: 130%;
         }
 
         p {
@@ -535,9 +539,7 @@ export default function Product(props) {
     }
     if (product == null) {
       if (props.product == null) {
-        let productName =
-          ruName[0].toUpperCase() + ruName.substring(1, ruName.length);
-        getProduct(ruCategory, productName).then((snap) => {
+        getProduct(ruCategory, name).then((snap) => {
           setProduct(snap);
           if (characters == null) {
             setCharacters(createMap(snap.characters));

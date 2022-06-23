@@ -138,7 +138,7 @@ export async function getProduct(category, name) {
   const productsQuery = query(
     collection(db, "products"),
     where("category", "==", category),
-    where("name", "==", name)
+    where("link", "==", name)
   );
 
   await getDocs(productsQuery)
