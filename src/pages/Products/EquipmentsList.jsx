@@ -316,11 +316,9 @@ export default function EquipmentList(props) {
     if (thisCategory == null) {
       getCategory(category).then((snap) => {
         setCategory(snap);
-      });
-    }
-    if (equipments == null && thisCategory != null) {
-      getSubCategories(thisCategory.name).then((snap) => {
-        setEquipments(snap);
+        getSubCategories(snap.name).then((snap) => {
+          setEquipments(snap);
+        });
       });
     }
   }, []);
@@ -342,7 +340,9 @@ export default function EquipmentList(props) {
                 </NavLink>
               </li>
               <li>
-                <button className="button active">{thisCategory != null ? thisCategory.name : ""}</button>
+                <button className="button active">
+                  {thisCategory != null ? thisCategory.name : ""}
+                </button>
               </li>
             </ul>
             <div className="back">

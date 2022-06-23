@@ -393,7 +393,6 @@ export default function Products(props) {
     window.scrollTo(0, 0);
     if (products == null) {
       getProducts(ruCategory).then((snap) => {
-        console.log(snap);
         setProducts(snap);
       });
     }
