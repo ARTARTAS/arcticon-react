@@ -3,6 +3,7 @@ import { NavLink, useParams } from "react-router-dom";
 import styled from "styled-components";
 import translitRusEng from "translit-rus-eng";
 import { getProduct } from "../../Firebase";
+import { Markup } from "interweave";
 
 import arrow from "./../../assets/svg/services/arrow.svg";
 import download from "./../../assets/svg/product/arrowDownload.svg";
@@ -55,6 +56,7 @@ const ProductStyles = styled.div`
             display: flex;
             justify-content: center;
             align-items: center;
+            text-align: left;
             gap: 15px;
             font-size: 16px;
 
@@ -102,6 +104,11 @@ const ProductStyles = styled.div`
       width: 100%;
       display: flex;
       gap: 40px;
+      overflow: hidden;
+
+      @media (max-width: 767.98px) {
+        flex-direction: column-reverse;
+      }
 
       .title {
         width: 100%;
@@ -161,9 +168,14 @@ const ProductStyles = styled.div`
         display: flex;
         align-items: center;
         justify-content: flex-end;
+
+        @media (max-width: 767.98px) {
+          justify-content: center;
+        }
+
         img {
-          max-height: 300px;
-          height: 100%;
+          max-width: 100%;
+          max-height: 100%;
         }
       }
     }
@@ -293,6 +305,7 @@ const ProductStyles = styled.div`
           gap: 5px;
           p {
             font-size: 16px;
+            line-height: 130%;
             span {
               font-weight: 600;
             }
@@ -305,6 +318,15 @@ const ProductStyles = styled.div`
         display: flex;
         flex-direction: column;
         gap: 20px;
+
+        h2 {
+          margin-bottom: 10px;
+        }
+
+        p {
+          line-height: 130%;
+        }
+
         .key {
           font-size: 30px;
           font-weight: 700;
@@ -325,46 +347,12 @@ export default function Product(props) {
 
   let { subcategory, category, name } = useParams();
 
-  const ruSubcategory = translitRusEng(subcategory, { engToRus: true }).replaceAll(
-    "_",
-    " "
-  );
-  const ruCategory = translitRusEng(category, { engToRus: true }).replaceAll(
-    "_",
-    " "
-  );
+  const ruSubcategory = translateToRussian(subcategory);
+  const ruCategory = translateToRussian(category);
+  const ruName = translateToRussian(name);
 
-  const ruName = translitRusEng(name, { engToRus: true }).replaceAll("_", " ");
-
-  function getManufacturerView(key, value, index) {
-    console.log(`key: ${key}, value: ${value}, index: ${index}`);
-
-    switch (key) {
-      case "map":
-        return (
-          <div className="map" key={index}>
-            {value != null
-              ? createMap(value).map((item, innerIndex) =>
-                  getManufacturerView(item.key, item.value, innerIndex)
-                )
-              : ""}
-          </div>
-        );
-      case "array":
-        return (
-          <div className="array" key={index}>
-            {value != null
-              ? createMap(value).map((item, innerIndex) => (
-                  <div key={innerIndex}>{item.value}</div>
-                ))
-              : ""}
-          </div>
-        );
-      case "title":
-        return <div className="title">{value}</div>;
-      default:
-        return "";
-    }
+  function translateToRussian(string) {
+    return translitRusEng(string, { engToRus: true }).replaceAll("_", " ");
   }
 
   function getProductData() {
@@ -514,17 +502,11 @@ export default function Product(props) {
               </div>
             </div>
             <div className="bottom">
-              {manufacturer != null
-                ? manufacturer.map((character, index) => (
-                    <div className="manufacturer" key={index}>
-                      {getManufacturerView(
-                        character.key,
-                        character.value,
-                        index
-                      )}
-                    </div>
-                  ))
-                : ""}
+              {manufacturer != null ? (
+                <Markup className="manufacturer" content={manufacturer} />
+              ) : (
+                ""
+              )}
             </div>
           </div>
         );
@@ -548,20 +530,20 @@ export default function Product(props) {
         setCharacters(createMap(product.characters));
       }
       if (manufacturer == null) {
-        setManufacturer(createMap(product.manufacturer));
+        setManufacturer(product.manufacturer);
       }
     }
     if (product == null) {
       if (props.product == null) {
-        let productName = ruName[0].toUpperCase() + ruName.substring(1, ruName.length);
+        let productName =
+          ruName[0].toUpperCase() + ruName.substring(1, ruName.length);
         getProduct(ruCategory, productName).then((snap) => {
           setProduct(snap);
           if (characters == null) {
-            console.log(characters)
             setCharacters(createMap(snap.characters));
           }
           if (manufacturer == null) {
-            setManufacturer(createMap(snap.manufacturer));
+            setManufacturer(snap.manufacturer);
           }
         });
       } else {
@@ -570,7 +552,7 @@ export default function Product(props) {
           setCharacters(createMap(props.product.characters));
         }
         if (manufacturer == null) {
-          setManufacturer(createMap(props.product.manufacturer));
+          setManufacturer(props.product.manufacturer);
         }
       }
     }

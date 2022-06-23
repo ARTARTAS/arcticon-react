@@ -306,8 +306,6 @@ export default function EquipmentList(props) {
     " "
   );
 
-  console.log(ruCategory)
-
   function makeSearch(event) {
     if (event.type == "click") {
       console.log("click");
