@@ -507,9 +507,7 @@ export default function Equipments(props) {
                             )
                           }
                           className="card__info_img"
-                          to={`/products/${translitRusEng(equipment.name, {
-                            slug: true,
-                          })}`}
+                          to={`/products/${equipment.link}`}
                         >
                           <img src={equipment.img} alt="" />
                         </NavLink>
@@ -518,19 +516,14 @@ export default function Equipments(props) {
                         <h3>{equipment.name}</h3>
                         {equipment.isSubcategory ? (
                           <NavLink
-                            to={`/equipment-list/${translitRusEng(
-                              equipment.name,
-                              { slug: true }
-                            )}`}
+                            to={`/equipment-list/${equipment.link}`}
                           >
                             Подробнее
                             <img className="icon" src={arrowOrange} alt="" />
                           </NavLink>
                         ) : (
                           <NavLink
-                            to={`/products/${translitRusEng(equipment.name, {
-                              slug: true,
-                            })}`}
+                            to={`/products/${equipment.link}`}
                           >
                             Подробнее
                             <img className="icon" src={arrowOrange} alt="" />

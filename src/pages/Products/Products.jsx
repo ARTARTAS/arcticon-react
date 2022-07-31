@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { getProducts } from "../../Firebase";
+import { getSubCategory, getProducts, getCategory } from "../../Firebase";
 import translitRusEng from "translit-rus-eng";
+import ExtraMenu from "../../components/ExtraMenu/ExtraMenu";
 
 import arrow from "./../../assets/svg/services/arrow.svg";
 import loupBlack from "./../../assets/svg/home/loup_black.svg";
@@ -92,6 +93,7 @@ const ProductsStyles = styled.div`
         }
       }
       .back {
+        width: fit-content;
         &_button {
           font-size: 16px;
           background: none;
@@ -368,17 +370,11 @@ const ProductsStyles = styled.div`
 `;
 
 export default function Products(props) {
+  const [thisCategory, setCategory] = useState(null);
+  const [thisSubcategory, setSubCategory] = useState(null);
   const [products, setProducts] = useState(null);
 
-  let { subcategory, category } = useParams();
-
-  const ruSubcategory = translitRusEng(subcategory, {
-    engToRus: true,
-  }).replaceAll("_", " ");
-
-  const ruCategory = translitRusEng(category, {
-    engToRus: true,
-  }).replaceAll("_", " ");
+  let { category, subcategory } = useParams();
 
   function makeSearch(event) {
     if (event.type == "click") {
@@ -391,9 +387,23 @@ export default function Products(props) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (products == null) {
-      getProducts(ruCategory).then((snap) => {
-        setProducts(snap);
+    if (thisCategory == null) {
+      console.log("category is " + category);
+      console.log("subcategory is " + subcategory);
+
+      getCategory(category).then((snap) => {
+        console.log("get category is " + snap.name);
+        setCategory(snap);
+
+        getSubCategory(snap.name, subcategory).then((snap) => {
+          console.log("get subcategory is " + snap.name);
+          setSubCategory(snap);
+
+          getProducts(snap.name).then((snap) => {
+            console.log("get products is ");
+            setProducts(snap);
+          });
+        });
       });
     }
   }, []);
@@ -420,14 +430,17 @@ export default function Products(props) {
                     className="button"
                     to={`/equipment-list/${subcategory}`}
                   >
-                    {ruSubcategory} <img className="icon" src={arrow} alt="" />
+                    {thisSubcategory != null ? thisSubcategory.name : ""}{" "}
+                    <img className="icon" src={arrow} alt="" />
                   </NavLink>
                 </li>
               ) : (
                 ""
               )}
               <li>
-                <button className="button active">{ruCategory}</button>
+                <button className="button active">
+                  {thisCategory != null ? thisCategory.name : ""}
+                </button>
               </li>
             </ul>
             <div className="back">
@@ -462,7 +475,7 @@ export default function Products(props) {
         </div>
         <div className="equipments">
           <div className="title">
-            <h1>{ruCategory}</h1>
+            <h1>{thisCategory != null ? thisCategory.name : ""}</h1>
           </div>
           <div className="equipments__list">
             {products != null
@@ -472,10 +485,7 @@ export default function Products(props) {
                       <NavLink
                         className="image"
                         onClick={() => (props.state.product = product)}
-                        to={`/product/${subcategory}/${category}/${translitRusEng(
-                          product.name,
-                          { slug: true }
-                        )}`}
+                        to={`/product/${subcategory}/${category}/${product.link}`}
                       >
                         <img src={product.img} alt="" />
                       </NavLink>
@@ -486,10 +496,7 @@ export default function Products(props) {
                     <NavLink
                       className="button"
                       onClick={() => (props.state.product = product)}
-                      to={`/product/${subcategory}/${category}/${translitRusEng(
-                        product.name,
-                        { slug: true }
-                      )}`}
+                      to={`/product/${subcategory}/${category}/${product.link}`}
                     >
                       Подробнее
                       <img className="icon" src={buttonArrow} alt="" />
@@ -499,163 +506,7 @@ export default function Products(props) {
               : ""}
           </div>
         </div>
-        <menu className="menu">
-          <nav className="nav">
-            <div className="nav__column">
-              <div className="nav__column_title">
-                <a href="#">Структура организации</a>
-              </div>
-              <ul className="nav__column_list">
-                <li>
-                  <a href="#">Руководство</a>
-                </li>
-                <li>
-                  <a href="#">Отдел снабжения</a>
-                </li>
-                <li>
-                  <a href="#">Отдел проектных продаж</a>
-                </li>
-                <li>
-                  <a href="#">Финансовый отдел</a>
-                </li>
-                <li>
-                  <a href="#">Административный отдел</a>
-                </li>
-              </ul>
-            </div>
-            <div className="nav__column">
-              <div className="nav__column_title">
-                <a href="#">Оборудование</a>
-              </div>
-              <ul className="nav__column_list">
-                <li>
-                  <a href="#">Трансформаторы</a>
-                </li>
-                <li>
-                  <a href="#">Сетевое и коммутационное оборудование</a>
-                </li>
-                <li>
-                  <a href="#">Кабели и провода</a>
-                </li>
-                <li>
-                  <a href="#">Емкостное и теплообменное оборудование</a>
-                </li>
-                <li>
-                  <a href="#">
-                    Частотные преобразователи и устройства плавного пуска
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Металлоконструкции</a>
-                </li>
-                <li>
-                  <a href="#">Терминалы мобильной связи</a>
-                </li>
-                <li>
-                  <a href="#">Контрольно-измерительные приборы и автоматика</a>
-                </li>
-                <li>
-                  <a href="#">Дизельные электростанции</a>
-                </li>
-                <li>
-                  <a href="#">Высоковольтное оборудование</a>
-                </li>
-                <li>
-                  <a href="#">Системы бесперебойного питания</a>
-                </li>
-                <li>
-                  <a href="#">Оборудование для крепления скважин</a>
-                </li>
-                <li>
-                  <a href="#">Осветительное оборудование</a>
-                </li>
-                <li>
-                  <a href="#">Низковольтное комплектное устройство</a>
-                </li>
-                <li>
-                  <a href="#">Системы видеонаблюдения</a>
-                </li>
-                <li>
-                  <a href="#">
-                    Блочно-модульные здания и энергетические комплексы
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Водоснабжение и канализация</a>
-                </li>
-                <li>
-                  <a href="#">Сэндвич-панели</a>
-                </li>
-              </ul>
-            </div>
-            <div className="nav__column">
-              <div className="nav__column_title">
-                <a href="#">Услуги и сервис</a>
-              </div>
-              <ul className="nav__column_list">
-                <li>
-                  <a href="#">ЕРСМ</a>
-                </li>
-                <li>
-                  <a href="#">Проектирование</a>
-                </li>
-                <li>
-                  <a href="#">Строительно-монтажные работы</a>
-                </li>
-                <li>
-                  <a href="#">ШМР и ПНР</a>
-                </li>
-                <li>
-                  <a href="#">Гарантийное обслуживание</a>
-                </li>
-                <li>
-                  <a href="#">Сервис</a>
-                </li>
-                <li>
-                  <a href="#">Комплексные поставки</a>
-                </li>
-                <li>
-                  <a href="#">Автоматизация объектов</a>
-                </li>
-              </ul>
-            </div>
-            <div className="nav__column">
-              <div className="nav__column_title">
-                <a href="#">О нас</a>
-              </div>
-              <ul className="nav__column_list">
-                <li>
-                  <a href="#">Ключевые проекты</a>
-                </li>
-                <li>
-                  <a href="#">Вакансии</a>
-                </li>
-                <li>
-                  <a href="#">Стажировка</a>
-                </li>
-                <li>
-                  <a href="#">Лицензия и сертификаты</a>
-                </li>
-                <li>
-                  <a href="#">Отзывы</a>
-                </li>
-              </ul>
-            </div>
-            <div className="nav__column">
-              <div className="nav__column_title">
-                <a href="#">Контакты</a>
-              </div>
-              <ul className="nav__column_list">
-                <li>
-                  <a href="#">Пресс-центр</a>
-                </li>
-                <li>
-                  <a href="#">Мероприятия</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </menu>
+        <ExtraMenu></ExtraMenu>
       </div>
     </ProductsStyles>
   );

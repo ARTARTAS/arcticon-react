@@ -461,7 +461,7 @@ export default function Customers() {
                   <div className="line__box">
                     <div className="line"></div>
                   </div>
-                  <a href="#">
+                  <a href="/projects">
                     Реализованные проекты
                     <img className="icon" src={img13} alt="" />
                   </a>

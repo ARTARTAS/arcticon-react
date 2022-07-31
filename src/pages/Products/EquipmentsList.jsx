@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { getSubCategories, getProducts, getCategory } from "../../Firebase";
+import { getSubCategories, getCategory } from "../../Firebase";
 import translitRusEng from "translit-rus-eng";
 
 import arrow from "./../../assets/svg/services/arrow.svg";
@@ -93,6 +93,7 @@ const EquipmentsListStyles = styled.div`
         }
       }
       .back {
+        width: fit-content;
         &_button {
           font-size: 16px;
           background: none;
@@ -317,6 +318,7 @@ export default function EquipmentList(props) {
       getCategory(category).then((snap) => {
         setCategory(snap);
         getSubCategories(snap.name).then((snap) => {
+          console.log("get subcategoryes")
           setEquipments(snap);
         });
       });
@@ -376,10 +378,7 @@ export default function EquipmentList(props) {
                     <div className="equipment_img">
                       <NavLink
                         className="image"
-                        to={`/products/${category}/${translitRusEng(
-                          equipment.name,
-                          { slug: true }
-                        )}`}
+                        to={`/products/${category}/${equipment.link}`}
                       >
                         <img src={equipment.img} alt="" />
                       </NavLink>
@@ -391,9 +390,7 @@ export default function EquipmentList(props) {
                       <NavLink
                         className="button"
                         onClick={() => (props.state.product = equipment)}
-                        to={`/product/${translitRusEng(equipment.name, {
-                          slug: true,
-                        })}`}
+                        to={`/product/${equipment.link}`}
                       >
                         Подробнее
                         <img className="icon" src={buttonArrow} alt="" />
@@ -401,10 +398,7 @@ export default function EquipmentList(props) {
                     ) : (
                       <NavLink
                         className="button"
-                        to={`/products/${category}/${translitRusEng(
-                          equipment.name,
-                          { slug: true }
-                        )}`}
+                        to={`/products/${category}/${equipment.link}`}
                       >
                         Подробнее
                         <img className="icon" src={buttonArrow} alt="" />

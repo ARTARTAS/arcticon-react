@@ -83,6 +83,7 @@ const ProductStyles = styled.div`
         }
       }
       .back {
+        width: fit-content;
         &_button {
           font-size: 16px;
           background: none;
@@ -132,6 +133,9 @@ const ProductStyles = styled.div`
 
           @media (max-width: 767.98px) {
             font-size: 24px;
+          }
+          @media (max-width: ${md4}) {
+            font-size: 20px;
           }
         }
 
@@ -289,7 +293,7 @@ const ProductStyles = styled.div`
               justify-content: center;
               padding: 10px 0px;
               font-size: 14px;
-              line-height: 130%;
+              line-height: 160%;
               padding: 10px;
               text-align: center;
             }
@@ -319,7 +323,7 @@ const ProductStyles = styled.div`
             font-size: 19px;
           }
         }
-        p {
+        .conditions-body {
           font-size: 18px;
           line-height: 130%;
 
@@ -367,17 +371,35 @@ const ProductStyles = styled.div`
         font-family: "Montserrat", sans-serif;
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        .project {
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-          p {
+        gap: 20px;
+        font-size: 16px;
+        line-height: 130%;
+        @media (max-width: ${md4}) {
+          font-size: 14px;
+        }
+
+        h2 {
+          margin-bottom: 10px;
+          font-size: 18px;
+          line-height: 130%;
+          @media (max-width: ${md4}) {
             font-size: 16px;
-            line-height: 130%;
-            span {
-              font-weight: 600;
-            }
+          }
+        }
+
+        p {
+          font-size: 16px;
+          line-height: 130%;
+          @media (max-width: ${md4}) {
+            font-size: 14px;
+          }
+        }
+        h4 {
+          color: gray;
+          font-size: 16px;
+          line-height: 130%;
+          @media (max-width: ${md4}) {
+            font-size: 14px;
           }
         }
       }
@@ -390,20 +412,27 @@ const ProductStyles = styled.div`
 
         h2 {
           margin-bottom: 10px;
-          font-size: 16px;
+          font-size: 18px;
           line-height: 130%;
+          @media (max-width: ${md4}) {
+            font-size: 16px;
+          }
+        }
+
+        h3 {
+          font-size: 17px;
+          line-height: 130%;
+          @media (max-width: ${md4}) {
+            font-size: 15px;
+          }
         }
 
         p {
-          line-height: 130%;
-        }
-
-        .key {
-          font-size: 30px;
-          font-weight: 700;
-        }
-        .value {
           font-size: 16px;
+          line-height: 130%;
+          @media (max-width: ${md4}) {
+            font-size: 14px;
+          }
         }
       }
     }
@@ -441,8 +470,8 @@ export default function Product(props) {
                       <button>Обзор</button>
                     </li>
                     <li>
-                      <button onClick={() => setNavigation("Проэкты")}>
-                        Проэкты
+                      <button onClick={() => setNavigation("Проекты")}>
+                        Проекты
                       </button>
                     </li>
                     <li>
@@ -470,7 +499,7 @@ export default function Product(props) {
                         <li key={index}>
                           <div className="key">{character.key}</div>
                           <div className="line"></div>
-                          <div className="value">{character.value}</div>
+                          <Markup className="value" content={character.value} />
                         </li>
                       ))
                     : ""}
@@ -478,7 +507,10 @@ export default function Product(props) {
               </div>
               <div className="conditions">
                 <h2>Условия эксплуатации:</h2>
-                <p>{product.conditions}</p>
+                <Markup
+                  className="conditions-body"
+                  content={product.conditions}
+                />
               </div>
               <div className="download">
                 <button>
@@ -493,7 +525,7 @@ export default function Product(props) {
             </div>
           </div>
         );
-      case "Проэкты":
+      case "Проекты":
         return (
           <div className="product">
             <div className="top">
@@ -508,7 +540,7 @@ export default function Product(props) {
                       </button>
                     </li>
                     <li className="active">
-                      <button>Проэкты</button>
+                      <button>Проекты</button>
                     </li>
                     <li>
                       <button onClick={() => setNavigation("Производитель")}>
@@ -523,23 +555,11 @@ export default function Product(props) {
               </div>
             </div>
             <div className="bottom">
-              <div className="projects">
-                {product.projects != null && product.projects.length > 0
-                  ? product.projects.map((project, index) => (
-                      <div key={index} className="project">
-                        {project.split("*").map((text, textIndex) => (
-                          <p>
-                            {textIndex == 1 ? (
-                              <span key={textIndex}>{text}</span>
-                            ) : (
-                              text
-                            )}
-                          </p>
-                        ))}
-                      </div>
-                    ))
-                  : ""}
-              </div>
+              {product.projects != null ? (
+                <Markup className="projects" content={product.projects} />
+              ) : (
+                ""
+              )}
             </div>
           </div>
         );
@@ -558,8 +578,8 @@ export default function Product(props) {
                       </button>
                     </li>
                     <li className="remove-border">
-                      <button onClick={() => setNavigation("Проэкты")}>
-                        Проэкты
+                      <button onClick={() => setNavigation("Проекты")}>
+                        Проекты
                       </button>
                     </li>
                     <li className="active">
@@ -605,6 +625,7 @@ export default function Product(props) {
       }
     }
     if (product == null) {
+      console.log("product");
       if (props.product == null) {
         getProduct(ruCategory, name).then((snap) => {
           setProduct(snap);
